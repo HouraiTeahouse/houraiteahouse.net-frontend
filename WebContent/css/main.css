@@ -1,0 +1,40 @@
+html,
+body {
+	height: 100%;
+}
+
+#topnav {
+  height: 50px;
+}
+
+.navbar,
+.navbar-nav > li > a:active,
+.navbar-nav > li > a:visited {
+  background-color: #883080;
+  border-color: #883080;
+}
+.navbar-header > a {
+  color: #E0D050;
+}
+.navbar-header > a:hover {
+  color: #FFEE66;
+}
+.navbar-nav > li > a {
+  color: #DDDD55;
+}
+.navbar-nav > li > a:hover {
+  background-color: #995099;
+}
+
+#wrap {
+	min-height: 100%;
+	height: auto;
+	margin: -50px auto -40px;
+	padding: 50px 0 40px;
+}
+
+#footer {
+	height: 20px;
+	background-color: #f5f5f5;
+	padding: 10px;
+}
