@@ -1,0 +1,37 @@
+<section class="post">
+  <header class="post-header">
+    <h2 class="post-title">{{post.title}}</h2>
+    <div class="post-meta">Posted by {{post.author}} on {{post.created | date:'medium'}}</div>
+    <div class="post-meta">
+      <ul class="list-inline">
+        <li ng-repeat="tag in post.tags">
+          <a class="label label-success" ui-sref="news/tags/{{tag}}">{{tag}}</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+  <div class="post-content">
+    <p ng-repeat="paragraph in post.body">
+      {{paragraph}}
+    </p>
+  </div>
+  <div class="post-comments">
+    <h3>Comments</h3>
+    <ul>
+      <li ng-repeat="comment in post.comments">
+        "{{comment.body}}"
+        <cite>- <b>{{comment.author}}</b></cite>
+      </li>
+    </ul>
+    <form name="commentForm" id="commentForm" ng-submit="commentForm.$valid && addComment()">
+      <h4>Add Comment</h4>
+      <div>
+        <input type="text" name="author" id="author" ng-model="postCtrl.comment.author" placeholder="Name" required />
+      </div>
+      <div>
+        <textarea ng-model="postCtrl.comment.body" name="body" id="body" cols="30" rows="10" placeholder="Comment" required></textarea>
+      </div>
+      <input type="submit" value="Submit" class="btn btn-primary" />
+    </form>
+  </div>
+</section>

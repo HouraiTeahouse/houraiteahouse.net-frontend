@@ -1,8 +1,15 @@
 'use strict';
 
-var app = angular.module('houraiteahouse', ['ui.router'])
+// Module declarations
+var app = angular.module('houraiteahouse', ['ui.router', 'appControllers', 'appDirectives'])
 
-app.config(function($stateProvider, $urlRouterProvider){
+var appControllers = angular.module('appControllers', []);
+var appDirectives = angular.module('appDirectives', []);
+
+var options = {};
+
+// Main app configuration
+app.config(function($stateProvider, $urlRouterProvider, $controllerProvider){
 
   $urlRouterProvider.otherwise('/home');
   
@@ -17,8 +24,19 @@ app.config(function($stateProvider, $urlRouterProvider){
       url: '/about',
       templateUrl: 'partials/about.html'
     })
-    .state('news', {
+    .state('newslist', {
       url: '/news',
-      templateUrl: 'partials/news/news-list.html'
+      templateUrl: 'partials/news/news-list.html',
+      controller: 'NewsListCtrl'
+    })
+    .state('newstags', {
+      url: '/news/tags',
+      templateUrl: '/partials/news/tags.html'
+    })
+    .state('newspost', {
+      url: '/news/:id',
+      templateUrl: 'partials/news/news-post.html',
+      controller: 'NewsPostCtrl',
+      controllerAs: 'postCtrl'
     })
 });
