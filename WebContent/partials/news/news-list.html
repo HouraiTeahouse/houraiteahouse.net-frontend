@@ -5,7 +5,7 @@
     <div class="post-meta">
       <ul class="list-inline">
         <li ng-repeat="tag in post.tags">
-          <a class="label label-success" ui-sref="news/tags/{{tag}}">{{tag}}</a>
+          <a class="label label-success" ui-sref="newstags({tag: tag})">{{tag}}</a>
         <li>
       </ul>
     </div>

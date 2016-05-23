@@ -1,3 +1,19 @@
-<div>
-  chicken hat
-</div>
+<section class="post" ng-repeat="post in taggedPosts">
+  <header class="post-header">
+    <h2 class="post-title">{{post.title}}</h2>
+    <div class="post-meta">Posted by {{post.author}} on {{post.created | date:'medium'}}</div>
+    <div class="post-meta">
+      <ul class="list-inline">
+        <li ng-repeat="tag in post.tags">
+          <a class="label label-success" ui-sref="newstags({tag: tag})">{{tag}}</a>
+        <li>
+      </ul>
+    </div>
+  </header>
+  <div class="post-content">
+    <p ng-bind-html="post.content">
+      {{post.content}}
+    </p>
+    <a ui-sref="newspost({id: post.id})" class="btn btn-primary">Read More</a>
+  </div>
+</section>

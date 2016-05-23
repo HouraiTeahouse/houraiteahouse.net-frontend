@@ -27,16 +27,16 @@ app.config(function($stateProvider, $urlRouterProvider, $controllerProvider){
     .state('newslist', {
       url: '/news',
       templateUrl: 'partials/news/news-list.html',
-      controller: 'NewsListCtrl'
+      controller: 'NewsCtrl'
     })
     .state('newstags', {
-      url: '/news/tags',
-      templateUrl: '/partials/news/tags.html'
+      url: '/news/tags/:tag',
+      templateUrl: '/partials/news/tags.html',
+      controller: 'NewsCtrl'
     })
     .state('newspost', {
       url: '/news/:id',
       templateUrl: 'partials/news/news-post.html',
-      controller: 'NewsPostCtrl',
-      controllerAs: 'postCtrl'
+      controller: 'NewsCtrl'
     })
 });
