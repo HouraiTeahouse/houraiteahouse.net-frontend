@@ -1,12 +1,15 @@
 'use strict';
 
 // Module declarations
-var app = angular.module('houraiteahouse', ['ui.router', 'appControllers', 'appDirectives'])
+var app = angular.module('houraiteahouse', ['ui.router', 'appControllers', 'appDirectives', 'appServices'])
 
 var appControllers = angular.module('appControllers', []);
 var appDirectives = angular.module('appDirectives', []);
+var appServices = angular.module('appServices', []);
 
 var options = {};
+options.api = {};
+options.api.base_url = "http://localhost:5000";
 
 // Main app configuration
 app.config(function($stateProvider, $urlRouterProvider, $controllerProvider){
@@ -27,16 +30,16 @@ app.config(function($stateProvider, $urlRouterProvider, $controllerProvider){
     .state('newslist', {
       url: '/news',
       templateUrl: 'partials/news/news-list.html',
-      controller: 'NewsCtrl'
+      controller: 'NewsListCtrl'
     })
     .state('newstags', {
       url: '/news/tags/:tag',
       templateUrl: '/partials/news/tags.html',
-      controller: 'NewsCtrl'
+      controller: 'NewsListCtrl'
     })
     .state('newspost', {
       url: '/news/:id',
       templateUrl: 'partials/news/news-post.html',
-      controller: 'NewsCtrl'
+      controller: 'NewsPostCtrl'
     })
 });

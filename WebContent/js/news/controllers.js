@@ -58,30 +58,36 @@ posts = [
   }
 ];
 
-appControllers.controller('NewsCtrl', ['$scope', '$stateParams', '$state',
-  function NewsCtrl($scope, $stateParams, $state) {
+appControllers.controller('NewsListCtrl', ['$scope', '$state', '$stateParams', 'HttpService',
+  function NewsListCtrl($scope, $state, $stateParams, HttpService) {
   
-    $scope.posts = posts;
-
-    $scope.taggedPosts = []
-    if($stateParams.tag != null) {
-      posts.forEach(function(post, index, arr) {
-        if(post.tags.includes($stateParams.tag)) {
-          $scope.taggedPosts.push(post);
-        }
-      })
-    }
+    $scope.posts = [];
+    $scope.taggedPosts = [];
     
+    HttpService.get('news').success(function(data) {
+      $scope.posts = data;
+      if($stateParams.tag != null) {
+        posts.forEach(function(post, index, arr) {
+          if(post.tags.includes($stateParams.tag)) {
+            $scope.taggedPosts.push(post);
+          }
+        })
+      }
+    })
+  }
+]);
+
+appControllers.controller('NewsPostCtrl', ['$scope', '$state', '$stateParams', 'HttpService',
+  function NewsPostCtrl($scope, $state, $stateParams, HttpService) {
     $scope.post = {};
     $scope.comment = {};
-    
+  
     var id = $stateParams.id;
     $scope.post = posts[id];
-    
+  
     $scope.addComment = function addComment() {
       $scope.post.comments.push({'author':$scope.comment.author,'body':$scope.comment.body});
       $scope.comment = {};
     }
-
   }
-])
+]);
