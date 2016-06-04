@@ -13,11 +13,11 @@ appServices.factory('HttpService', function($http) {
     },
 
     post: function(path, id, params) {
-      return invoke($http.post, path, id, params);
+      return httpInvoke($http.post, path, id, params);
     },
 
     put: function(path, id, params) {
-      return invoke($http.put, path, id, params);
+      return httpInvoke($http.put, path, id, params);
     }
   }
 })

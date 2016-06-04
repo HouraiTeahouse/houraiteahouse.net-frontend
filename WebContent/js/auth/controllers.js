@@ -1,0 +1,53 @@
+appControllers.controller('LoginCtrl', ['$scope', '$state', 'AuthService',
+  function($scope, $state, AuthService) {
+    $scope.login = function() {
+      $scope.error = false;
+      $scope.disabled = true;
+      
+      AuthService.login($scope.loginForm.username, $scope.loginForm.password)
+        .then(function() {
+          $state.go('home');
+          $scope.disabled = false;
+          $scope.loginForm = {};
+        })
+        .catch(function() {
+          $scope.error = true;
+          $scope.errorMessage = "Invalid username or password";
+          $scope.disabled = false;
+          $scope.loginForm = {};
+        });
+    };
+}]);
+
+appControllers.controller('LogoutCtrl', ['$scope', '$state', 'AuthService',
+  function($scope, $state, $AuthService) {
+    $scope.logout = function() {
+      AuthService.logout()
+        .then(function() {
+          $state.go('home');
+        });
+    };
+}]);
+
+appControllers.controller('RegisterCtrl', ['$scope', '$state', 'AuthService',
+  function($scope, $state, AuthService) {
+    $scope.register = function() {
+      $scope.error = false;
+      $scope.disabled = true;
+      
+      AuthService.register($scope.registerForm.username,
+                           $scope.registerForm.email,
+                           $scope.registerForm.password)
+        .then(function() {
+          $state.go('login');
+          $scope.disabled = false;
+          $scope.registerForm = {};
+        })
+        .catch(function() {
+          $scope.error = true;
+          $scope.errorMessage = "Registration has failed, please wait and then try again. If this problem persists, please let us know.";
+          $scope.disabled = false;
+          $scope.registerForm = {};
+        });
+    };
+}]);
