@@ -9,6 +9,7 @@ appServices.factory('HttpService', function($http) {
   return {
 
     get: function(path, id, params) {
+      console.log(params);
       return httpInvoke($http.get, path, id, params);
     },
 

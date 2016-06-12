@@ -8,7 +8,7 @@ var app = angular.module('houraiteahouse', ['ui.router', 'ui.bootstrap', 'appCon
 
 var options = {};
 options.api = {};
-options.api.base_url = "http://localhost:5000";
+options.api.base_url = "http://localhost:8000";
 
 // Main app configuration
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
@@ -52,14 +52,20 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
     })
     .state('newstags', {
       url: '/news/tags/:tag',
-      templateUrl: '/partials/news/tags.html',
+      templateUrl: 'partials/news/news-list.html',
       controller: 'NewsListCtrl',
       requireLogin: false
     })
     .state('newspost', {
-      url: '/news/:id',
+      url: '/news/post/:id',
       templateUrl: 'partials/news/news-post.html',
       controller: 'NewsPostCtrl',
+      requireLogin: false
+    })
+    .state('newscreate', {
+      url: '/news/create',
+      templateUrl: 'partials/news/news-create.html',
+      controller: 'NewsCreateCtrl',
       requireLogin: false
     })
     

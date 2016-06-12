@@ -1,0 +1,19 @@
+<section class="post">
+  <h1>Create New News Post</h1>
+  <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+  <form class="form" ng-submit="create()">
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control" name="title" ng-model="newsCreate.title" required />
+    </div>
+    <div class="form-group">
+      <label>Tags (comma-separated)</label>
+      <input type="text" class="form-control" name="tags" ng-model="newsCreate.tags" />
+    </div>
+    <div class="form-group">
+      <label for="textareaContent">Post Body</label>
+      <textarea class="form-control" rows="18" ng-model="newsCreate.body"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success" ng-disabled="disabled">Create</button>
+  </form>
+</section>
