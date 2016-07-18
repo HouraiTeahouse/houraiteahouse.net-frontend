@@ -3,12 +3,12 @@
 // Module declarations
 var appControllers = angular.module('appControllers', []);
 var appDirectives = angular.module('appDirectives', []);
-var appServices = angular.module('appServices', []);
-var app = angular.module('houraiteahouse', ['ui.router', 'ui.bootstrap', 'appControllers', 'appDirectives', 'appServices'])
+var appServices = angular.module('appServices', ['ngCookies']);
+var app = angular.module('houraiteahouse', ['ui.router', 'ui.bootstrap', 'ngCookies', 'appControllers', 'appDirectives', 'appServices'])
 
 var options = {};
 options.api = {};
-options.api.base_url = "http://localhost:8000";
+options.api.base_url = "http://localhost:5000";
 
 // Main app configuration
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
@@ -80,7 +80,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
       
       return {
         responseError: function(rejection) {
-          if (rejection.status !== 401) {
+          if (rejection.status !== 403) {
             return rejection;
           }
   
@@ -91,6 +91,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
 });
 
 app.run(function ($rootScope, $state, AuthService) {
+  
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
     AuthService.getUserStatus()
       .then(function() {
@@ -99,5 +100,4 @@ app.run(function ($rootScope, $state, AuthService) {
         }
       });
   });
-})
-;
+});

@@ -10,9 +10,9 @@ appControllers.controller('LoginCtrl', ['$scope', '$state', 'AuthService',
           $scope.disabled = false;
           $scope.loginForm = {};
         })
-        .catch(function() {
+        .catch(function(err) {
           $scope.error = true;
-          $scope.errorMessage = "Invalid username or password";
+          $scope.errorMessage = err.message;
           $scope.disabled = false;
           $scope.loginForm = {};
         });
