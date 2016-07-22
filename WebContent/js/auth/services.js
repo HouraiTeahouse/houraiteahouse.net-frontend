@@ -63,10 +63,10 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
       return deferred.promise;
     }
     
-    function login(username, password) {
+    function login(username, password, remember_me) {
       var deferred = $q.defer();
 
-      HttpService.post('auth/login', null, {username: username, password: password, remember_me: false})
+      HttpService.post('auth/login', null, {username: username, password: password, remember_me: remember_me})
         .success(function(data, status) {
           if(status === 200 && data.session_id != null) {
             setSessionId(data.session_id, data.expiration);

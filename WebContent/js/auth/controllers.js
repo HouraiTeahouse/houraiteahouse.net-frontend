@@ -4,7 +4,7 @@ appControllers.controller('LoginCtrl', ['$scope', '$state', 'AuthService',
       $scope.error = false;
       $scope.disabled = true;
       
-      AuthService.login($scope.loginForm.username, $scope.loginForm.password)
+      AuthService.login($scope.loginForm.username, $scope.loginForm.password, $scope.loginForm.remember_me)
         .then(function() {
           $state.go('home');
           $scope.disabled = false;
