@@ -125,11 +125,49 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
       return deferred.promise;
     }
     
+    function getPermissions(username) {
+      var deferred = $q.defer();
+      
+      HttpService.get('auth/permissions', username, {session_id: getSessionId()})
+        .success(function(data, status) {
+          if(status === 200) {
+            deferred.resolve(data);
+          } else {
+            deferred.reject(data);
+          }
+        })
+        .error(function(data) {
+          deferred.reject();
+        })
+        
+      return deferred.promise;
+    }
+    
+    function setPermissions(username, permissions) {
+      var deferred = $q.defer();
+      
+      HttpService.post('auth/permissions', username, {session_id: getSessionId(), permissions: permissions})
+        .success(function(data, status) {
+          if(status === 200) {
+            deferred.resolve();
+          } else {
+            deferred.reject(data)
+          }
+        })
+        .error(function(data) {
+          deferred.reject();
+        })
+        
+      return deferred.promise;
+    }
+    
     return ({
       isLoggedIn: isLoggedIn,
       getUserStatus: getUserStatus,
       login: login,
       logout: logout,
-      register: register
+      register: register,
+      getPermissions: getPermissions,
+      setPermissions: setPermissions
     })
 }]);

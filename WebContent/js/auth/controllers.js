@@ -51,3 +51,47 @@ appControllers.controller('RegisterCtrl', ['$scope', '$state', 'AuthService',
         });
     };
 }]);
+
+appControllers.controller('PermissionCtrl', ['$scope', '$state', 'AuthService',
+  function($scope, $state, AuthService) {
+    $scope.error = false;
+    $scope.disabled = false;
+    $scope.username = null;
+    $scope.permissions = null;
+    $scope.loaded = false;
+
+    $scope.getPermissions = function() {
+      $scope.error = false;
+      $scope.disabled = true;
+      
+      AuthService.getPermissions($scope.usernameEntry)
+        .then(function(data) {
+          $scope.username = data.username;
+          $scope.permissions = data.permissions;
+          $scope.loaded = true;
+          $scope.disabled = false;
+        })
+        .catch(function(message) {
+          $scope.error = true;
+          $scope.errorMessage = message;
+          $scope.disabled = false;
+          // Do not clear any loaded permissions
+        })
+    }
+    
+    $scope.setPermissions = function() {
+      $scope.error = false;
+      $scope.disabled = true;
+      
+      AuthService.setPermissions($scope.username, $scope.permissions)
+        .then(function(data) {
+          // TODO: success message?
+        })
+        .catch(function(message) {
+          $scope.error = true;
+          $scope.errorMessage = message;
+          $scope.disabled = false;
+          // Do not clear any loaded permissions
+        })
+    }
+}]);
