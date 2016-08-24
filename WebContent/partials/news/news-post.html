@@ -5,33 +5,38 @@
     <div class="post-meta">
       <ul class="list-inline">
         <li ng-repeat="tag in post.tags">
-          <a class="label label-success" ui-sref="newstags({tag: tag})">{{tag}}</a>
+          <a class="label label-success" ui-sref="news.tags({tag: tag})">{{tag}}</a>
         </li>
       </ul>
     </div>
   </header>
   <div class="post-content">
-    <p>
-      {{post.body}}
-    </p>
+    <div class="media-wrap" ng-show="hasMedia">
+      <div class="media">
+        <img ng-src="{{post.media}}" />
+      </div>
+    </div>
+    <div>
+      <p>
+        {{post.body}}
+      </p>
+    </div>
   </div>
+  <hr />
   <div class="post-comments">
-    <h3>Comments</h3>
-    <ul>
-      <li ng-repeat="comment in post.comments">
+    <h4>Comments</h4>
+    <div class="news-comment" ng-repeat="comment in post.comments">
         "{{comment.body}}"
+        <br />
         <cite>- <b>{{comment.author}}</b></cite>
-      </li>
-    </ul>
+    </div>
     <form name="commentForm" id="commentForm" ng-submit="commentForm.$valid && addComment()">
       <h4>Add Comment</h4>
-      <div>
-        <input type="text" name="author" id="author" ng-model="comment.author" placeholder="Name" required />
-      </div>
+      <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
       <div>
         <textarea ng-model="comment.body" name="body" id="body" cols="30" rows="10" placeholder="Comment" required></textarea>
       </div>
-      <input type="submit" value="Submit" class="btn btn-primary" />
+      <button type="submit" class="btn btn-primary" ng-disabled="disabled">Submit</button>
     </form>
   </div>
 </section>

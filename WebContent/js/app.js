@@ -44,29 +44,35 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
       controller: 'RegisterCtrl',
       requireLogin: false
     })
-    .state('newslist', {
+    .state('news', {
+      abstract: true,
       url: '/news',
+      template: '<ui-view/>',
+      requireLogin: false
+    })
+    .state('news.list', {
+      url: '',
       templateUrl: 'partials/news/news-list.html',
       controller: 'NewsListCtrl',
       requireLogin: false
     })
-    .state('newstags', {
-      url: '/news/tags/:tag',
+    .state('news.tags', {
+      url: '/tags/:tag',
       templateUrl: 'partials/news/news-list.html',
       controller: 'NewsListCtrl',
       requireLogin: false
     })
-    .state('newspost', {
-      url: '/news/post/:id',
+    .state('news.post', {
+      url: '/post/:id',
       templateUrl: 'partials/news/news-post.html',
       controller: 'NewsPostCtrl',
       requireLogin: false
     })
-    .state('newscreate', {
-      url: '/news/create',
+    .state('news.create', {
+      url: '/create',
       templateUrl: 'partials/news/news-create.html',
       controller: 'NewsCreateCtrl',
-      requireLogin: false
+      requireLogin: true
     })
     
     // Prevent unauthorized requests to restricted pages & trigger login modal
@@ -93,6 +99,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
 app.run(function ($rootScope, $state, AuthService) {
   
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
+    console.log($state.href('news.list',{},{absolute:true}))
     AuthService.getUserStatus()
       .then(function() {
         if (toState.requireLogin && !AuthService.isLoggedIn()) {
@@ -101,3 +108,9 @@ app.run(function ($rootScope, $state, AuthService) {
       });
   });
 });
+
+appControllers.controller('HeaderCtrl', ['$scope', '$state',
+  function($scope, $state) {
+    $scope.$state = $state;
+  }
+])

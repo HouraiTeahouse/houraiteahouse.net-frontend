@@ -39,4 +39,16 @@
 #commentForm textarea {
   padding: 5px;
   margin-bottom: 0.5em;
+  width: 64em;
+  height: 10em;
+}
+.news-comment {
+  margin: 1em;
+}
+
+.media-wrap {
+  text-align: center;
+}
+.media {
+  display: inline-block;
 }

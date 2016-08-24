@@ -5,7 +5,7 @@
     <div class="post-meta">
       <ul class="list-inline">
         <li ng-repeat="tag in post.tags">
-          <a class="label label-success" ui-sref="newstags({tag: tag})">{{tag}}</a>
+          <a class="label label-success" ui-sref="news.tags({tag: tag})">{{tag}}</a>
         <li>
       </ul>
     </div>
@@ -14,6 +14,6 @@
     <p ng-bind-html="post.content">
       {{post.content}}
     </p>
-    <a ui-sref="newspost({id: post.id})" class="btn btn-primary">Read More</a>
+    <a ui-sref="news.post({id: post.post_id})" class="btn btn-primary">Read More</a>
   </div>
 </section>

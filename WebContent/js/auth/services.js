@@ -161,6 +161,23 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
       return deferred.promise;
     }
     
+    // Utilities for Auth versions of HTTP calls
+    
+    function httpGetWithAuth(path, id, params) {
+      params['session_id'] = getSessionId()
+      return HttpService.get(path, id, params);
+    }
+    
+    function httpPutWithAuth(path, id, params) {
+      params['session_id'] = getSessionId()
+      return HttpService.put(path, id, params);
+    }
+
+    function httpPostWithAuth(path, id, params) {
+      params['session_id'] = getSessionId()
+      return HttpService.post(path, id, params);
+    }
+    
     return ({
       isLoggedIn: isLoggedIn,
       getUserStatus: getUserStatus,
@@ -168,6 +185,9 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
       logout: logout,
       register: register,
       getPermissions: getPermissions,
-      setPermissions: setPermissions
+      setPermissions: setPermissions,
+      httpGetWithAuth: httpGetWithAuth,
+      httpPutWithAuth: httpPutWithAuth,
+      httpPostWithAuth: httpPostWithAuth
     })
 }]);
