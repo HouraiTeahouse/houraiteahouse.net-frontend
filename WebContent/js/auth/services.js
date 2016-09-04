@@ -27,6 +27,14 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
       }
     }
     
+    function allowAccess(accessGroup) {
+      // Must be explicit since permissions may not contain accessGroup (and hence permissions[accessGroup] would be undefined)
+      if(permissions[accessGroup]) {
+        return true;
+      }
+      return false;
+    }
+    
     function getUserStatus() {
       var deferred = $q.defer();
       
@@ -180,6 +188,7 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
     
     return ({
       isLoggedIn: isLoggedIn,
+      allowAccess: allowAccess,
       getUserStatus: getUserStatus,
       login: login,
       logout: logout,

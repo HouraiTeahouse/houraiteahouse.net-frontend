@@ -1,0 +1,21 @@
+<div class="col-md-4">
+  <h1>Manage User Permissions</h1>
+  <div ng-show="error" class="alert alert-danager">{{errorMessage}}</div>
+  <form class="form" ng-submit="getPermissions()">
+    <label>Username</label>
+    <input type="text" class="form-control" name="username" ng-model="usernameEntry" required>
+    <div>
+      <button type="submit" class="btn btn-default" ng-disabled="disabled">Get User Permissions</button>
+    </div>
+  </form>
+  <form ng-show="loaded" ng-submit="setPermissions()">
+    <h4>{{username}} user holds the following permissions:</h4>
+    <div class="permission" ng-repeat="(permission, access) in permissions">
+      <label>
+        <input type="checkbox" name="allow" ng-model="permissions[permission]">
+        {{permission}}
+      </label>
+    </div>
+    <button type="submit" class="btn btn-default" ng-disabled="disabled">Update Permissions</button>
+  </form>
+</div>

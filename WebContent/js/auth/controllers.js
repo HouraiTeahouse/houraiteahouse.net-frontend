@@ -85,11 +85,12 @@ appControllers.controller('PermissionCtrl', ['$scope', '$state', 'AuthService',
       
       AuthService.setPermissions($scope.username, $scope.permissions)
         .then(function(data) {
+          $scope.disabled = false;
           // TODO: success message?
         })
-        .catch(function(message) {
+        .catch(function(error) {
           $scope.error = true;
-          $scope.errorMessage = message;
+          $scope.errorMessage = error.message;
           $scope.disabled = false;
           // Do not clear any loaded permissions
         })

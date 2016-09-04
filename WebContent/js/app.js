@@ -25,7 +25,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
     .state('about', {
       url: '/about',
       templateUrl: 'partials/about.html',
-      requireLogin: true
+      requireLogin: false
     })
     .state('login', {
       url: '/login',
@@ -44,6 +44,18 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
       controller: 'RegisterCtrl',
       requireLogin: false
     })
+    .state('admin', {
+      abstract: true,
+      url: '/admin',
+      template: '<ui-view/>',
+      requireLogin: true,
+      permission: 'admin'
+    })
+    .state('admin.permissions', {
+      url: '/permissions',
+      templateUrl: 'partials/auth/permissions.html',
+      controller: 'PermissionCtrl',
+    })
     .state('news', {
       abstract: true,
       url: '/news',
@@ -54,28 +66,26 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
       url: '',
       templateUrl: 'partials/news/news-list.html',
       controller: 'NewsListCtrl',
-      requireLogin: false
     })
     .state('news.tags', {
       url: '/tags/:tag',
       templateUrl: 'partials/news/news-list.html',
       controller: 'NewsListCtrl',
-      requireLogin: false
     })
     .state('news.post', {
       url: '/post/:id',
       templateUrl: 'partials/news/news-post.html',
       controller: 'NewsPostCtrl',
-      requireLogin: false
     })
     .state('news.create', {
       url: '/create',
       templateUrl: 'partials/news/news-create.html',
       controller: 'NewsCreateCtrl',
-      requireLogin: true
+      requireLogin: true,
+      permission: 'news'
     })
     
-    // Prevent unauthorized requests to restricted pages & trigger login modal
+    // Prevent unauthorized requests to restricted pages & trigger login
     $httpProvider.interceptors.push(function($timeout, $q, $injector) {
       var $http, $state;
       
@@ -97,13 +107,16 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
 });
 
 app.run(function ($rootScope, $state, AuthService) {
-  
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
-    console.log($state.href('news.list',{},{absolute:true}))
     AuthService.getUserStatus()
       .then(function() {
-        if (toState.requireLogin && !AuthService.isLoggedIn()) {
-          $state.go('login');
+        if (toState.requireLogin) {
+          if (!AuthService.isLoggedIn()) {
+            $state.go('login');
+          }
+          else if (!AuthService.allowAccess(toState.permission)) {
+            $state.go('home');
+          }
         }
       });
   });
