@@ -52,3 +52,10 @@
 .media {
   display: inline-block;
 }
+.commentSeparator {
+  width: 50%;
+  height: 0;
+  border-bottom: 1px solid #eee;
+  padding-top: 5px;
+  font-size: 0;
+}

@@ -15,8 +15,8 @@ appControllers.controller('NewsListCtrl', ['$scope', '$state', '$stateParams', '
   }
 ]);
 
-appControllers.controller('NewsPostCtrl', ['$scope', '$state', '$stateParams', 'HttpService', 'AuthService',
-  function NewsPostCtrl($scope, $state, $stateParams, HttpService, AuthService) {
+appControllers.controller('NewsPostCtrl', ['$scope', '$state', '$stateParams', '$sce', 'HttpService', 'AuthService',
+  function NewsPostCtrl($scope, $state, $stateParams, $sce, HttpService, AuthService) {
     $scope.post = {};
     $scope.comment = {};
   
@@ -24,6 +24,12 @@ appControllers.controller('NewsPostCtrl', ['$scope', '$state', '$stateParams', '
     HttpService.get('news', id).success(function(data) {
       $scope.post = data;
       $scope.hasMedia = data.media != null;
+      $scope.postHtml = $sce.trustAsHtml($scope.post.body);
+      if($scope.post.comments) {
+        $scope.post.comments.forEach(function(comment, index, comments) {
+          comment.commentHtml = $sce.trustAsHtml(comment.body);
+        })
+      }
     })
   
     $scope.addComment = function addComment() {
@@ -32,8 +38,10 @@ appControllers.controller('NewsPostCtrl', ['$scope', '$state', '$stateParams', '
 
       AuthService.httpPostWithAuth('comment', id, $scope.comment)
         .then(function (resp) {
-          console.log(resp);
-          $scope.post.comments.push({'author':resp.data.author,'body':resp.data.body});
+          if(!$scope.post.comments) {
+            $scope.post.comments = [];
+          }
+          $scope.post.comments.push({'author':resp.data.author,'body':resp.data.body,'commentHtml':$sce.trustAsHtml(resp.data.body)});
         })
         .catch(function () {
           $scope.error = true;

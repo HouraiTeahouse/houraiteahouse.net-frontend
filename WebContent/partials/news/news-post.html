@@ -18,17 +18,22 @@
     </div>
     <div>
       <p>
-        {{post.body}}
+        <div ng-bind-html="postHtml">
+        </div>
       </p>
     </div>
   </div>
   <hr />
   <div class="post-comments">
     <h4>Comments</h4>
-    <div class="news-comment" ng-repeat="comment in post.comments">
-        "{{comment.body}}"
-        <br />
-        <cite>- <b>{{comment.author}}</b></cite>
+    <div class="news-comment" ng-repeat="com in post.comments">
+      <p>
+        <div ng-bind-html="com.commentHtml">
+        </div>
+      </p>
+      <br />
+      <cite>- {{com.author}}</cite>
+      <div class="commentSeparator">-</div>
     </div>
     <form name="commentForm" id="commentForm" ng-submit="commentForm.$valid && addComment()">
       <h4>Add Comment</h4>
