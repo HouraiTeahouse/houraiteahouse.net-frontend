@@ -29,7 +29,7 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
     
     function allowAccess(accessGroup) {
       // Must be explicit since permissions may not contain accessGroup (and hence permissions[accessGroup] would be undefined)
-      if(permissions[accessGroup]) {
+      if(permissions != null && permissions[accessGroup]) {
         return true;
       }
       return false;
@@ -47,7 +47,7 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
         if(user) {
           deferred.resolve();
         } else {
-          HttpService.get('auth/status', null, {'session_id': sessionId})
+          httpGetWithAuth('auth/status')
             .success(function(data) {
               if(data.status) {
                 user = true;
@@ -133,10 +133,12 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
       return deferred.promise;
     }
     
+    // Administrative actions
+    
     function getPermissions(username) {
       var deferred = $q.defer();
       
-      HttpService.get('auth/permissions', username, {session_id: getSessionId()})
+      httpGetWithAuth('auth/permissions', username)
         .success(function(data, status) {
           if(status === 200) {
             deferred.resolve(data);
@@ -154,7 +156,7 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
     function setPermissions(username, permissions) {
       var deferred = $q.defer();
       
-      HttpService.post('auth/permissions', username, {session_id: getSessionId(), permissions: permissions})
+      httpPostWithAuth('auth/permissions', username, {permissions: permissions})
         .success(function(data, status) {
           if(status === 200) {
             deferred.resolve();
@@ -168,20 +170,29 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
         
       return deferred.promise;
     }
-    
-    // Utilities for Auth versions of HTTP calls
+        
+    // Utilities for Auth'd versions of HTTP calls
     
     function httpGetWithAuth(path, id, params) {
+      if (params == null) {
+        params = {};
+      }
       params['session_id'] = getSessionId()
       return HttpService.get(path, id, params);
     }
     
     function httpPutWithAuth(path, id, params) {
+      if (params == null) {
+        params = {};
+      }
       params['session_id'] = getSessionId()
       return HttpService.put(path, id, params);
     }
 
     function httpPostWithAuth(path, id, params) {
+      if (params == null) {
+        params = {};
+      }
       params['session_id'] = getSessionId()
       return HttpService.post(path, id, params);
     }

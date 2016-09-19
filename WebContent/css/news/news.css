@@ -36,7 +36,8 @@
   margin-top: 1.8em;
 }
 #commentForm input,
-#commentForm textarea {
+#commentForm textarea,
+#commentEditForm textarea {
   padding: 5px;
   margin-bottom: 0.5em;
   width: 64em;

@@ -1,5 +1,26 @@
 <section class="post">
   <header class="post-header">
+    <div class="admin-actions" ng-show="allowPostManagement">
+      <b>Administrative Actions:</b>
+      <button ng-click="editPost()" class="btn btn-warning" ng-show="isAuthor && !editing">Edit Post</button>
+    </div>
+  </header>
+  <form class="form" name="postEditForm" id="postEditForm" ng-show="editing" ng-submit="postEditForm.$valid && submitEdit()">
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control" name="title" ng-model="post.title" required />
+    </div>
+    <div class="form-group">
+      <label>Image Link (Optional)</label>
+      <input type="text" class="form-control" name="media" ng-model="post.media" />
+    </div>
+    <div class="form-group">
+      <label for="textareaContent">Post Body</label>
+      <textarea class="form-control" rows="18" ng-model="postText"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success" ng-disabled="disabled">Submit Edit</button>
+  </form>
+  <div ng-show="!editing">
     <h2 class="post-title">{{post.title}}</h2>
     <div class="post-meta">Posted by {{post.author}} on {{post.created | date:'medium'}}</div>
     <div class="post-meta">
@@ -9,39 +30,58 @@
         </li>
       </ul>
     </div>
-  </header>
-  <div class="post-content">
-    <div class="media-wrap" ng-show="hasMedia">
-      <div class="media">
-        <img ng-src="{{post.media}}" />
-      </div>
-    </div>
-    <div>
-      <p>
-        <div ng-bind-html="postHtml">
+    <div class="post-content">
+      <div class="media-wrap" ng-show="hasMedia">
+        <div class="media">
+          <img ng-src="{{post.media}}" />
         </div>
-      </p>
+      </div>
+      <div>
+        <p>
+          <div ng-bind-html="postHtml">
+          </div>
+        </p>
+      </div>
     </div>
   </div>
   <hr />
   <div class="post-comments">
     <h4>Comments</h4>
-    <div class="news-comment" ng-repeat="com in post.comments">
-      <p>
-        <div ng-bind-html="com.commentHtml">
+    <div class="news-comment" ng-repeat="com in post.comments" ng-controller="NewsCommentCtrl" ng-init="com=com">
+      <form name="commentEditForm" id="commentEditForm" ng-submit="commentEditForm.$valid && submitEdit()" ng-show="editing">
+        <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+        <div>
+          <textarea ng-model="commentText" required></textarea>
         </div>
-      </p>
+        <button type="submit" class="btn btn-primary" ng-disabled="disabled">Submit Edit</button>
+      </form>
+      <div ng-show="!editing">
+        <p>
+          <div ng-bind-html="commentHtml">
+          </div>
+        </p>
+      </div>
       <br />
-      <cite>- {{com.author}}</cite>
+      <cite>- {{author}}</cite>
+      <div class="admin-actions" ng-show="canManage">
+        <b>Comment Actions:</b>
+        <button ng-click="editComment()" class="btn btn-warning" ng-show="isAuthor && !editing">Edit Comment</button>
+        <button ng-click="startDelete()" class="btn btn-danger" ng-show="!deleting">Delete Comment</button>
+        <span ng-show="deleting">
+          Are you sure?
+          <button ng-click="deleteComment()" class="btn btn-danger">Yes, Delete</button>
+          <button ng-click="deleting=false" class="btn btn-warning">No</button>
+        </span>
+      </div>
       <div class="commentSeparator">-</div>
     </div>
-    <form name="commentForm" id="commentForm" ng-submit="commentForm.$valid && addComment()">
-      <h4>Add Comment</h4>
-      <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
-      <div>
-        <textarea ng-model="comment.body" name="body" id="body" cols="30" rows="10" placeholder="Comment" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary" ng-disabled="disabled">Submit</button>
-    </form>
   </div>
+  <form name="commentForm" id="commentForm" ng-submit="commentForm.$valid && addComment()">
+    <h4>Add Comment</h4>
+    <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+    <div>
+      <textarea ng-model="comment.body" name="body" id="body" cols="30" rows="10" placeholder="Comment" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" ng-disabled="disabled">Submit</button>
+  </form>
 </section>

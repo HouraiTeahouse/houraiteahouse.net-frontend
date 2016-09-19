@@ -128,3 +128,11 @@ input {
     top: -3px;
     *overflow: hidden;
 }
+
+.admin-actions {
+  background: #EEEEEE;
+  border-radius: 4px;
+  box-shadow: 0px 1px 1px #999999;
+  padding: 1em;
+  margin: 1em auto;
+}
