@@ -25,7 +25,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
     .state('about', {
       url: '/about',
       templateUrl: 'partials/about.html',
-      requireLogin: false
+      requireLogin: true
     })
     .state('login', {
       url: '/login',
@@ -35,7 +35,6 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
     })
     .state('logout', {
       url: '/logout',
-      controller: 'LogoutCtrl',
       requireLogin: true
     })
     .state('register', {
@@ -117,6 +116,10 @@ app.run(function ($rootScope, $state, AuthService) {
           else if (!AuthService.allowAccess(toState.permission)) {
             $state.go('home');
           }
+        }
+        if (toState.name == 'logout') {
+          AuthService.logout();
+          $state.go('login');          
         }
       });
   });

@@ -1,7 +1,6 @@
-appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
-  function ($q, $timeout, $cookies, HttpService) {
+appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 'HttpService',
+  function ($rootScope, $q, $timeout, $cookies, HttpService) {
   
-    var user = null;
     var permissions = null; // We cache this for performance.  The backend will still do a final check that can override this.
     
     function getSessionId() {
@@ -20,7 +19,7 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
     }
     
     function isLoggedIn() {
-      if(user) {
+      if($rootScope.user) {
         return true;
       } else {
         return false;
@@ -28,6 +27,9 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
     }
     
     function allowAccess(accessGroup) {
+      if(accessGroup == null) {
+        return true;
+      }
       // Must be explicit since permissions may not contain accessGroup (and hence permissions[accessGroup] would be undefined)
       if(permissions != null && permissions[accessGroup]) {
         return true;
@@ -40,29 +42,29 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
       
       sessionId = getSessionId();
       if(sessionId == null) {
-        user = false;
+        $rootScope.user = false;
         permissions = null;
         deferred.resolve();
       } else {
-        if(user) {
+        if($rootScope.user) {
           deferred.resolve();
         } else {
           httpGetWithAuth('auth/status')
             .success(function(data) {
               if(data.status) {
-                user = true;
+                $rootScope.user = true;
                 permissions = data.permissions;
                 deferred.resolve();
               } else {
                 permissions = null;
-                user = false;
+                $rootScope.user = false;
                 clearSessionId(); // If the cookie is present, it's invalid. Drop it.
                 deferred.resolve();
               }
             })
             .error(function(data) {
               permissions = null;
-              user = false;
+              $rootScope.user = false;
               deferred.reject();
             });
         }
@@ -79,17 +81,17 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
           if(status === 200 && data.session_id != null) {
             setSessionId(data.session_id, data.expiration);
             permissions = data.permissions;
-            user = true;
+            $rootScope.user = true;
             deferred.resolve();
           } else {
             permissions = null;
-            user = false;
+            $rootScope.user = false;
             deferred.reject(data);
           }
         })
         .error(function(data) {
           permissions = null;
-          user = false;
+          $rootScope.user = false;
           deferred.reject();
         });
         
@@ -99,14 +101,14 @@ appServices.factory('AuthService', ['$q', '$timeout', '$cookies', 'HttpService',
     function logout() {
       var deferred = $q.defer();
       
-      HttpService.post('auth/logout')
+      httpPostWithAuth('auth/logout')
         .success(function(data) {
-          user = false;
+          $rootScope.user = false;
           permissions = null;
           deferred.resolve();
         })
         .error(function(data) {
-          user = false; // Always assume unauth!
+          $rootScope.user = false; // Always assume unauth!
           permissions = null;
           deferred.reject();
           clearSessionId(); // No point in keeping the cookie - it will just trigger false status checks from now on.

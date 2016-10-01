@@ -1,7 +1,7 @@
 <section class="post">
   <header class="post-header">
     <div class="admin-actions" ng-show="allowPostManagement">
-      <b>Administrative Actions:</b>
+      <b>Post Actions:</b>
       <button ng-click="editPost()" class="btn btn-warning" ng-show="isAuthor && !editing">Edit Post</button>
     </div>
   </header>
@@ -22,7 +22,6 @@
   </form>
   <div ng-show="!editing">
     <h2 class="post-title">{{post.title}}</h2>
-    <div class="post-meta">Posted by {{post.author}} on {{post.created | date:'medium'}}</div>
     <div class="post-meta">
       <ul class="list-inline">
         <li ng-repeat="tag in post.tags">
@@ -30,6 +29,9 @@
         </li>
       </ul>
     </div>
+    <div class="post-meta">Posted {{post.created | date:'medium'}} by {{post.author}}</div>
+    <div ng-show="isEdited">Last edited {{post.lastEdit | date:'medium'}}</div>
+    <hr />
     <div class="post-content">
       <div class="media-wrap" ng-show="hasMedia">
         <div class="media">
@@ -65,7 +67,6 @@
       <cite>- {{author}}</cite>
       <div class="admin-actions" ng-show="canManage">
         <b>Comment Actions:</b>
-        <button ng-click="editComment()" class="btn btn-warning" ng-show="isAuthor && !editing">Edit Comment</button>
         <button ng-click="startDelete()" class="btn btn-danger" ng-show="!deleting">Delete Comment</button>
         <span ng-show="deleting">
           Are you sure?

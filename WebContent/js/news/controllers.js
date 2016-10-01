@@ -1,6 +1,6 @@
-appControllers.controller('NewsListCtrl', ['$scope', '$state', '$stateParams', 'HttpService',
-  function NewsListCtrl($scope, $state, $stateParams, HttpService) {
-  
+appControllers.controller('NewsListCtrl', ['$scope', '$state', '$stateParams', 'HttpService', 'AuthService',
+  function NewsListCtrl($scope, $state, $stateParams, HttpService, AuthService) {
+    $scope.allowPostManagement = AuthService.allowAccess('admin');
     $scope.posts = [];
 
     if($stateParams.tag == null) {
@@ -12,6 +12,10 @@ appControllers.controller('NewsListCtrl', ['$scope', '$state', '$stateParams', '
         $scope.posts = data;
       });
     }
+    
+    $scope.createPost = function createPost () {
+      $state.go('news.create');
+    }
   }
 ]);
 
@@ -22,6 +26,7 @@ appControllers.controller('NewsPostCtrl', ['$scope', '$state', '$stateParams', '
     $scope.allowPostManagement = AuthService.allowAccess('admin');
     $scope.isAuthor = false;
     $scope.editing = false;
+    $scope.isEdited = false;
     
     var id = $stateParams.id;
     // We send w/ auth to see if we're the original poster
@@ -32,6 +37,7 @@ appControllers.controller('NewsPostCtrl', ['$scope', '$state', '$stateParams', '
       $scope.allowPostManagement = $scope.allowPostManagement || data.isAuthor;
       $scope.postText = $scope.post.body.replace(/\<br \/\>/g, '\n');
       $scope.isAuthor = $scope.post.isAuthor;
+      $scope.isEdited = 'lastEdit' in $scope.post;
       // Comment handling, etc is done in the comment controller
     })
 
@@ -89,10 +95,8 @@ appControllers.controller('NewsPostCtrl', ['$scope', '$state', '$stateParams', '
 
 appControllers.controller('NewsCommentCtrl', ['$scope', '$sce', 'AuthService',
   function NewsCommentCtrl($scope, $sce, AuthService) {
-    $scope.editing = false;
     $scope.deleting = false;
-    $scope.canManage = AuthService.allowAccess('admin') || $scope.com.isAuthor;
-    $scope.isAuthor = $scope.com.isAuthor;
+    $scope.canManage = AuthService.allowAccess('admin');
     $scope.author = $scope.com.author;
     $scope.commentText = $scope.com.body.replace(/\<br \/\>/g, '\n');
     $scope.commentHtml = $sce.trustAsHtml($scope.com.body);

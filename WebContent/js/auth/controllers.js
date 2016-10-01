@@ -19,16 +19,6 @@ appControllers.controller('LoginCtrl', ['$scope', '$state', 'AuthService',
     };
 }]);
 
-appControllers.controller('LogoutCtrl', ['$scope', '$state', 'AuthService',
-  function($scope, $state, $AuthService) {
-    $scope.logout = function() {
-      AuthService.logout()
-        .then(function() {
-          $state.go('home');
-        });
-    };
-}]);
-
 appControllers.controller('RegisterCtrl', ['$scope', '$state', 'AuthService',
   function($scope, $state, AuthService) {
     $scope.register = function() {
