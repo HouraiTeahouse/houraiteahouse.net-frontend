@@ -1,24 +1,24 @@
 <section class="post">
-  <div class="admin-actions" ng-show="allowPostManagement">
-    <button ng-click="createPost()" class="btn btn-primary">Create Post</button>
+  <div class="admin-actions" data-ng-show="allowPostManagement">
+    <button data-ng-click="createPost()" class="btn btn-primary">Create Post</button>
   </div>
-  <div ng-repeat="post in posts">
+  <div data-ng-repeat="post in posts">
     <header class="post-header">
       <h2 class="post-title">{{post.title}}</h2>
       <div class="post-meta">Posted by {{post.author}} on {{post.created | date:'medium'}}</div>
       <div class="post-meta">
         <ul class="list-inline">
-          <li ng-repeat="tag in post.tags">
-            <a class="label label-success" ui-sref="news.tags({tag: tag})">{{tag}}</a>
+          <li data-ng-repeat="tag in post.tags">
+            <a class="label label-success" data-ui-sref="news.tags({tag: tag})">{{tag}}</a>
           <li>
         </ul>
       </div>
     </header>
     <div class="post-content">
-      <p ng-bind-html="post.content">
+      <p data-ng-bind-html="post.content">
         {{post.content}}
       </p>
-      <a ui-sref="news.post({id: post.post_id})" class="btn btn-primary">Read More</a>
+      <a data-ui-sref="news.post({id: post.post_id})" class="btn btn-primary">Read More</a>
     </div>
   </div>
 </section>

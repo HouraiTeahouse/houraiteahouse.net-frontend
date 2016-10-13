@@ -1,23 +1,23 @@
 <section class="post">
   <h1>Create New News Post</h1>
-  <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
-  <form class="form" ng-submit="create()">
+  <div data-ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+  <form class="form" data-ng-submit="create()">
     <div class="form-group">
       <label>Title</label>
-      <input type="text" class="form-control" name="title" ng-model="newsCreate.title" required />
+      <input type="text" class="form-control" name="title" data-ng-model="newsCreate.title" required />
     </div>
     <div class="form-group">
       <label>Tags (comma-separated)</label>
-      <input type="text" class="form-control" name="tags" ng-model="newsCreate.tags" />
+      <input type="text" class="form-control" name="tags" data-ng-model="newsCreate.tags" />
     </div>
     <div class="form-group">
       <label>Image Link to Embed (Optional)</label>
-      <input type="text" class="form-control" name="media" ng-model="newsCreate.media" />
+      <input type="text" class="form-control" name="media" data-ng-model="newsCreate.media" />
     </div>
     <div class="form-group">
       <label for="textareaContent">Post Body</label>
-      <textarea class="form-control" rows="18" ng-model="newsCreate.body"></textarea>
+      <textarea class="form-control" rows="18" data-ng-model="newsCreate.body"></textarea>
     </div>
-    <button type="submit" class="btn btn-success" ng-disabled="disabled">Create</button>
+    <button type="submit" class="btn btn-success" data-ng-disabled="disabled">Create</button>
   </form>
 </section>

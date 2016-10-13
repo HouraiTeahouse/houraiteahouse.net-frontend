@@ -1,23 +1,23 @@
 <div class="col-md-4">
   <h1>Login</h1>
-  <div ng-show="error" class="alert alert-danager">{{errorMessage}}</div>
-  <form class="form" ng-submit="login()">
+  <div data-ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+  <form class="form" data-ng-submit="login()">
     <div class="form-group">
       <label>Username</label>
-      <input type="text" class="form-control" name="username" ng-model="loginForm.username" required>
+      <input type="text" class="form-control" name="username" data-ng-model="loginForm.username" required>
     </div>
     <div class="form-group">
       <label>Password</label>
-      <input type="password" class="form-control" name="password" ng-model="loginForm.password" required>
+      <input type="password" class="form-control" name="password" data-ng-model="loginForm.password" required>
     </div>
     <div>
       <label>
-        <input type="checkbox" name="remember_me" ng-model="loginForm.remember_me">
+        <input type="checkbox" name="remember_me" data-ng-model="loginForm.remember_me">
         Remember Me
       </label>
     </div>
     <div>
-      <button type="submit" class="btn btn-default" ng-disabled="disabled">Login</button>
+      <button type="submit" class="btn btn-default" data-ng-disabled="disabled">Login</button>
     </div>
   </form>
 </div>
