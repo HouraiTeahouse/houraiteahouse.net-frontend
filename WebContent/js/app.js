@@ -6,9 +6,11 @@ var appDirectives = angular.module('appDirectives', []);
 var appServices = angular.module('appServices', ['ngCookies']);
 var app = angular.module('houraiteahouse', ['ui.router', 'ui.bootstrap', 'ngCookies', 'appControllers', 'appDirectives', 'appServices'])
 
-var options = {};
-options.api = {};
-options.api.base_url = "http://localhost:5000";
+var options = {
+  "api":{
+    "base_url": "http://localhost:5000"
+  }
+};
 
 // Main app configuration
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
@@ -54,6 +56,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
       url: '/permissions',
       templateUrl: 'partials/auth/permissions.html',
       controller: 'PermissionCtrl',
+      requireLogin:false
     })
     .state('news', {
       abstract: true,
@@ -65,16 +68,19 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
       url: '',
       templateUrl: 'partials/news/news-list.html',
       controller: 'NewsListCtrl',
+      requireLogin:false
     })
     .state('news.tags', {
       url: '/tags/:tag',
       templateUrl: 'partials/news/news-list.html',
       controller: 'NewsListCtrl',
+      requireLogin:false
     })
     .state('news.post', {
       url: '/post/:id',
       templateUrl: 'partials/news/news-post.html',
       controller: 'NewsPostCtrl',
+      requireLogin:false
     })
     .state('news.create', {
       url: '/create',
@@ -82,6 +88,11 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
       controller: 'NewsCreateCtrl',
       requireLogin: true,
       permission: 'news'
+    })
+    .state('404', {
+      url: '/404',
+      templateUrl: 'partials/404.html',
+      requireLogin:false
     })
     
     // Prevent unauthorized requests to restricted pages & trigger login
@@ -124,9 +135,3 @@ app.run(function ($rootScope, $state, AuthService) {
       });
   });
 });
-
-appControllers.controller('HeaderCtrl', ['$scope', '$state',
-  function($scope, $state) {
-    $scope.$state = $state;
-  }
-])

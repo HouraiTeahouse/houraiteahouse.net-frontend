@@ -1,8 +1,10 @@
 <section class="post">
   <header class="post-header">
     <div class="admin-actions" data-ng-show="allowPostManagement">
-      <b>Post Actions:</b>
+      <b>Available Post Actions:</b>
       <button data-ng-click="editPost()" class="btn btn-warning" data-ng-show="isAuthor && !editing">Edit Post</button>
+      <button data-ng-click="cancelEdit()" class="btn btn-warning" data-ng-show="isAuthor && editing">Cancel Edit</button>
+      <p data-ng-show="!isAuthor">None (unless we add deletion)</p>
     </div>
   </header>
   <form class="form" name="postEditForm" id="postEditForm" data-ng-show="editing" data-ng-submit="postEditForm.$valid && submitEdit()">
@@ -47,7 +49,7 @@
     </div>
   </div>
   <hr />
-  <div class="post-comments">
+  <div class="post-comments" data-ng-show="!editing">
     <h4>Comments</h4>
     <div class="news-comment" data-ng-repeat="com in post.comments" data-ng-controller="NewsCommentCtrl" data-ng-init="com=com">
       <form name="commentEditForm" id="commentEditForm" data-ng-submit="commentEditForm.$valid && submitEdit()" data-ng-show="editing">
@@ -77,7 +79,7 @@
       <div class="commentSeparator">-</div>
     </div>
   </div>
-  <form name="commentForm" id="commentForm" data-ng-submit="commentForm.$valid && addComment()">
+  <form name="commentForm" id="commentForm" data-ng-submit="commentForm.$valid && addComment()" data-ng-show="!editing">
     <h4>Add Comment</h4>
     <div data-ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
     <div>

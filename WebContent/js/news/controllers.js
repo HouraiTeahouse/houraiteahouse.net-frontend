@@ -30,19 +30,27 @@ appControllers.controller('NewsPostCtrl', ['$scope', '$state', '$stateParams', '
     
     var id = $stateParams.id;
     // We send w/ auth to see if we're the original poster
-    AuthService.httpGetWithAuth('news/get', id).success(function(data) {
-      $scope.post = data;
-      $scope.hasMedia = data.media != null;
-      $scope.postHtml = $sce.trustAsHtml($scope.post.body);
-      $scope.allowPostManagement = $scope.allowPostManagement || data.isAuthor;
-      $scope.postText = $scope.post.body.replace(/\<br \/\>/g, '\n');
-      $scope.isAuthor = $scope.post.isAuthor;
-      $scope.isEdited = 'lastEdit' in $scope.post;
-      // Comment handling, etc is done in the comment controller
+    AuthService.httpGetWithAuth('news/get', id).success(function(data, status) {
+      if(status == 200) {
+        $scope.post = data;
+        $scope.hasMedia = data.media != null;
+        $scope.postHtml = $sce.trustAsHtml($scope.post.body);
+        $scope.allowPostManagement = $scope.allowPostManagement || data.isAuthor;
+        $scope.postText = $scope.post.body.replace(/\<br \/\>/g, '\n');
+        $scope.isAuthor = $scope.post.isAuthor;
+        $scope.isEdited = 'lastEdit' in $scope.post;
+        // Comment handling, etc is done in the comment controller
+      } else {
+        $state.go('404', null, {'location': 'replace'});
+      }
     })
 
     $scope.editPost = function editPost () {
       $scope.editing = true;
+    }
+    
+    $scope.cancelEdit = function cancelEdit () {
+      $scope.editing = false;
     }
     
     $scope.submitEdit = function submitEdit () {
@@ -55,14 +63,13 @@ appControllers.controller('NewsPostCtrl', ['$scope', '$state', '$stateParams', '
         }
         else {
           $scope.error = true;
-          $scope.errorMessage = "Failed to edit post.  Please ensure you are logged in and try again.  If this issue persists contact an administrator.";
+          if($scope.errorMessage == null) {
+            $scope.errorMessage = "Failed to edit comment.  Please try again later."
+          } else {
+            $scope.errorMessage = resp.message;
+          }
           $scope.disabled = false;
         }
-      })
-      .error(function () {
-        $scope.error = true;
-        $scope.errorMessage = "Failed to edit post.  Please ensure you are logged in and try again.  If this issue persists contact an administrator.";
-        $scope.disabled = false;          
       })
     }
       
@@ -80,14 +87,13 @@ appControllers.controller('NewsPostCtrl', ['$scope', '$state', '$stateParams', '
           }
           else {
             $scope.error = true;
-            $scope.errorMessage = "Failed to post comment.  Please ensure you are logged in and try again.";
+            if($scope.errorMessage == null) {
+              $scope.errorMessage = "Failed to post comment.  Please try again later."
+            } else {
+              $scope.errorMessage = resp.message;
+            }
             $scope.disabled = false;
           }
-        })
-        .error(function () {
-          $scope.error = true;
-          $scope.errorMessage = "Failed to post comment.  Please ensure you are logged in and try again.";
-          $scope.disabled = false;
         })
     }
   }
@@ -104,7 +110,11 @@ appControllers.controller('NewsCommentCtrl', ['$scope', '$sce', 'AuthService',
     $scope.editComment = function editComment () {
       $scope.editing = true;
     }
-    
+
+    $scope.cancelEdit = function cancelEdit () {
+      $scope.editing = false;
+    }
+
     $scope.submitEdit = function submitEdit () {
       AuthService.httpPostWithAuth('news/comment/edit', $scope.com.id, {'body': $scope.commentText})
         .success(function (resp, status) {
@@ -115,14 +125,13 @@ appControllers.controller('NewsCommentCtrl', ['$scope', '$sce', 'AuthService',
           }
           else {
             $scope.error = true;
-            $scope.errorMessage = "Failed to edit comment.  Please ensure you are logged in and try again.";
+            if($scope.errorMessage == null) {
+              $scope.errorMessage = "Failed to edit post.  Please try again later."
+            } else {
+              $scope.errorMessage = resp.message;
+            }
             $scope.disabled = false;
           }
-        })
-        .error(function () {
-          $scope.error = true;
-          $scope.errorMessage = "Failed to edit comment.  Please ensure you are logged in and try again.";
-          $scope.disabled = false;          
         })
     }
     
@@ -141,14 +150,13 @@ appControllers.controller('NewsCommentCtrl', ['$scope', '$sce', 'AuthService',
             $scope.$parent.post.comments = comments;
           } else {
             $scope.error = true;
-            $scope.errorMessage = "Failed to delete comment.";
+            if($scope.errorMessage == null) {
+              $scope.errorMessage = "Failed to delete comment.  Please try again later."
+            } else {
+              $scope.errorMessage = resp.message;
+            }
             $scope.deleting = false;
           }
-        })
-        .error(function () {
-          $scope.error = true;
-          $scope.errorMessage = "Failed to delete comment.";
-          $scope.deleting = false;
         })
     }
   }
@@ -176,14 +184,13 @@ appControllers.controller('NewsCreateCtrl', ['$scope', '$state', '$stateParams',
           }
           else {
             $scope.error = true;
-            $scope.errorMessage = "Failed to create post.  Please try again.  If this issue persists please contact an administrator.";
+            if($scope.errorMessage == null) {
+              $scope.errorMessage = "Failed to post news.  Please try again later."
+            } else {
+              $scope.errorMessage = resp.message;
+            }
             $scope.disabled = false;          
           }
-        })
-        .catch(function () {
-          $scope.error = true;
-          $scope.errorMessage = "Failed to create post.  Please try again.  If this issue persists please contact an administrator.";
-          $scope.disabled = false;
         });
     }
   }

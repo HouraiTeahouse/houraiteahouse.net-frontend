@@ -8,10 +8,11 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
     }
     
     function setSessionId(sessionId, expiration) {
-      if(expiration == null){
-        expiration = 8640000000000000; // forever for all intents & purposes
+      params = {};
+      if(expiration != null){
+        params['expires'] = new Date(expiration);
       }
-      $cookies.put('htsessionid', sessionId, {'expires': new Date(expiration)});
+      $cookies.put('htsessionid', sessionId, params);
     }
     
     function clearSessionId(){
