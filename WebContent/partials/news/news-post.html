@@ -4,6 +4,7 @@
       <b>Available Post Actions:</b>
       <button data-ng-click="editPost()" class="btn btn-warning" data-ng-show="isAuthor && !editing">Edit Post</button>
       <button data-ng-click="cancelEdit()" class="btn btn-warning" data-ng-show="isAuthor && editing">Cancel Edit</button>
+      <a data-ui-sref="news.translate({id: post.post_id})" class="btn btn-default" data-ng-show="canTranslate">Translate Post</a>
       <p data-ng-show="!isAuthor">None (unless we add deletion)</p>
     </div>
   </header>
@@ -40,11 +41,7 @@
           <img data-ng-src="{{post.media}}" />
         </div>
       </div>
-      <div>
-        <p>
-          <div data-ng-bind-html="postHtml">
-          </div>
-        </p>
+      <div data-ng-bind-html="postHtml">
       </div>
     </div>
   </div>

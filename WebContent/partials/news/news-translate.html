@@ -1,0 +1,46 @@
+<section class="post">
+  <form class="form" data-ng-submit="submitTranslation()">
+    <h1>Translate News Post</h1>
+    <div data-ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+    <div class="col-sm-6">
+      <div data-ng-show="!editing">
+        <div class="form-group">
+          <label>Original Title</label>
+          <p>{{post.title}}</p>
+        </div>
+        <div class="post-content" class="form-group">
+          <label>Original Body</label>
+          <div data-ng-bind-html="postHtml">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>Translate To:</label>
+        <div class="btn-group dropdown">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{transLanguageName}}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li data-ng-repeat="lang in languages">
+              <a data-ng-click="loadLanguage(lang)">
+                {{lang.name}}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" name="title" data-ng-model="transTitle" required />
+      </div>
+      <div class="form-group">
+        <label for="textareaContent">Post Body</label>
+        <textarea class="form-control" rows="18" data-ng-model="transBody"></textarea>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success" data-ng-disabled="disabled">Submit Translation</button>
+  </form>
+</section>

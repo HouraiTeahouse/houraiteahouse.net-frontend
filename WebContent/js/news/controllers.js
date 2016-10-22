@@ -23,7 +23,8 @@ appControllers.controller('NewsPostCtrl', ['$scope', '$state', '$stateParams', '
   function NewsPostCtrl($scope, $state, $stateParams, $sce, AuthService) {
     $scope.post = {};
     $scope.comment = {};
-    $scope.allowPostManagement = AuthService.allowAccess('admin');
+    $scope.allowPostManagement = AuthService.allowAccess('admin') || AuthService.allowAccess('translate');
+    $scope.canTranslate = AuthService.allowAccess('translate');
     $scope.isAuthor = false;
     $scope.editing = false;
     $scope.isEdited = false;
@@ -63,7 +64,7 @@ appControllers.controller('NewsPostCtrl', ['$scope', '$state', '$stateParams', '
         }
         else {
           $scope.error = true;
-          if($scope.errorMessage == null) {
+          if(resp.message == null) {
             $scope.errorMessage = "Failed to edit comment.  Please try again later."
           } else {
             $scope.errorMessage = resp.message;
@@ -87,7 +88,7 @@ appControllers.controller('NewsPostCtrl', ['$scope', '$state', '$stateParams', '
           }
           else {
             $scope.error = true;
-            if($scope.errorMessage == null) {
+            if(resp.message == null) {
               $scope.errorMessage = "Failed to post comment.  Please try again later."
             } else {
               $scope.errorMessage = resp.message;
@@ -125,7 +126,7 @@ appControllers.controller('NewsCommentCtrl', ['$scope', '$sce', 'AuthService',
           }
           else {
             $scope.error = true;
-            if($scope.errorMessage == null) {
+            if(resp.message == null) {
               $scope.errorMessage = "Failed to edit post.  Please try again later."
             } else {
               $scope.errorMessage = resp.message;
@@ -150,7 +151,7 @@ appControllers.controller('NewsCommentCtrl', ['$scope', '$sce', 'AuthService',
             $scope.$parent.post.comments = comments;
           } else {
             $scope.error = true;
-            if($scope.errorMessage == null) {
+            if(resp.message == null) {
               $scope.errorMessage = "Failed to delete comment.  Please try again later."
             } else {
               $scope.errorMessage = resp.message;
@@ -184,7 +185,7 @@ appControllers.controller('NewsCreateCtrl', ['$scope', '$state', '$stateParams',
           }
           else {
             $scope.error = true;
-            if($scope.errorMessage == null) {
+            if(resp.message == null) {
               $scope.errorMessage = "Failed to post news.  Please try again later."
             } else {
               $scope.errorMessage = resp.message;
@@ -192,6 +193,83 @@ appControllers.controller('NewsCreateCtrl', ['$scope', '$state', '$stateParams',
             $scope.disabled = false;          
           }
         });
+    }
+  }
+]);
+
+appControllers.controller('NewsTranslateCtrl', ['$scope', '$state', '$stateParams', '$sce', 'HttpService', 'AuthService', 'LanguageService',
+  function NewsTranslateCtrl($scope, $state, $stateParams, $sce, HttpService, AuthService, LanguageService) {
+    $scope.post = {};
+    $scope.transTitle = {};
+    $scope.transBody = {};
+    $scope.transLanguage = LanguageService.getLanguage();
+    $scope.transLanguageName = LanguageService.getLanguageName($scope.transLanguage);
+    $scope.languages = LanguageService.getSupportedLanguages();
+    
+    var id = $stateParams.id;
+
+    // No auth - if you aren't allowed to translate you shouldn't even hit this controller    
+    HttpService.get('news/get', id).success(function(data, status) {
+      if(status == 200) {
+        $scope.post = data;
+        $scope.postHtml = $sce.trustAsHtml($scope.post.body);
+        $scope.transBody = data.body.replace(/\<br \/\>/g, '\n');
+        $scope.transTitle = data.title;
+      } else {
+        $state.go('404', null, {'location': 'replace'});
+      }
+    })
+    
+    $scope.loadLanguage = function(lang) {
+      HttpService.get('news/get', id, null, lang.code).success(function(data, status) {
+        if(status == 200) {
+          if (data.title != null) {
+            $scope.transTitle = data.title;
+          }
+          if (data.body != null) {
+            $scope.transBody = data.body.replace(/\<br \/\>/g, '\n');            
+          }
+          $scope.transLanguage = lang.code;
+          $scope.transLanguageName = lang.name;
+        } else {
+            $scope.error = true;
+            if(resp.message == null) {
+              $scope.errorMessage = "Failed to fetch post in " + LanguageService.getLanguageName(lang) + ". Please try again."
+            } else {
+              $scope.errorMessage = resp.message;
+            }
+            $scope.disabled = false;
+          }
+      });
+    }
+    
+    $scope.changeLanguage = function(lang) {
+      $scope.transLangName = LanguageService.getLanguageName(lang);
+    }
+    
+    $scope.submitTranslation = function submitTranslation() {
+      transPost = {
+        "title": $scope.transTitle,
+        "body": $scope.transBody
+      };
+      if($scope.transLanguage == LanguageService.getLanguage()) {
+        $scope.error = true;
+        $scope.errorMessage = "This page is for posting translations.  Use the post's Edit button to edit this post's content.";
+      } else {
+        AuthService.httpPostWithAuth('news/translate', id, transPost, $scope.transLanguage).success(function(data, status) {
+          if(status == 200) {
+            // TODO: Switch language and/or show success message on loading post?
+            $state.go('news.post', {'id': id})
+          } else {
+            $scope.error = true;
+            if(resp.message == null) {
+              $scope.errorMessage = "Failed to post translation. Please try again."
+            } else {
+              $scope.errorMessage = resp.message;
+            }
+          }
+        })
+      }
     }
   }
 ]);

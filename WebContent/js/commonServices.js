@@ -63,28 +63,31 @@ appServices.factory('HttpService', ['$http', 'LanguageService',
       return call(options.api.base_url + '/' + path + '/' + id, params)
     }
     
-    function injectLanguage(params) {
+    function injectLanguage(params, language) {
       if(params == null) {
         params = {};
       }
-      params['language'] = LanguageService.getLanguage();
+      if(language == null) {
+        // Only a handful of calls specify language, most use the current setting
+        language = LanguageService.getLanguage();
+      }
+      params['language'] = language;
       return params;
     }
     
-    return {
-  
-      get: function(path, id, params) {
-        params = injectLanguage(params);
+    return {      
+      get: function(path, id, params, language) {
+        params = injectLanguage(params, language);
         return httpInvoke($http.get, path, id, {params: params});
       },
   
-      post: function(path, id, params) {
-        params = injectLanguage(params);
+      post: function(path, id, params, language) {
+        params = injectLanguage(params, language);
         return httpInvoke($http.post, path, id, params);
       },
   
-      put: function(path, id, params) {
-        params = injectLanguage(params);
+      put: function(path, id, params, language) {
+        params = injectLanguage(params, language);
         return httpInvoke($http.put, path, id, params);
       }
     }

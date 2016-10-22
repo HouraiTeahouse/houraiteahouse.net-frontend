@@ -27,6 +27,8 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
       }
     }
     
+    // FIXME: this should load permissions if they're not already
+    // Problem mainly effects HeaderCtrl since it's initialized on page load
     function allowAccess(accessGroup) {
       if(accessGroup == null) {
         return true;
@@ -176,28 +178,28 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
         
     // Utilities for Auth'd versions of HTTP calls
     
-    function httpGetWithAuth(path, id, params) {
+    function httpGetWithAuth(path, id, params, language) {
       if (params == null) {
         params = {};
       }
-      params['session_id'] = getSessionId()
-      return HttpService.get(path, id, params);
+      params['session_id'] = getSessionId();
+      return HttpService.get(path, id, params, language);
     }
     
-    function httpPutWithAuth(path, id, params) {
+    function httpPutWithAuth(path, id, params, language) {
       if (params == null) {
         params = {};
       }
-      params['session_id'] = getSessionId()
-      return HttpService.put(path, id, params);
+      params['session_id'] = getSessionId();
+      return HttpService.put(path, id, params, language);
     }
 
-    function httpPostWithAuth(path, id, params) {
+    function httpPostWithAuth(path, id, params, language) {
       if (params == null) {
         params = {};
       }
-      params['session_id'] = getSessionId()
-      return HttpService.post(path, id, params);
+      params['session_id'] = getSessionId();
+      return HttpService.post(path, id, params, language);
     }
     
     return ({

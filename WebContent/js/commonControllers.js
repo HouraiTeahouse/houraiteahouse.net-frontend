@@ -1,7 +1,8 @@
-appControllers.controller('HeaderCtrl', ['$scope', '$state',
-  function($scope, $state) {
+appControllers.controller('HeaderCtrl', ['$scope', '$state', 'AuthService',
+  function($scope, $state, AuthService) {
     // This is hacky but don't worry about it
     $scope.$state = $state;
+    $scope.canManagePermissions = AuthService.allowAccess('admin');
 }]);
 
 appControllers.controller('LanguageCtrl', ['$scope', '$state', 'LanguageService',
@@ -10,8 +11,8 @@ appControllers.controller('LanguageCtrl', ['$scope', '$state', 'LanguageService'
     $scope.currentLanguage = LanguageService.getLanguageName(LanguageService.getLanguage());
     
     $scope.changeLanguage = function(language) {
-      LanguageService.setLanguage(language);
-      $scope.currentLanguage = LanguageService.getLanguageName(LanguageService.getLanguage());
+      LanguageService.setLanguage(language.code);
+      $scope.currentLanguage = language.name;
       $state.reload();
     }
 }]);

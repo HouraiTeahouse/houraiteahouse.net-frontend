@@ -15,7 +15,7 @@ var options = {
 // Main app configuration
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
 
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/404');
   
   // State configuration
   $stateProvider
@@ -88,6 +88,13 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
       controller: 'NewsCreateCtrl',
       requireLogin: true,
       permission: 'news'
+    })
+    .state('news.translate', {
+      url: '/translate/:id',
+      templateUrl: 'partials/news/news-translate.html',
+      controller: 'NewsTranslateCtrl',
+      requireLogin: true,
+      permission: 'translate'
     })
     .state('404', {
       url: '/404',
