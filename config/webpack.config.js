@@ -1,0 +1,94 @@
+/* Requires:
+ * - core-js
+ * - babel-regenerator-runtime
+ * - babel-loader
+ * - eslint-loader (plus eslint as a peer dependency with ES2015 features and modules enabled in .eslintrc)
+ * Inspect the README files for these packages as they may specify other necessary packages to install.
+ */
+
+/* Recommends:
+ * - cross-env (for specifying environment variables in a cross platform manner)
+ */
+
+// Environment Variables
+const PRODUCTION_MODE = (process.env.NODE_ENV === 'production');
+const TEST_MODE = (process.env.NODE_ENV === 'test');
+const DEVELOPMENT_MODE = (!PRODUCTION_MODE && !TEST_MODE);
+
+// Imports
+let path = require('path');
+let webpack = require('webpack');
+
+// Webpack Entry Path
+const ENTRY_DIR = 'WebContent', ENTRY_BASENAME = 'main';
+
+// Webpack Base Config
+const WEBPACK_CONFIG = {
+    resolve: {
+        root: __dirname + path.sep + ENTRY_DIR,
+        modulesDirectories: ['node_modules']
+    },
+    module: {
+        preLoaders: [
+            { test: /\.js$/, loader: 'eslint-loader', include: new RegExp(ENTRY_DIR), exclude: /node_modules/ }
+        ],
+        loaders: [
+            { test: /\.js$/, loader: 'babel-loader', include: new RegExp(ENTRY_DIR), exclude: /node_modules/ }
+        ],
+        postLoaders: []
+    },
+    target: 'web',
+    plugins: []
+};
+
+// Customize Webpack Config
+if (TEST_MODE) {
+    WEBPACK_CONFIG.devtool = 'inline-source-map';
+}
+
+if (!TEST_MODE) {
+    const OUTPUT_DIR = PRODUCTION_MODE ? 'dist' : 'dist',
+        OUTPUT_BASENAME = PRODUCTION_MODE ? 'main.min' : 'main';
+
+    WEBPACK_CONFIG.entry = {
+        polyfills: [
+            'core-js/es6',
+            'babel-regenerator-runtime/runtime'
+        ],
+        [OUTPUT_BASENAME]: `./${ENTRY_DIR}/${ENTRY_BASENAME}.js`
+    };
+
+    WEBPACK_CONFIG.output = {
+        path: __dirname + path.sep + '..' + path.sep + OUTPUT_DIR,
+        filename: '[name].js'
+    };
+}
+
+if (DEVELOPMENT_MODE) {
+    WEBPACK_CONFIG.output.sourceMapFilename = '[file].map';
+    WEBPACK_CONFIG.output.devtoolModuleFilenameTemplate = '[resource-path]';
+    WEBPACK_CONFIG.plugins.push(
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'polyfills',
+            filename: 'polyfills.js',
+            minChunks: Infinity
+        })
+    );
+    WEBPACK_CONFIG.devtool = 'source-map';
+}
+
+if (PRODUCTION_MODE) {
+    WEBPACK_CONFIG.plugins.push(
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'polyfills',
+            filename: 'polyfills.min.js',
+            minChunks: Infinity
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: false
+        })
+    );
+}
+
+// Export Webpack Config
+module.exports = WEBPACK_CONFIG;

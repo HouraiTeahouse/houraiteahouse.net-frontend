@@ -1,3 +1,5 @@
+import appServices from '../commonServicesModule.js';
+
 appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 'HttpService',
   function ($rootScope, $q, $timeout, $cookies, HttpService) {
   
@@ -43,7 +45,7 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
     function getUserStatus() {
       var deferred = $q.defer();
       
-      sessionId = getSessionId();
+      var sessionId = getSessionId();
       if(sessionId == null) {
         $rootScope.user = false;
         permissions = null;
