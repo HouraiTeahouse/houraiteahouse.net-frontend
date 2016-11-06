@@ -1,3 +1,5 @@
+import appControllers from './commonControllersModule.js';
+
 appControllers.controller('HeaderCtrl', ['$scope', '$state', 'AuthService',
   function($scope, $state, AuthService) {
     // This is hacky but don't worry about it

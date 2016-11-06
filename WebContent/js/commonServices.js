@@ -1,3 +1,6 @@
+import { options } from './app.js';
+import appServices from './commonServicesModule.js';
+
 appServices.factory('LanguageService', ['$cookies',
   function($cookies) {
     // Yes, this needs to be kept in sync manually versus the backend.
@@ -56,7 +59,7 @@ appServices.factory('LanguageService', ['$cookies',
 
 appServices.factory('HttpService', ['$http', 'LanguageService',
   function($http, LanguageService) {
-    httpInvoke = function(call, path, id, params) {
+    var httpInvoke = function(call, path, id, params) {
       if(id == null) {
         return call(options.api.base_url + '/' + path, params)
       }

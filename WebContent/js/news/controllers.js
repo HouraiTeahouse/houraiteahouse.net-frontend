@@ -1,14 +1,19 @@
+import appControllers from '../commonControllersModule.js';
+
 appControllers.controller('NewsListCtrl', ['$scope', '$state', '$stateParams', 'HttpService', 'AuthService',
   function NewsListCtrl($scope, $state, $stateParams, HttpService, AuthService) {
     $scope.allowPostManagement = AuthService.allowAccess('admin');
     $scope.posts = [];
 
     if($stateParams.tag == null) {
-      HttpService.get('news/list').success(function(data) {
+      HttpService.get('news/list').then(function(data) {
         $scope.posts = data;
+      })
+      .catch(function() {
+        $scope.showError = true;
       });
     } else {
-      HttpService.get('news/tag/get', $stateParams.tag).success(function(data) {
+      HttpService.get('news/tag/get', $stateParams.tag).then(function(data) {
         $scope.posts = data;
       });
     }

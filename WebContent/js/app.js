@@ -1,10 +1,20 @@
-'use strict';
+import angular from 'angular';
+import angularCookies from 'angular-cookies';
+import angularUiRouter from 'angular-ui-router';
+import angularUiBootstrap from 'angular-ui-bootstrap';
+
+import './commonControllersModule.js';
+import './commonServicesModule.js';
+
+import './commonControllers.js';
+import './commonServices.js';
+import './auth/controllers.js';
+import './auth/services.js';
+import './news/controllers.js';
 
 // Module declarations
-var appControllers = angular.module('appControllers', []);
 var appDirectives = angular.module('appDirectives', []);
-var appServices = angular.module('appServices', ['ngCookies']);
-var app = angular.module('houraiteahouse', ['ui.router', 'ui.bootstrap', 'ngCookies', 'appControllers', 'appDirectives', 'appServices'])
+var app = angular.module('houraiteahouse', [angularUiRouter, angularUiBootstrap, angularCookies, 'appControllers', 'appDirectives', 'appServices'])
 
 var options = {
   "api":{
@@ -114,7 +124,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
       return {
         responseError: function(rejection) {
           if (rejection.status !== 403) {
-            return rejection;
+            return $q.reject(rejection);
           }
   
           $state.go('login')
@@ -142,3 +152,6 @@ app.run(function ($rootScope, $state, AuthService) {
       });
   });
 });
+
+export { options };
+export default app.name;

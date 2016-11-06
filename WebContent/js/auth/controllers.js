@@ -1,3 +1,5 @@
+import appControllers from '../commonControllersModule.js';
+
 appControllers.controller('LoginCtrl', ['$scope', '$state', 'AuthService',
   function($scope, $state, AuthService) {
     $scope.login = function() {
