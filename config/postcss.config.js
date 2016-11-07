@@ -1,15 +1,3 @@
-/* Requires:
- * - stylelint (with a configuration file existing)
- * - postcss-import
- * - postcss-cssnext
- * - postcss-reporter
- * - cssnano
- */
-
-/* Recommends:
- * - cross-env (for specifying environment variables in a cross platform manner)
- */
-
 // Environment Variables
 const PRODUCTION_MODE = (process.env.NODE_ENV === 'production');
 const DEVELOPMENT_MODE = !PRODUCTION_MODE;
@@ -58,7 +46,7 @@ if (DEVELOPMENT_MODE) {
 
 if (PRODUCTION_MODE) {
     POSTCSS_CONFIG.map = false;
-    
+
     POSTCSS_CONFIG.use.push('cssnano');
     POSTCSS_CONFIG["cssnano"] = {
         browsers: TARGET_BROWSERS

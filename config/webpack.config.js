@@ -1,15 +1,3 @@
-/* Requires:
- * - core-js
- * - babel-regenerator-runtime
- * - babel-loader
- * - eslint-loader (plus eslint as a peer dependency with ES2015 features and modules enabled in .eslintrc)
- * Inspect the README files for these packages as they may specify other necessary packages to install.
- */
-
-/* Recommends:
- * - cross-env (for specifying environment variables in a cross platform manner)
- */
-
 // Environment Variables
 const PRODUCTION_MODE = (process.env.NODE_ENV === 'production');
 const TEST_MODE = (process.env.NODE_ENV === 'test');

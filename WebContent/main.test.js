@@ -6,6 +6,7 @@ import 'babel-regenerator-runtime/runtime';
 import 'angular';
 import 'angular-mocks';
 
+// Import all spec files from this directory and all subdirectories.
 let testsContext = require.context('.', true, /\.spec.js$/);
 testsContext.keys().forEach((path) => {
     try { testsContext(path); }
