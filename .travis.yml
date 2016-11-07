@@ -1,0 +1,9 @@
+language: nodejs
+nodejs:
+  - "6"
+install:
+  - npm install
+script:
+  - npm run build-all-development
+  - npm run build-all-producition
+  - npm test
