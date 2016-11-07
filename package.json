@@ -2,7 +2,7 @@
   "name": "hourai-teahouse-web-frontend",
   "version": "0.0.0",
   "description": "This is the frontend package for the Hourai Teahouse website.",
-  "main": "package.json",
+  "main": "WebContent/main.js",
   "scripts": {
     "preclean": "mkdirp dist",
     "clean": "rm -r dist/*",
