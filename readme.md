@@ -22,7 +22,6 @@ Commands
 ---
 
 * Build: `npm run build-all-development` or `npm run build-all-production`.
-* Serve (Static): `npm run start` or `npm run start-production`.
 * Test: `npm test`
 
 Major TODOs and Milestones:
