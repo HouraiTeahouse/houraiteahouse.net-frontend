@@ -29,7 +29,9 @@
     "build-all-production": "npm run clean && run-p -l build-html-production build-css-production build-js-production build-images-production build-fonts",
     "watch-all-production": "npm run clean && run-p -l watch-html-production watch-css-production watch-js-production watch-images-production watch-fonts",
     "test": "npm run test-unit",
-    "test-unit": "cross-env NODE_ENV=test BABEL_ENV=test karma start config/karma.conf.js"
+    "test-ci": "npm run test-unit-ci",
+    "test-unit": "cross-env NODE_ENV=test BABEL_ENV=test karma start config/karma.conf.js",
+    "test-unit-ci": "cross-env NODE_ENV=test BABEL_ENV=test karma start config/karma.config.js --single-run"
   },
   "repository": {
     "type": "git",
