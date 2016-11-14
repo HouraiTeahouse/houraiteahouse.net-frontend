@@ -6,4 +6,4 @@ install:
 script:
   - npm run build-all-development
   - npm run build-all-production
-  - npm run test-once
+  - npm run test-ci
