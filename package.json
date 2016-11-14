@@ -31,7 +31,7 @@
     "test": "npm run test-unit",
     "test-ci": "npm run test-unit-ci",
     "test-unit": "cross-env NODE_ENV=test BABEL_ENV=test karma start config/karma.conf.js",
-    "test-unit-ci": "cross-env NODE_ENV=test BABEL_ENV=test karma start config/karma.config.js --single-run"
+    "test-unit-ci": "cross-env NODE_ENV=test BABEL_ENV=test karma start config/karma.conf.js --single-run"
   },
   "repository": {
     "type": "git",
