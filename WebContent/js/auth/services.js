@@ -108,13 +108,14 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
         .success(function(data) {
           $rootScope.user = false;
           permissions = null;
+          clearSessionId(); // No point in keeping the cookie - it will just trigger false status checks from now on.
           deferred.resolve();
         })
         .error(function(data) {
           $rootScope.user = false; // Always assume unauth!
           permissions = null;
+          clearSessionId(); // We don't know where it failed
           deferred.reject();
-          clearSessionId(); // No point in keeping the cookie - it will just trigger false status checks from now on.
         });
       
       return deferred.promise;
