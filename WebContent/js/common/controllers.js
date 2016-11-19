@@ -1,4 +1,4 @@
-import appControllers from './commonControllersModule.js';
+import appControllers from '../appControllersModule.js';
 
 appControllers.controller('HeaderCtrl', ['$scope', '$state', 'AuthService',
   function($scope, $state, AuthService) {
@@ -11,7 +11,7 @@ appControllers.controller('LanguageCtrl', ['$scope', '$state', 'LanguageService'
   function($scope, $state, LanguageService) {
     $scope.languages = LanguageService.getSupportedLanguages();
     $scope.currentLanguage = LanguageService.getLanguageName(LanguageService.getLanguage());
-    
+
     $scope.changeLanguage = function(language) {
       LanguageService.setLanguage(language.code);
       $scope.currentLanguage = language.name;
