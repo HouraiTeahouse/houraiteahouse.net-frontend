@@ -3,17 +3,17 @@ import angularCookies from 'angular-cookies';
 import angularUiRouter from 'angular-ui-router';
 import angularUiBootstrap from 'angular-ui-bootstrap';
 
-import './commonControllersModule.js';
-import './commonServicesModule.js';
+import './appControllersModule.js';
+import './appServicesModule.js';
+import './appDirectivesModule.js';
 
-import './commonControllers.js';
-import './commonServices.js';
+import './common/controllers.js';
+import './common/services.js';
 import './auth/controllers.js';
 import './auth/services.js';
 import './news/controllers.js';
 
-// Module declarations
-var appDirectives = angular.module('appDirectives', []);
+// Main module declaration
 var app = angular.module('houraiteahouse', [angularUiRouter, angularUiBootstrap, angularCookies, 'appControllers', 'appDirectives', 'appServices'])
 
 var options = {

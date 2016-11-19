@@ -1,4 +1,4 @@
-import appControllers from '../commonControllersModule.js';
+import appControllers from '../appControllersModule.js';
 
 appControllers.controller('NewsListCtrl', ['$scope', '$state', '$stateParams', 'HttpService', 'AuthService',
   function NewsListCtrl($scope, $state, $stateParams, HttpService, AuthService) {

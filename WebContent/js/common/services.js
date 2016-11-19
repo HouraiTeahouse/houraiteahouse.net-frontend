@@ -1,5 +1,5 @@
-import { options } from './app.js';
-import appServices from './commonServicesModule.js';
+import { options } from '../app.js';
+import appServices from '../appServicesModule.js';
 
 appServices.factory('LanguageService', ['$cookies',
   function($cookies) {
@@ -16,11 +16,11 @@ appServices.factory('LanguageService', ['$cookies',
         "name": "日本語"
       }
     ];
-    
+
     function getSupportedLanguages() {
       return languages;
     }
-    
+
     function getLanguageName(languageCode) {
       var ret = null;
       languages.forEach(function(language, index, arr) {
@@ -30,7 +30,7 @@ appServices.factory('LanguageService', ['$cookies',
       });
       return ret;
     }
-    
+
     function getLanguage() {
       var lang = $cookies.get('htlanguage');
       if(lang == null) {
@@ -43,12 +43,12 @@ appServices.factory('LanguageService', ['$cookies',
     function setLanguage(languageCode) {
       languages.forEach(function(language, index, arr) {
         if(languageCode == language.code) {
-          $cookies.put('htlanguage', languageCode);          
+          $cookies.put('htlanguage', languageCode);
         }
       });
       // If it's not recognized, don't update the cookie
     }
-    
+
     return {
       getSupportedLanguages: getSupportedLanguages,
       getLanguageName: getLanguageName,
@@ -65,7 +65,7 @@ appServices.factory('HttpService', ['$http', 'LanguageService',
       }
       return call(options.api.base_url + '/' + path + '/' + id, params)
     }
-    
+
     function injectLanguage(params, language) {
       if(params == null) {
         params = {};
@@ -77,18 +77,18 @@ appServices.factory('HttpService', ['$http', 'LanguageService',
       params['language'] = language;
       return params;
     }
-    
-    return {      
+
+    return {
       get: function(path, id, params, language) {
         params = injectLanguage(params, language);
         return httpInvoke($http.get, path, id, {params: params});
       },
-  
+
       post: function(path, id, params, language) {
         params = injectLanguage(params, language);
         return httpInvoke($http.post, path, id, params);
       },
-  
+
       put: function(path, id, params, language) {
         params = injectLanguage(params, language);
         return httpInvoke($http.put, path, id, params);

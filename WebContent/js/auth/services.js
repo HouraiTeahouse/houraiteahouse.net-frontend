@@ -1,4 +1,4 @@
-import appServices from '../commonServicesModule.js';
+import appServices from '../appServicesModule.js';
 
 appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 'HttpService',
   function ($rootScope, $q, $timeout, $cookies, HttpService) {
