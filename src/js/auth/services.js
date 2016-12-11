@@ -153,6 +153,24 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
 
       return deferred.promise;
     }
+    
+    function confirmEmail(token) {
+      var deferred = $q.defer();
+      
+      HttpService.post('auth/confirm', token)
+        .success(function(data, status) {
+          if(status === 200) {
+            deferred.resolve(data);
+          } else {
+            deferred.reject(data);
+          }
+        })
+        .error(function(data) {
+          deferred.reject(data);
+        })
+        
+      return deferred.promise;
+    }
 
     // Administrative actions
 
@@ -226,6 +244,7 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
       login: login,
       logout: logout,
       register: register,
+      confirmEmail: confirmEmail,
       getPermissions: getPermissions,
       setPermissions: setPermissions,
       httpGetWithAuth: httpGetWithAuth,

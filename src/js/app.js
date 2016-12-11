@@ -50,7 +50,6 @@ var options = (function() {
     // Produciton backend
     base_url = "https://houraiteahouse.net:92";
   }
-  console.log(base_url);
   return {
     "api":{
       "base_url": base_url
@@ -151,6 +150,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
             'titleSuffix': 'Register'
           }
         }
+      })
+      .state('confirmEmail', {
+          url: '/confirmemail',
+          templateUrl: 'partials/auth/confirm.html',
+          controller: 'ConfirmationCtrl',
+          requireLogin: false
       })
       .state('admin', {
         abstract: true,

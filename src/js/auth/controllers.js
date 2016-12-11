@@ -111,3 +111,18 @@ appControllers.controller('PermissionCtrl', ['$scope', '$state', 'AuthService',
         })
     }
 }]);
+
+appControllers.controller('ConfirmationCtrl', ['$scope', '$state', '$stateParams', 'AuthService',
+  function($scope, $state, $stateParams, AuthService) {
+    $scope.message = "Awaiting response...";
+    $scope.error = false;
+    
+    AuthService.confirmEmail($stateParams.token)
+      .then(function(data) {
+        $scope.message = data.data;
+      })
+      .catch(function(data) {
+        $scope.error = true;
+        $scope.message = data;
+      })
+}])
