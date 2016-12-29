@@ -19,7 +19,7 @@ Development
 Setup
 ---
 
-1. Install NodeJS (6.x LTS)
+1. Install NodeJS (6.x LTS) (For Linux users, go [here](https://nodejs.org/en/download/package-manager/).
 2. Run `npm install` in this directory.
 
 Commands
