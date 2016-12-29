@@ -39,9 +39,9 @@
               <li data-ng-show="canManagePermissions" data-ng-class="{active: $state.includes('admin.permissions')}"><a data-ui-sref="admin">Permissions</a></li>
               <li data-ng-class="{active: $state.includes('about')}"><a data-ui-sref="about">About</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a data-ui-sref="login">Login</a></li>
-              <li><a data-ui-sref="logout">Logout</a></li>
+            <ul class="nav navbar-nav navbar-right" data-ng-controller="LoginNavCtrl">
+              <li data-ng-show="!isLoggedIn"><a data-ui-sref="login">Login</a></li>
+              <li data-ng-show="isLoggedIn"><a data-ui-sref="logout">Logout</a></li>
             </ul>
           </div>
         </nav>
