@@ -1,11 +1,20 @@
 import appControllers from '../appControllersModule.js';
 
+appControllers.controller('LoginNavCtrl', ['$scope', 'AuthService',
+  function($scope, AuthService) {
+    $scope.isLoggedIn = false;
+    $scope.$watch(function() { return AuthService.isLoggedIn() }, function (status) {
+      $scope.isLoggedIn = status;
+    });
+}]);
+
+
 appControllers.controller('LoginCtrl', ['$scope', '$state', 'AuthService',
   function($scope, $state, AuthService) {
     $scope.login = function() {
       $scope.error = false;
       $scope.disabled = true;
-      
+
       AuthService.login($scope.loginForm.username, $scope.loginForm.password, $scope.loginForm.remember_me)
         .then(function() {
           $state.go('home');
@@ -26,7 +35,7 @@ appControllers.controller('RegisterCtrl', ['$scope', '$state', 'AuthService',
     $scope.register = function() {
       $scope.error = false;
       $scope.disabled = true;
-      
+
       AuthService.register($scope.registerForm.username,
                            $scope.registerForm.email,
                            $scope.registerForm.password)
@@ -55,7 +64,7 @@ appControllers.controller('PermissionCtrl', ['$scope', '$state', 'AuthService',
     $scope.getPermissions = function() {
       $scope.error = false;
       $scope.disabled = true;
-      
+
       AuthService.getPermissions($scope.usernameEntry)
         .then(function(data) {
           $scope.username = data.username;
@@ -70,11 +79,11 @@ appControllers.controller('PermissionCtrl', ['$scope', '$state', 'AuthService',
           // Do not clear any loaded permissions
         })
     }
-    
+
     $scope.setPermissions = function() {
       $scope.error = false;
       $scope.disabled = true;
-      
+
       AuthService.setPermissions($scope.username, $scope.permissions)
         .then(function(data) {
           $scope.disabled = false;
