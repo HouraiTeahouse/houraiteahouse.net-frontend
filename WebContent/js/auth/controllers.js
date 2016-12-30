@@ -40,7 +40,8 @@ appControllers.controller('RegisterCtrl', ['$scope', '$state', 'AuthService',
         $scope.error = true;
         $scope.errorMessage = "Your entered passwords do not match. Please try again.";
         $scope.disabled = false;
-        $scope.registerForm = {};
+        $scope.registerForm.password = "";
+        $scope.registerForm.passwordReentry = "";
         return;
       }
 
