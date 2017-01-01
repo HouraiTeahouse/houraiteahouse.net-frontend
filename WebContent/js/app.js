@@ -23,141 +23,148 @@ var options = {
 };
 
 // Main app configuration
-app.config(function($stateProvider,
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider',
+  function($stateProvider,
       $urlRouterProvider,
       $locationProvider,
-      $httpProvider){
+      $httpProvider) {
 
-  // Remove unnessary and ugly #'s in URL
-  $locationProvider.html5Mode(true)
+    // Remove unnecessary and ugly '#' characters in URL
+    // for browsers that support HTML5 mode.
+    $locationProvider.html5Mode(true);
 
-  $urlRouterProvider.otherwise('/404');
+    $urlRouterProvider.otherwise('/404');
 
-  // State configuration
-  $stateProvider
-    .state('home', {
-      url: '/home',
-      templateUrl: 'partials/home.html',
-      requireLogin: false
-    })
-    .state('about', {
-      url: '/about',
-      templateUrl: 'partials/about.html',
-      requireLogin: true
-    })
-    .state('login', {
-      url: '/login',
-      templateUrl: 'partials/auth/login.html',
-      controller: 'LoginCtrl',
-      requireLogin: false
-    })
-    .state('logout', {
-      url: '/logout',
-      requireLogin: true
-    })
-    .state('register', {
-      url: '/register',
-      templateUrl: 'partials/auth/register.html',
-      controller: 'RegisterCtrl',
-      requireLogin: false
-    })
-    .state('admin', {
-      abstract: true,
-      url: '/admin',
-      template: '<ui-view/>',
-      requireLogin: true,
-      permission: 'admin'
-    })
-    .state('admin.permissions', {
-      url: '/permissions',
-      templateUrl: 'partials/auth/permissions.html',
-      controller: 'PermissionCtrl',
-      requireLogin:false
-    })
-    .state('news', {
-      abstract: true,
-      url: '/news',
-      template: '<ui-view/>',
-      requireLogin: false
-    })
-    .state('news.list', {
-      url: '',
-      templateUrl: 'partials/news/news-list.html',
-      controller: 'NewsListCtrl',
-      requireLogin:false
-    })
-    .state('news.tags', {
-      url: '/tags/:tag',
-      templateUrl: 'partials/news/news-list.html',
-      controller: 'NewsListCtrl',
-      requireLogin:false
-    })
-    .state('news.post', {
-      url: '/post/:id',
-      templateUrl: 'partials/news/news-post.html',
-      controller: 'NewsPostCtrl',
-      requireLogin:false
-    })
-    .state('news.create', {
-      url: '/create',
-      templateUrl: 'partials/news/news-create.html',
-      controller: 'NewsCreateCtrl',
-      requireLogin: true,
-      permission: 'news'
-    })
-    .state('news.translate', {
-      url: '/translate/:id',
-      templateUrl: 'partials/news/news-translate.html',
-      controller: 'NewsTranslateCtrl',
-      requireLogin: true,
-      permission: 'translate'
-    })
-    .state('404', {
-      url: '/404',
-      templateUrl: 'partials/404.html',
-      requireLogin:false
-    })
+    // State configuration
+    $stateProvider
+      .state('home', {
+        url: '/home',
+        templateUrl: 'partials/home.html',
+        requireLogin: false
+      })
+      .state('about', {
+        url: '/about',
+        templateUrl: 'partials/about.html',
+        requireLogin: true
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'partials/auth/login.html',
+        controller: 'LoginCtrl',
+        requireLogin: false
+      })
+      .state('logout', {
+        url: '/logout',
+        requireLogin: true
+      })
+      .state('register', {
+        url: '/register',
+        templateUrl: 'partials/auth/register.html',
+        controller: 'RegisterCtrl',
+        requireLogin: false
+      })
+      .state('admin', {
+        abstract: true,
+        url: '/admin',
+        template: '<ui-view/>',
+        requireLogin: true,
+        permission: 'admin'
+      })
+      .state('admin.permissions', {
+        url: '/permissions',
+        templateUrl: 'partials/auth/permissions.html',
+        controller: 'PermissionCtrl',
+        requireLogin:false
+      })
+      .state('news', {
+        abstract: true,
+        url: '/news',
+        template: '<ui-view/>',
+        requireLogin: false
+      })
+      .state('news.list', {
+        url: '',
+        templateUrl: 'partials/news/news-list.html',
+        controller: 'NewsListCtrl',
+        requireLogin:false
+      })
+      .state('news.tags', {
+        url: '/tags/:tag',
+        templateUrl: 'partials/news/news-list.html',
+        controller: 'NewsListCtrl',
+        requireLogin:false
+      })
+      .state('news.post', {
+        url: '/post/:id',
+        templateUrl: 'partials/news/news-post.html',
+        controller: 'NewsPostCtrl',
+        requireLogin:false
+      })
+      .state('news.create', {
+        url: '/create',
+        templateUrl: 'partials/news/news-create.html',
+        controller: 'NewsCreateCtrl',
+        requireLogin: true,
+        permission: 'news'
+      })
+      .state('news.translate', {
+        url: '/translate/:id',
+        templateUrl: 'partials/news/news-translate.html',
+        controller: 'NewsTranslateCtrl',
+        requireLogin: true,
+        permission: 'translate'
+      })
+      .state('404', {
+        url: '/404',
+        templateUrl: 'partials/404.html',
+        requireLogin:false
+      })
 
-    // Prevent unauthorized requests to restricted pages & trigger login
-    $httpProvider.interceptors.push(function($timeout, $q, $injector) {
-      var $http, $state;
+      // Prevent unauthorized requests to restricted pages & trigger login
+      $httpProvider.interceptors.push(['$timeout', '$q', '$injector',
+        function($timeout, $q, $injector) {
+          var $http, $state;
 
-      $timeout(function() {
-        $http = $injector.get('$http');
-        $state = $injector.get('$state');
-      });
+          $timeout(function() {
+            $http = $injector.get('$http');
+            $state = $injector.get('$state');
+          });
 
-      return {
-        responseError: function(rejection) {
-          if (rejection.status !== 403) {
-            return $q.reject(rejection);
-          }
-
-          $state.go('login')
+          return {
+            responseError: function(rejection) {
+              if (rejection.status !== 403) {
+                return $q.reject(rejection);
+              }
+      
+              $state.go('login');
+            }
+          };
         }
-      };
-    });
-});
+      ]);
+    }
+]);
 
-app.run(function ($rootScope, $state, AuthService) {
-  $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
-    AuthService.getUserStatus()
-      .then(function() {
-        if (toState.requireLogin) {
-          if (!AuthService.isLoggedIn()) {
+app.run(['$rootScope', '$state', 'AuthService',
+  function ($rootScope, $state, AuthService) {
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
+      AuthService.getUserStatus()
+        .then(function() {
+          if (toState.requireLogin) {
+            if (!AuthService.isLoggedIn()) {
+              $state.go('login');
+            }
+            else if (!AuthService.allowAccess(toState.permission)) {
+              $state.go('home');
+            }
+          }
+          if (toState.name == 'logout') {
+            AuthService.logout();
             $state.go('login');
           }
-          else if (!AuthService.allowAccess(toState.permission)) {
-            $state.go('home');
-          }
-        }
-        if (toState.name == 'logout') {
-          AuthService.logout();
-          $state.go('login');
-        }
-      });
-  });
-});
+        });
+    });
+  }
+]);
 
 export { options };
 export default app.name;
