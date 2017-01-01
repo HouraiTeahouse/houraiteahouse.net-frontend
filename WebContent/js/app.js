@@ -23,10 +23,16 @@ var options = {
 };
 
 // Main app configuration
-app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
+app.config(function($stateProvider,
+      $urlRouterProvider,
+      $locationProvider,
+      $httpProvider){
+
+  // Remove unnessary and ugly #'s in URL
+  $locationProvider.html5Mode(true)
 
   $urlRouterProvider.otherwise('/404');
-  
+
   // State configuration
   $stateProvider
     .state('home', {
@@ -111,22 +117,22 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
       templateUrl: 'partials/404.html',
       requireLogin:false
     })
-    
+
     // Prevent unauthorized requests to restricted pages & trigger login
     $httpProvider.interceptors.push(function($timeout, $q, $injector) {
       var $http, $state;
-      
+
       $timeout(function() {
         $http = $injector.get('$http');
         $state = $injector.get('$state');
       });
-      
+
       return {
         responseError: function(rejection) {
           if (rejection.status !== 403) {
             return $q.reject(rejection);
           }
-  
+
           $state.go('login')
         }
       };
@@ -147,7 +153,7 @@ app.run(function ($rootScope, $state, AuthService) {
         }
         if (toState.name == 'logout') {
           AuthService.logout();
-          $state.go('login');          
+          $state.go('login');
         }
       });
   });
