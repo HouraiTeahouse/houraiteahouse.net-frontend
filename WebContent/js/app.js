@@ -23,11 +23,18 @@ var options = {
 };
 
 // Main app configuration
-app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider',
-  function($stateProvider, $urlRouterProvider, $httpProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider',
+  function($stateProvider,
+      $urlRouterProvider,
+      $locationProvider,
+      $httpProvider) {
+
+    // Remove unnecessary and ugly '#' characters in URL
+    // for browsers that support HTML5 mode.
+    $locationProvider.html5Mode(true);
 
     $urlRouterProvider.otherwise('/404');
-    
+
     // State configuration
     $stateProvider
       .state('home', {
@@ -112,7 +119,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider',
         templateUrl: 'partials/404.html',
         requireLogin:false
       })
-      
+
       // Prevent unauthorized requests to restricted pages & trigger login
       $httpProvider.interceptors.push(['$timeout', '$q', '$injector',
         function($timeout, $q, $injector) {
@@ -129,7 +136,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider',
                 return $q.reject(rejection);
               }
       
-              $state.go('login')
+              $state.go('login');
             }
           };
         }
