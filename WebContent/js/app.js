@@ -2,6 +2,8 @@ import angular from 'angular';
 import angularCookies from 'angular-cookies';
 import angularUiRouter from 'angular-ui-router';
 import angularUiBootstrap from 'angular-ui-bootstrap';
+import 'angulartics';
+import angularticsGA from 'angulartics-google-analytics';
 
 import './appControllersModule.js';
 import './appServicesModule.js';
@@ -14,7 +16,16 @@ import './auth/services.js';
 import './news/controllers.js';
 
 // Main module declaration
-var app = angular.module('houraiteahouse', [angularUiRouter, angularUiBootstrap, angularCookies, 'appControllers', 'appDirectives', 'appServices'])
+var app = angular.module('houraiteahouse', [
+    angularUiRouter,
+    angularUiBootstrap,
+    angularCookies,
+    'angulartics',
+    angularticsGA,
+    'appControllers',
+    'appDirectives',
+    'appServices'
+])
 
 var options = {
   "api":{
@@ -135,7 +146,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
               if (rejection.status !== 403) {
                 return $q.reject(rejection);
               }
-      
+
               $state.go('login');
             }
           };
