@@ -7,7 +7,7 @@ let stylelint = require('stylelint');
 
 // PostCSS Input and Output Path
 const INPUT_PATH = 'WebContent/main.css';
-const OUTPUT_PATH = PRODUCTION_MODE ? 'dist/main.min.css' : 'dist/main.css';
+const OUTPUT_PATH = 'dist/main.css';
 
 // Target Browsers
 const TARGET_BROWSERS = [

@@ -36,7 +36,7 @@ if (TEST_MODE) {
 
 if (!TEST_MODE) {
     const OUTPUT_DIR = PRODUCTION_MODE ? 'dist' : 'dist',
-        OUTPUT_BASENAME = PRODUCTION_MODE ? 'main.min' : 'main';
+        OUTPUT_BASENAME = 'main';
 
     WEBPACK_CONFIG.entry = {
         polyfills: [
@@ -69,7 +69,7 @@ if (PRODUCTION_MODE) {
     WEBPACK_CONFIG.plugins.push(
         new webpack.optimize.CommonsChunkPlugin({
             name: 'polyfills',
-            filename: 'polyfills.min.js',
+            filename: 'polyfills.js',
             minChunks: Infinity
         }),
         new webpack.optimize.UglifyJsPlugin({
