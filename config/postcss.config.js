@@ -6,7 +6,7 @@ const DEVELOPMENT_MODE = !PRODUCTION_MODE;
 let stylelint = require('stylelint');
 
 // PostCSS Input and Output Path
-const INPUT_PATH = 'WebContent/main.css';
+const INPUT_PATH = 'src/main.css';
 const OUTPUT_PATH = 'dist/main.css';
 
 // Target Browsers

@@ -8,7 +8,7 @@ let path = require('path');
 let webpack = require('webpack');
 
 // Webpack Entry Path
-const ENTRY_DIR = 'WebContent', ENTRY_BASENAME = 'main';
+const ENTRY_DIR = 'src', ENTRY_BASENAME = 'main';
 
 // Webpack Base Config
 const WEBPACK_CONFIG = {
