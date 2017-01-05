@@ -58,6 +58,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         templateUrl: 'partials/under_construction.html',
         requireLogin: false
       })
+      .state('about.team', {
+        url: '/about/team',
+        templateUrl: 'partials/under_construction.html',
+        requireLogin: false
+      })
       .state('wiki', {
         url: '/wiki',
         templateUrl: 'partials/under_construction.html',
