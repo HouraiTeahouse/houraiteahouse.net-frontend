@@ -49,14 +49,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     // State configuration
     $stateProvider
       .state('home', {
-        url: '/home',
+        url: '/',
         templateUrl: 'partials/home.html',
         requireLogin: false
       })
       .state('about', {
         url: '/about',
         templateUrl: 'partials/about.html',
-        requireLogin: true
+        requireLogin: false
       })
       .state('login', {
         url: '/login',
