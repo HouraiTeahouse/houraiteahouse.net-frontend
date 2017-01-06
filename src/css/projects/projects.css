@@ -1,0 +1,107 @@
+.heading {
+  margin-left: 15px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+hr {
+  border-top: 3px solid #ccc;
+}
+
+.card {
+  background-color: white;
+  padding: 1em;
+}
+
+.project-section {
+  margin-bottom: 32px;
+}
+
+.card.project-card {
+  padding: 0; /* Override base .card style */
+
+  position: relative;
+  border-radius: 10px;
+  height: 300px;
+  box-shadow: 1px 1px 21px -4px rgba(0, 0, 0, 0.75);
+  transition: box-shadow 0.1s;
+}
+
+.card.project-card:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 21px 0 rgba(0, 0, 0, 0.75);
+}
+
+.card.project-card .project-card-body {
+  padding: 15px;
+  margin: auto;
+}
+
+.card.project-card .project-card-body img {
+  margin-top: 15px;
+}
+
+.card.project-card .project-card-footer {
+  position: absolute;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  bottom: 0;
+  left: 0;
+  height: auto;
+  padding: 10px;
+  transition: height 0.5s;
+  width: 100%;
+  background-color: #444;
+  color: white;
+}
+
+.feature {
+  margin-top: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 1px 1px 21px -4px rgba(0, 0, 0, 0.75);
+  position: relative;
+  height: 500px;
+  background-size: cover;
+}
+
+.feature-info {
+  position: absolute;
+  bottom: 32px;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.nav-tabs {
+  background-color: white;
+}
+
+.nav-tabs li a {
+  border: none !important;
+  border-radius: 0 !important;
+  border-bottom: 5px solid transparent !important;
+}
+
+.nav-tabs li.active a {
+  border-bottom: 5px solid #883080 !important;
+}
+
+.card.feature-card {
+  padding: 2em;
+  box-shadow: 0 0 10px -1px rgba(0, 0, 0, 0.25);
+}
+
+.card.character-card {
+  box-shadow: 0 0 10px -1px rgba(0, 0, 0, 0.25);
+  margin-top: 1.5em;
+}
+
+.card.character-card img {
+  margin: auto;
+  max-height: 200px;
+}
+
+.card.character-card h3 {
+  margin: 1em;
+}
