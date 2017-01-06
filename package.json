@@ -16,6 +16,7 @@
     "watch-css-development": "postcss --config config/postcss.config.js --watch",
     "build-css-production": "cross-env NODE_ENV=production postcss --config config/postcss.config.js",
     "watch-css-production": "cross-env NODE_ENV=production postcss --config config/postcss.config.js --watch",
+    "lint-css": "stylelint \"src/**/*.css\"",
     "build-js-development": "webpack --config config/webpack.config.js",
     "watch-js-development": "webpack --config config/webpack.config.js --watch",
     "build-js-production": "cross-env NODE_ENV=production webpack --config config/webpack.config.js",
