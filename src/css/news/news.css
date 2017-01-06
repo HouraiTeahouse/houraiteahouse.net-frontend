@@ -1,28 +1,33 @@
 .post {
   background: #FFFFFF;
   border-radius: 4px;
-  box-shadow: 0px 1px 1px #AAAAAA;
+  box-shadow: 0 1px 1px #AAAAAA;
   padding: 1em;
   margin: 1em auto;
 }
+
 .post .post-header {
   margin: 0 0 1.8em;
 }
+
 .post .post-header .post-title {
   color: #222222;
   font-size: 1.8em;
   margin: 0 0 0 0.2em;
 }
+
 .post .post-header .post-avatar {
   border-radius: 50%;
   float: right;
   margin-left: 1em;
 }
+
 .post .post-header .post-meta {
   color: #999999;
   font-size: 90%;
   margin: 0;
 }
+
 .post .post-content {
   color: #344151;
   font-family: Helvetica;
@@ -32,9 +37,11 @@
   line-height: 1.5em;
   text-align: justify;
 }
+
 .post .post-footer {
   margin-top: 1.8em;
 }
+
 #commentForm input,
 #commentForm textarea,
 #commentEditForm textarea {
@@ -43,6 +50,7 @@
   width: 64em;
   height: 10em;
 }
+
 .news-comment {
   margin: 1em;
 }
@@ -50,13 +58,15 @@
 .media-wrap {
   text-align: center;
 }
+
 .media {
   display: inline-block;
 }
+
 .commentSeparator {
   width: 50%;
   height: 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #EEEEEE;
   padding-top: 5px;
   font-size: 0;
 }
