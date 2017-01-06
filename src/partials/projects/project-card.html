@@ -1,0 +1,8 @@
+<div class="card project-card" ui-sref="project.detail.about({ code: $ctrl.project.code })">
+    <div class="project-card-body">
+        <img class="img-responsive" ng-src="{{ ::$ctrl.project.iconImg }}" alt="{{ ::$ctrl.project.name }}" />
+    </div>
+    <div class="project-card-footer">
+        <p>{{ ::$ctrl.project.description }}</p>
+    </div>
+</div>

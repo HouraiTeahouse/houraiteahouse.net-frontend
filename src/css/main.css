@@ -1,4 +1,5 @@
 @import 'news/news.css';
+@import 'projects/projects.css';
 
 html,
 body {
@@ -82,6 +83,7 @@ a:hover {
 .content {
   padding-left: 10%;
   padding-right: 10%;
+  margin-bottom: 40px; /* Don't overlap the footer */
   overflow: visible;
 }
 
