@@ -202,10 +202,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
       // Prevent unauthorized requests to restricted pages & trigger login
       $httpProvider.interceptors.push(['$timeout', '$q', '$injector',
         function($timeout, $q, $injector) {
-          var $http, $state;
+          var $state;
 
           $timeout(function() {
-            $http = $injector.get('$http');
             $state = $injector.get('$state');
           });
 
@@ -225,7 +224,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 
 app.run(['$rootScope', '$state', 'AuthService',
   function ($rootScope, $state, AuthService) {
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
       AuthService.getUserStatus()
         .then(function() {
           if (toState.requireLogin) {
