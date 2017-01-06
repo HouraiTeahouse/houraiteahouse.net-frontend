@@ -1,25 +1,53 @@
-<div class="col-md-4">
+<div class="col-md-4 col-md-offset-4 text-center">
   <h1>Register</h1>
   <div data-ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
   <form class="form" data-ng-submit="register()">
-    <div class="form-group">
-      <label>Email</label>
-      <input type="text" class="form-control" name="email" data-ng-model="registerForm.email" required />
+    <div class="form-group row">
+      <label for="registerEmail" class="col-sm-2">Email</label>
+      <div class="col-sm-10">
+        <input id="registerEmail"
+          type="email"
+          class="form-control"
+          name="email"
+          data-ng-model="registerForm.email"
+          required />
+      </div>
     </div>
-    <div class="form-group">
-      <label>Username</label>
-      <input type="text" class="form-control" name="username" data-ng-model="registerForm.username" required />
+    <div class="form-group row">
+      <label for="registerUsername" class="col-sm-2">Username</label>
+      <div class="col-sm-10">
+        <input id="registerUsername"
+          type="text"
+          class="form-control"
+          name="username"
+          data-ng-model="registerForm.username"
+          required />
+      </div>
     </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control" name="password" data-ng-model="registerForm.password" required />
+    <div class="form-group row">
+      <label for="registerPassword" class="col-sm-2">Password</label>
+      <div class="col-sm-10">
+        <input id="registerUsername"
+          type="password"
+          class="form-control"
+          name="password"
+          data-ng-model="registerForm.password"
+          required />
+      </div>
     </div>
-    <div class="form-group">
-      <label>Reenter Password</label>
-      <input type="password" class="form-control" name="password" data-ng-model="registerForm.passwordReentry" required />
+    <div class="form-group row">
+      <label for="registerPasswordRentry" class="col-sm-2">Password</label>
+      <div class="col-sm-10">
+        <input id="registePasswordRentry"
+          type="passwordReentry"
+          class="form-control"
+          name="passwordReentry"
+          data-ng-model="registerForm.passwordReentry"
+          required />
+      </div>
     </div>
-    <div>
-      <button type="submit" class="btn btn-default" data-ng-disabled="disabled">Register</button>
+    <div class="form-group row">
+      <button type="submit" class="btn btn-default col-sm-12" data-ng-disabled="disabled">Register</button>
     </div>
   </form>
 </div>
