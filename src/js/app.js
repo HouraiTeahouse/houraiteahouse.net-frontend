@@ -63,10 +63,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
       });
 
     $translateProvider.useLocalStorage();
-
     $translateProvider.determinePreferredLanguage();
-
     $translateProvider.fallbackLanguage('en');
+    $translateProvider.useSanitizeValueStrategy('escape');
 
     $urlRouterProvider.otherwise('/404');
 
