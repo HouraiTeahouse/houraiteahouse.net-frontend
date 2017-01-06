@@ -1,1 +1,17 @@
-{}
+{
+  "LANGUAGE": {
+    "NAMES": {
+      "de": "German",
+      "en": "English",
+      "es": "Spanish",
+      "ja": "Japanese",
+      "fr": "French"
+    }
+  },
+  "NEWS": "News",
+  "PROJECTS": "Projects",
+  "ABOUT": "About",
+  "LOGIN": "Login",
+  "LOGOUT": "Logout",
+  "CONSTRUCTION": "Under Construction"
+}

@@ -44,15 +44,29 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse" data-uib-collapse="navCollapsed">
           <ul class="nav navbar-nav">
-            <li data-ng-class="{active: $state.includes('news')}"><a data-ui-sref="news.list">News</a></li>
-            <li data-ng-class="{active: $state.includes('projects')}"><a data-ui-sref="projects.list">Projects</a></li>
-            <li data-ng-show="canManagePermissions" data-ng-class="{active: $state.includes('admin.permissions')}"><a data-ui-sref="admin">Permissions</a></li>
-            <li data-ng-class="{active: $state.includes('about')}"><a data-ui-sref="about">About</a></li>
-            <li data-ng-class="{active: $state.includes('wiki')}"><a href="/wiki" target="_self">Wiki</a></li>
+            <li data-ng-class="{active: $state.includes('news')}">
+              <a data-ui-sref="news.list">{{"NEWS"|translate}}</a>
+            </li>
+            <li data-ng-class="{active: $state.includes('projects')}">
+              <a data-ui-sref="projects.list">{{"PROJECTS"|translate}}</a>
+            </li>
+            <li data-ng-show="canManagePermissions" data-ng-class="{active: $state.includes('admin.permissions')}">
+              <a data-ui-sref="admin">Permissions</a>
+            </li>
+            <li data-ng-class="{active: $state.includes('about')}">
+              <a data-ui-sref="about">{{"ABOUT"|translate}}</a>
+            </li>
+            <li data-ng-class="{active: $state.includes('wiki')}">
+              <a href="/wiki" target="_self">Wiki</a>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" data-ng-controller="LoginNavCtrl">
-            <li data-ng-show="!isLoggedIn"><a data-ui-sref="login">Login</a></li>
-            <li data-ng-show="isLoggedIn"><a data-ui-sref="logout">Logout</a></li>
+            <li data-ng-show="!isLoggedIn">
+              <a data-ui-sref="login">{{"LOGIN"|translate }} </a>
+            </li>
+            <li data-ng-show="isLoggedIn">
+              <a data-ui-sref="logout">{{"LOGOUT"|translate}} </a>
+            </li>
           </ul>
         </div>
       </nav>
