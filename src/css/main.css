@@ -7,12 +7,14 @@ body {
   margin: 0;
   padding: 0;
 }
+
 html body {
   font-family: Helvetica;
   background: #F2F2F2;
   font-size: 1.3em;
   overflow: hidden;
 }
+
 a,
 a:focus,
 a:hover {
@@ -40,12 +42,14 @@ a:hover {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
 .navbar-nav > .active {
   background-color: #995099;
   border-color: #883080;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
 .navbar-nav > .active > a,
 .navbar-nav > .active > a:visited {
   background-color: #995099;
@@ -53,21 +57,26 @@ a:hover {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
 .navbar-nav > li > a:active {
   background-color: #995099;
   border-color: #883080;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
 .navbar-header > a {
   color: #E0D050;
 }
+
 .navbar-header > a:hover {
   color: #FFEE66;
 }
+
 .navbar-nav > li > a {
   color: #DDDD55;
 }
+
 .navbar-nav > li > a:hover {
   background-color: #995099;
 }
@@ -99,6 +108,7 @@ a:hover {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
+
 #footer .text-muted {
   color: #EEEEEE;
 }
@@ -108,6 +118,7 @@ a:hover {
   color: #EEEEEE;
   border-color: #661060;
 }
+
 .btn-primary:hover {
   background-color: #662060;
   color: #FFFFFF;
@@ -115,26 +126,27 @@ a:hover {
 }
 
 label {
-    display: block;
-    padding-left: 15px;
-    text-indent: -15px;
-    padding-bottom: 15px;
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+  padding-bottom: 15px;
 }
+
 input {
-    width: 13px;
-    height: 13px;
-    padding: 0;
-    margin:0;
-    vertical-align: bottom;
-    position: relative;
-    top: -3px;
-    *overflow: hidden;
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin: 0;
+  vertical-align: bottom;
+  position: relative;
+  top: -3px;
+  *overflow: hidden;
 }
 
 .admin-actions {
   background: #EEEEEE;
   border-radius: 4px;
-  box-shadow: 0px 1px 1px #999999;
+  box-shadow: 0 1px 1px #999999;
   padding: 1em;
   margin: 1em auto;
 }
