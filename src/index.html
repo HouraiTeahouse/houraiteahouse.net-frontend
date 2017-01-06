@@ -43,7 +43,7 @@
               <li data-ng-class="{active: $state.includes('news')}"><a data-ui-sref="news.list">News</a></li>
               <li data-ng-show="canManagePermissions" data-ng-class="{active: $state.includes('admin.permissions')}"><a data-ui-sref="admin">Permissions</a></li>
               <li data-ng-class="{active: $state.includes('about')}"><a data-ui-sref="about">About</a></li>
-              <li><a href="/wiki">Wiki</a></li>
+              <li data-ng-class="{active: $state.includes('wiki')}"><a href="/wiki">Wiki</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" data-ng-controller="LoginNavCtrl">
               <li data-ng-show="!isLoggedIn"><a data-ui-sref="login">Login</a></li>
