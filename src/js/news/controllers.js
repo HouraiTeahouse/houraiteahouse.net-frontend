@@ -150,8 +150,10 @@ appControllers.controller('NewsCommentCtrl', ['$scope', '$sce', 'AuthService',
         .success(function (resp, status) {
           if (status == 200) {
             $scope.commentHtml="Comment deleted.";
-            comments = $scope.$parent.post.comments;
-            index = comments.indexOf($scope.com);
+
+            let comments = $scope.$parent.post.comments,
+                index = comments.indexOf($scope.com);
+
             comments.splice(index, 1);
             $scope.$parent.post.comments = comments;
           } else {
@@ -238,10 +240,10 @@ appControllers.controller('NewsTranslateCtrl', ['$scope', '$state', '$stateParam
           $scope.transLanguageName = lang.name;
         } else {
             $scope.error = true;
-            if(resp.message == null) {
+            if(data.message == null) {
               $scope.errorMessage = "Failed to fetch post in " + LanguageService.getLanguageName(lang) + ". Please try again."
             } else {
-              $scope.errorMessage = resp.message;
+              $scope.errorMessage = data.message;
             }
             $scope.disabled = false;
           }
@@ -253,10 +255,11 @@ appControllers.controller('NewsTranslateCtrl', ['$scope', '$state', '$stateParam
     }
     
     $scope.submitTranslation = function submitTranslation() {
-      transPost = {
+      let transPost = {
         "title": $scope.transTitle,
         "body": $scope.transBody
       };
+
       if($scope.transLanguage == LanguageService.getLanguage()) {
         $scope.error = true;
         $scope.errorMessage = "This page is for posting translations.  Use the post's Edit button to edit this post's content.";
@@ -267,10 +270,10 @@ appControllers.controller('NewsTranslateCtrl', ['$scope', '$state', '$stateParam
             $state.go('news.post', {'id': id})
           } else {
             $scope.error = true;
-            if(resp.message == null) {
+            if(data.message == null) {
               $scope.errorMessage = "Failed to post translation. Please try again."
             } else {
-              $scope.errorMessage = resp.message;
+              $scope.errorMessage = data.message;
             }
           }
         })

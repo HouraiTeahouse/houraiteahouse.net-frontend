@@ -1,3 +1,4 @@
+import angular from 'angular';
 import appDirectives from '../appDirectivesModule.js';
 
 appDirectives.component('projectCard', {
