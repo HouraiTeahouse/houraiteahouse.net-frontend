@@ -8,6 +8,17 @@
       "fr": "French"
     }
   },
+  "AUTH": {
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "REGISTER": "Register",
+    "PASSWORD_REENTRY": "Reenter Password",
+    "EMAIL": "Email",
+    "REMEMBER_ME": "Remember me",
+    "REGISTER_LINK": "No account? Register here!"
+  },
   "NEWS": "News",
   "PROJECTS": "Projects",
   "ABOUT": "About",
