@@ -1,0 +1,26 @@
+<div class="feature"
+    ng-if="::project"
+    style="background-image: {{ ::'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), ' + 'url(' + project.bannerImg + ')' }};">
+    <div class="feature-info">
+        <h1>{{ ::project.name }}</h1>
+        <p>{{ ::project.description }}</p>
+    </div>
+</div>
+<div class="feature-tabs">
+    <ul class="nav nav-tabs nav-justified">
+        <li ng-if="::project.pages.indexOf('about') > -1" ui-sref-active="active" ui-sref="project.detail.about">
+            <a>About</a>
+        </li>
+        <li ng-if="::project.pages.indexOf('characters') > -1" ui-sref-active="active" ui-sref="project.detail.characters">
+            <a>Characters</a>
+        </li>
+        <li ng-if="::project.pages.indexOf('downloads') > -1" ui-sref-active="active" ui-sref="project.detail.downloads">
+            <a>Downloads</a>
+        </li>
+    </ul>
+</div>
+<div class="card feature-card">
+    <div ui-view="about"></div>
+    <div ui-view="characters"></div>
+    <div ui-view="downloads"></div>
+</div>

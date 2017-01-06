@@ -14,6 +14,9 @@ import './common/services.js';
 import './auth/controllers.js';
 import './auth/services.js';
 import './news/controllers.js';
+import './projects/controllers.js';
+import './projects/services.js';
+import './projects/directives.js';
 
 // Main module declaration
 var app = angular.module('houraiteahouse', [
@@ -124,6 +127,61 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         controller: 'NewsTranslateCtrl',
         requireLogin: true,
         permission: 'translate'
+      })
+      .state('projects', {
+        abstract: true,
+        url: '/projects',
+        template: '<ui-view />',
+      })
+      .state('projects.list', {
+        url: '',
+        templateUrl: 'partials/projects/projects-list.html',
+        controller: 'ProjectsListCtrl',
+        requireLogin: false
+      })
+      .state('project', {
+        abstract: true,
+        url: '/project',
+        template: '<ui-view />'
+      })
+      .state('project.detail', {
+        url: '/{code}',
+        templateUrl: 'partials/projects/project.html',
+        controller: 'ProjectDetailCtrl',
+        requireLogin: false
+      })
+      .state('project.detail.about', {
+        url: '/about',
+        views: {
+          about: {
+            templateUrl: function (params) {
+              return 'partials/projects/' + params.code + '/about.html';
+            }
+          }
+        },
+        requireLogin: false
+      })
+      .state('project.detail.characters', {
+        url: '/characters',
+        views: {
+          characters: {
+            templateUrl: function (params) {
+              return 'partials/projects/' + params.code + '/characters.html';
+            }
+          }
+        },
+        requireLogin: false
+      })
+      .state('project.detail.downloads', {
+        url: '/downloads',
+        views: {
+          downloads: {
+            templateUrl: function (params) {
+              return 'partials/projects/' + params.code + '/downloads.html';
+            }
+          }
+        },
+        requireLogin: false
       })
       .state('404', {
         url: '/404',
