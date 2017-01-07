@@ -35,6 +35,10 @@ a:hover {
   height: 50px;
 }
 
+.navbar {
+  z-index: 1; /* Overlap the main content */
+}
+
 .navbar,
 .navbar-nav > li > a:visited {
   background-color: #883080;
@@ -69,6 +73,10 @@ a:hover {
   color: #E0D050;
 }
 
+.navbar-header > button.navbar-toggle > span.icon-bar {
+  background-color: #E0D050;
+}
+
 .navbar-header > a:hover {
   color: #FFEE66;
 }
@@ -83,6 +91,7 @@ a:hover {
 
 .scrollwrap {
   position: absolute;
+  z-index: 0;
   top: 52px;
   bottom: 40px;
   width: 100%;
