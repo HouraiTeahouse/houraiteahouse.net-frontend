@@ -68,12 +68,12 @@
 
     <div id="footer">
       <div class="text-left">
-        <div class="btn-group dropup" data-ng-controller="LanguageCtrl">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="btn-group dropup" uib-dropdown data-ng-controller="LanguageCtrl">
+          <button type="button" class="btn btn-default" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">
             {{currentLanguage}}
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" uib-dropdown-menu>
             <li data-ng-repeat="language in languages">
               <a data-ng-click="changeLanguage(language)">
                 {{language.name}}
