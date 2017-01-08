@@ -18,12 +18,12 @@
     <div class="col-sm-6">
       <div class="form-group">
         <label>Translate To:</label>
-        <div class="btn-group dropdown">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="btn-group" uib-dropdwon>
+          <button type="button" class="btn btn-default" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">
             {{transLanguageName}}
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" uib-dropdown-menu>
             <li data-ng-repeat="lang in languages">
               <a data-ng-click="loadLanguage(lang)">
                 {{lang.name}}
