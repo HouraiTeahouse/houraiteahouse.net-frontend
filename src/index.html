@@ -64,14 +64,15 @@
 
   <div id="footer">
     <div class="clearfix">
-      <div class="pull-left">
-        <div class="btn-group dropup" uib-dropdown data-ng-controller="LanguageCtrl">
-          <button type="button" class="btn btn-default" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">
-            {{currentLanguage}}
+      <div class="pull-left text-muted" data-ng-controller="LanguageCtrl">
+        <div uib-dropdown class="dropup">
+          <span>Language: </span>
+          <div uib-dropdown-toggle style="display: inline; border-bottom: 1px solid white; cursor: pointer;">
+            <span ng-bind="currentLanguage">...</span>
             <span class="caret"></span>
-          </button>
+          </div>
           <ul class="dropdown-menu" uib-dropdown-menu>
-            <li data-ng-repeat="language in languages">
+            <li data-ng-repeat="language in languages | filter : { name: '!' + currentLanguage }">
               <a data-ng-click="changeLanguage(language)">
                 {{language.name}}
               </a>
@@ -80,7 +81,7 @@
         </div>
       </div>
       <div class="pull-right text-muted">
-        &copy; Hourai Teahouse 2016
+        <span>&copy; Hourai Teahouse 2016</span>
       </div>
     </div>
   </body>
