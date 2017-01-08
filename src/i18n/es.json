@@ -8,7 +8,14 @@
     "PASSWORD_REENTRY": "Reenter Password",
     "EMAIL": "Email",
     "REMEMBER_ME": "Remember me",
-    "REGISTER_LINK": "No account? Register here!"
+    "REGISTER_LINK": "No account? Register here!",
+    "PERMISSIONS": {
+      "PERMISSIONS": "Permissions",
+      "MANAGE": "Manage user permissions",
+      "LOADED": "{{username}} has the following permissions:",
+      "GET": "Get User Permissions",
+      "UPDATE": "Update User Permissions"
+    }
   },
   "NEWS": {
     "NEWS": "News",
@@ -33,7 +40,6 @@
   },
   "ABOUT": "About",
   "CONSTRUCTION": "Under Construction",
-  "PERMISSIONS": "Permissions",
   "WIKI": "Wiki",
   "LANGUAGE": "Langauge"
 }
