@@ -1,12 +1,12 @@
 <div class="col-md-4 col-md-offset-4">
-  <h1 class="text-center">
-    {{ "AUTH.REGISTER" | translate }}
+  <h1 class="text-center" translate>
+    AUTH.REGISTER
   </h1>
   <div data-ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
   <form class="form" data-ng-submit="register()">
     <div class="form-group row">
-      <label for="registerEmail" class="col-sm-2">
-        {{ "AUTH.EMAIL" | translate }}
+      <label for="registerEmail" class="col-sm-2" translate>
+        AUTH.EMAIL
       </label>
       <div class="col-sm-10">
         <input id="registerEmail"
@@ -18,8 +18,8 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="registerUsername" class="col-sm-2">
-        {{ "AUTH.USERNAME" | translate }}
+      <label for="registerUsername" class="col-sm-2" translate>
+        AUTH.USERNAME
       </label>
       <div class="col-sm-10">
         <input id="registerUsername"
@@ -31,8 +31,8 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="registerPassword" class="col-sm-2">
-        {{ "AUTH.PASSWORD" | translate }}
+      <label for="registerPassword" class="col-sm-2" translate>
+        AUTH.PASSWORD
       </label>
       <div class="col-sm-10">
         <input id="registerPassword"
@@ -44,8 +44,8 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="registerPasswordRentry" class="col-sm-2">
-        {{ "AUTH.PASSWORD_REENTRY" | translate }}
+      <label for="registerPasswordRentry" class="col-sm-2" translate>
+        AUTH.PASSWORD_REENTRY
       </label>
       <div class="col-sm-10">
         <input id="registerPasswordRentry"
@@ -57,8 +57,9 @@
       </div>
     </div>
     <div class="form-group row">
-      <button type="submit" class="btn btn-default col-sm-12" data-ng-disabled="disabled">
-        {{ "AUTH.REGISTER" | translate }}
+      <button type="submit" class="btn btn-default col-sm-12"
+                            data-ng-disabled="disabled" translate>
+        AUTH.REGISTER
       </button>
     </div>
   </form>

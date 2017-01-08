@@ -1,12 +1,10 @@
 <div class="col-md-4 col-md-offset-4">
-  <h1 class="text-center">
-    {{ "AUTH.LOGIN" | translate }}
-  </h1>
+  <h1 class="text-center" translate> AUTH.LOGIN </h1>
   <div data-ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
   <form class="form" data-ng-submit="login()">
     <div class="form-group row">
-      <label for="loginUsername" class="col-sm-2 col-form-label">
-        {{ "AUTH.USERNAME" | translate }}
+      <label for="loginUsername" class="col-sm-2 col-form-label" translate>
+        AUTH.USERNAME
       </label>
       <div class="col-sm-10">
         <input id="loginUsername"
@@ -19,8 +17,8 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="loginPassword" class="col-sm-2 col-form-label">
-        {{ "AUTH.PASSWORD" | translate }}
+      <label for="loginPassword" class="col-sm-2 col-form-label" translate>
+        AUTH.PASSWORD
       </label>
       <div class="col-sm-10">
         <input id="loginPassword"
@@ -39,13 +37,14 @@
           {{ "AUTH.REMEMBER_ME" | translate }}
         </label>
       </div>
-      <button type="submit" class="btn btn-default col-sm-8" data-ng-disabled="disabled">
-        {{ "AUTH.LOGIN" | translate }}
+      <button type="submit" class="btn btn-default col-sm-8"
+                            data-ng-disabled="disabled" translate>
+        AUTH.LOGIN
       </button>
     </div>
     <div class="form-group row">
-      <a data-ui-sref="register">
-        {{ "AUTH.REGISTER_LINK" | translate }}
+      <a data-ui-sref="register" translate>
+        AUTH.REGISTER_LINK
       </a>
     </div>
   </form>

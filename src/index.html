@@ -45,16 +45,16 @@
         <div id="navbar" class="collapse navbar-collapse" data-uib-collapse="navCollapsed">
           <ul class="nav navbar-nav">
             <li data-ng-class="{active: $state.includes('news')}">
-              <a data-ui-sref="news.list">{{"NEWS"|translate}}</a>
+              <a data-ui-sref="news.list" translate>NEWS</a>
             </li>
             <li data-ng-class="{active: $state.includes('projects')}">
-              <a data-ui-sref="projects.list">{{"PROJECTS"|translate}}</a>
+              <a data-ui-sref="projects.list" translate>PROJECTS</a>
             </li>
             <li data-ng-show="canManagePermissions" data-ng-class="{active: $state.includes('admin.permissions')}">
               <a data-ui-sref="admin">Permissions</a>
             </li>
             <li data-ng-class="{active: $state.includes('about')}">
-              <a data-ui-sref="about">{{"ABOUT"|translate}}</a>
+              <a data-ui-sref="about" translate>ABOUT</a>
             </li>
             <li data-ng-class="{active: $state.includes('wiki')}">
               <a href="/wiki" target="_self">Wiki</a>
@@ -62,10 +62,10 @@
           </ul>
           <ul class="nav navbar-nav navbar-right" data-ng-controller="LoginNavCtrl">
             <li data-ng-show="!isLoggedIn">
-              <a data-ui-sref="login">{{"LOGIN"|translate }} </a>
+              <a data-ui-sref="login" translate>AUTH.LOGIN</a>
             </li>
             <li data-ng-show="isLoggedIn">
-              <a data-ui-sref="logout">{{"LOGOUT"|translate}} </a>
+              <a data-ui-sref="logout" translate>AUTH.LOGOUT</a>
             </li>
           </ul>
         </div>
