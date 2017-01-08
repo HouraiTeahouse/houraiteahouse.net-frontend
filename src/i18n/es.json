@@ -10,7 +10,13 @@
     "REMEMBER_ME": "Remember me",
     "REGISTER_LINK": "No account? Register here!"
   },
-  "NEWS": "News",
+  "NEWS": {
+    "NEWS": "News",
+    "POSTED_BY": "Posted by {{post.author}} on {{post.created | date:'MMM d, y'}}",
+    "READ_MORE": "Read more",
+    "FAILED": "Failed to load posts",
+    "CREATE": "Create post"
+  },
   "PROJECTS": {
     "PROJECTS": "Projects",
     "DOWNLOADS": "Downloads",
