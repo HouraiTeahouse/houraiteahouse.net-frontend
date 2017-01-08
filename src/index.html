@@ -51,13 +51,13 @@
               <a data-ui-sref="projects.list" translate>PROJECTS</a>
             </li>
             <li data-ng-show="canManagePermissions" data-ng-class="{active: $state.includes('admin.permissions')}">
-              <a data-ui-sref="admin">Permissions</a>
+              <a data-ui-sref="admin" translate>PERMISSIONS</a>
             </li>
             <li data-ng-class="{active: $state.includes('about')}">
               <a data-ui-sref="about" translate>ABOUT</a>
             </li>
             <li data-ng-class="{active: $state.includes('wiki')}">
-              <a href="/wiki" target="_self">Wiki</a>
+              <a href="/wiki" target="_self" translate>WIKI</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" data-ng-controller="LoginNavCtrl">
@@ -80,7 +80,7 @@
     <div class="clearfix">
       <div class="pull-left text-muted" data-ng-controller="LanguageCtrl">
         <div uib-dropdown class="dropup">
-          <span>Language: </span>
+          <span>{{"LANGUAGE"|translate}}: </span>
           <div uib-dropdown-toggle class="language-selector">
             <span ng-bind="currentLanguage">...</span>
             <span class="caret"></span>

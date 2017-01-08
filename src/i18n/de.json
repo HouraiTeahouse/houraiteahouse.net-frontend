@@ -32,5 +32,8 @@
     }
   },
   "ABOUT": "About",
-  "CONSTRUCTION": "Under Construction"
+  "CONSTRUCTION": "Under Construction",
+  "PERMISSIONS": "Permissions",
+  "WIKI": "Wiki",
+  "LANGUAGE": "Langauge"
 }
