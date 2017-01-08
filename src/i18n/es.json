@@ -23,15 +23,17 @@
     "LAST_EDITED": "Last edited {{post.lastEdit | date:'MMM d, y'}}",
     "READ_MORE": "Read more",
     "FAILED": "Failed to load posts",
-    "CREATE": "Create post",
+    "CREATE": "Create Post",
     "POSTS": {
       "IMAGE": "Image Link (Optional)",
       "BODY": "Post Body",
       "TITLE": "Title",
+      "TAGS": "Tags (comma-separated)",
       "ACTIONS": {
         "AVAILABLE": "Available Post Actions",
         "EDIT": "Edit Post",
-        "TRANSLATE": "Translate Post"
+        "TRANSLATE": "Translate Post",
+        "CREATE": "Create New News Post"
       }
     },
     "COMMENTS": {
