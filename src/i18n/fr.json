@@ -1,13 +1,4 @@
 {
-  "LANGUAGE": {
-    "NAMES": {
-      "de": "German",
-      "en": "English",
-      "es": "Spanish",
-      "ja": "Japanese",
-      "fr": "French"
-    }
-  },
   "AUTH": {
     "LOGIN": "Login",
     "LOGOUT": "Logout",
@@ -19,10 +10,8 @@
     "REMEMBER_ME": "Remember me",
     "REGISTER_LINK": "No account? Register here!"
   },
-  "NEWS": "News",
-  "PROJECTS": "Projects",
-  "ABOUT": "About",
-  "LOGIN": "Login",
-  "LOGOUT": "Logout",
+  "NEWS": "Test News",
+  "PROJECTS": "Test Projects",
+  "ABOUT": "Test About",
   "CONSTRUCTION": "Under Construction"
 }

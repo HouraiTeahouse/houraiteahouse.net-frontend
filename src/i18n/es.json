@@ -1,13 +1,4 @@
 {
-  "LANGUAGE": {
-    "NAMES": {
-      "de": "German",
-      "en": "English",
-      "es": "Spanish",
-      "ja": "Japanese",
-      "fr": "French"
-    }
-  },
   "AUTH": {
     "LOGIN": "Login",
     "LOGOUT": "Logout",
@@ -22,7 +13,5 @@
   "NEWS": "News",
   "PROJECTS": "Projects",
   "ABOUT": "About",
-  "LOGIN": "Login",
-  "LOGOUT": "Logout",
   "CONSTRUCTION": "Under Construction"
 }

@@ -25,14 +25,25 @@ appControllers.controller('HeaderCtrl', ['$rootScope', '$scope', '$state', 'Auth
     });
 }]);
 
-appControllers.controller('LanguageCtrl', ['$scope', '$state', 'LanguageService',
-  function($scope, $state, LanguageService) {
+appControllers.controller('LanguageCtrl', ['$rootScope', '$scope', '$state', 'LanguageService',
+  function($rootScope, $scope, $state, LanguageService) {
     $scope.languages = LanguageService.getSupportedLanguages();
-    $scope.currentLanguage = LanguageService.getLanguageName(LanguageService.getLanguage());
+
+    $rootScope.$on('$translateChangeEnd', function(evt) {
+      console.log("translated");
+      $scope.updateLanguage(LanguageService.getLanguage());
+    });
+
+    $scope.updateLanguage = function(code) {
+      $scope.currentLanguage = LanguageService.getLanguageName(code);
+    }
 
     $scope.changeLanguage = function(language) {
       LanguageService.setLanguage(language.code);
-      $scope.currentLanguage = language.name;
+      $scope.updateLanguage(language.code);
       $state.reload();
     }
+
+    // Update for initialization
+    $scope.updateLanguage(LanguageService.getDefaultLanguage());
 }]);

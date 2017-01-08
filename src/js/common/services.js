@@ -1,8 +1,8 @@
 import { options } from '../app.js';
 import appServices from '../appServicesModule.js';
 
-appServices.factory('LanguageService', ['$cookies',
-  function($cookies) {
+appServices.factory('LanguageService', ['$translate',
+  function($translate) {
     // Yes, this needs to be kept in sync manually versus the backend.
     // However, this way we do not need to request the supported language list from the backend.
     // As for why it's in this format, it's ngRepeat friendly
@@ -12,6 +12,18 @@ appServices.factory('LanguageService', ['$cookies',
         "name": "English"
       },
       {
+        "code": "es",
+        "name": "Español"
+      },
+      {
+        "code": "fr",
+        "name": "Français"
+      },
+      {
+        "code": "de",
+        "name": "Deutsch"
+      },
+      {
         "code": "ja",
         "name": "日本語"
       }
@@ -19,6 +31,10 @@ appServices.factory('LanguageService', ['$cookies',
 
     function getSupportedLanguages() {
       return languages;
+    }
+
+    function getDefaultLanguage() {
+      return 'en';
     }
 
     function getLanguageName(languageCode) {
@@ -32,26 +48,17 @@ appServices.factory('LanguageService', ['$cookies',
     }
 
     function getLanguage() {
-      var lang = $cookies.get('htlanguage');
-      if(lang == null) {
-        setLanguage('en');
-        return 'en';
-      }
-      return lang;
+      return $translate.use();
     }
 
     function setLanguage(languageCode) {
-      languages.forEach(function(language, index, arr) {
-        if(languageCode == language.code) {
-          $cookies.put('htlanguage', languageCode);
-        }
-      });
-      // If it's not recognized, don't update the cookie
+      return $translate.use(languageCode);
     }
 
     return {
       getSupportedLanguages: getSupportedLanguages,
       getLanguageName: getLanguageName,
+      getDefaultLanguage: getDefaultLanguage,
       getLanguage: getLanguage,
       setLanguage: setLanguage
     }
