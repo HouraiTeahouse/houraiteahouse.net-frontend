@@ -20,9 +20,29 @@
   "NEWS": {
     "NEWS": "News",
     "POSTED_BY": "Posted by {{post.author}} on {{post.created | date:'MMM d, y'}}",
+    "LAST_EDITED": "Last edited {{post.lastEdit | date:'MMM d, y'}}",
     "READ_MORE": "Read more",
     "FAILED": "Failed to load posts",
-    "CREATE": "Create post"
+    "CREATE": "Create post",
+    "POSTS": {
+      "IMAGE": "Image Link (Optional)",
+      "BODY": "Post Body",
+      "TITLE": "Title",
+      "ACTIONS": {
+        "AVAILABLE": "Available Post Actions",
+        "EDIT": "Edit Post",
+        "TRANSLATE": "Translate Post"
+      }
+    },
+    "COMMENTS": {
+      "COMMENTS": "Comments",
+      "ACTIONS": "Comment Actions",
+      "ADD": "Add comment",
+      "DELETE": {
+        "DELETE": "Delete",
+        "CONFIRMATION": "Are you sure?"
+      }
+    }
   },
   "PROJECTS": {
     "PROJECTS": "Projects",
@@ -41,5 +61,10 @@
   "ABOUT": "About",
   "CONSTRUCTION": "Under Construction",
   "WIKI": "Wiki",
-  "LANGUAGE": "Langauge"
+  "LANGUAGE": "Langauge",
+  "SUBMIT": "Submit",
+  "YES": "Yes",
+  "NO": "NO",
+  "OK": "OK",
+  "CANCEL": "Cancel"
 }
