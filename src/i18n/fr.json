@@ -10,8 +10,21 @@
     "REMEMBER_ME": "Remember me",
     "REGISTER_LINK": "No account? Register here!"
   },
-  "NEWS": "Test News",
-  "PROJECTS": "Test Projects",
-  "ABOUT": "Test About",
+  "NEWS": "News",
+  "PROJECTS": {
+    "PROJECTS": "Projects",
+    "DOWNLOADS": "Downloads",
+    "CHARACTERS": {
+      "CHARACTERS": "Characters",
+      "MARISA": "Marisa Kirisame",
+      "REIMU": "Reimu Hakurei",
+      "YOUMU": "Youmu Konpaku",
+      "SAKUYA": "Sakuya Izayoi",
+      "YUUKA": "Yuuka Kazami",
+      "YUUGI": "Yuugi Hoshiguma",
+      "MURASA": "Minamitsu Murasa"
+    }
+  },
+  "ABOUT": "About",
   "CONSTRUCTION": "Under Construction"
 }

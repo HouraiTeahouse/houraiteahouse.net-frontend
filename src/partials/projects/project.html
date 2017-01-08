@@ -9,13 +9,13 @@
 <div class="feature-tabs">
     <ul class="nav nav-tabs nav-justified">
         <li ng-if="::project.pages.indexOf('about') > -1" ui-sref-active="active" ui-sref="project.detail.about">
-            <a>About</a>
+          <a>{{ "ABOUT" | translate }}</a>
         </li>
         <li ng-if="::project.pages.indexOf('characters') > -1" ui-sref-active="active" ui-sref="project.detail.characters">
-            <a>Characters</a>
+          <a>{{ "PROJECTS.CHARACTERS" | translate }}</a>
         </li>
         <li ng-if="::project.pages.indexOf('downloads') > -1" ui-sref-active="active" ui-sref="project.detail.downloads">
-            <a>Downloads</a>
+          <a>{{ "PROJECTS.DOWNLOADS" | translate }}</a>
         </li>
     </ul>
 </div>
