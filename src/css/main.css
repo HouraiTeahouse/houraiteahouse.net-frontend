@@ -105,6 +105,12 @@ a:hover {
   border-top-right-radius: 4px;
 }
 
+#footer .language-selector {
+  display: inline;
+  border-bottom: 1px solid white;
+  cursor: pointer;
+}
+
 #footer ul.dropdown-menu {
   left: -10px; /** Move back to compensate for left padding of footer */
   background-color: #664466;
