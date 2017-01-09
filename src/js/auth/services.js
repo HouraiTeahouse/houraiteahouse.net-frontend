@@ -6,19 +6,25 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
     var permissions = null; // We cache this for performance.  The backend will still do a final check that can override this.
 
     function getSessionId() {
-      return $cookies.get('htsessionid');
+      return $cookies.get('htlogin').split("#")[3];
     }
 
-    function setSessionId(sessionId, expiration) {
+    function getWikiId(username) {
+      //TODO(james7132): Implement
+      return username;
+    }
+
+    function setCookie(sessionId, username, email, expiration) {
       let params = {};
-      if(expiration != null){
+      if(expiration != null) {
         params['expires'] = new Date(expiration);
       }
-      $cookies.put('htsessionid', sessionId, params);
+      let wiki_id = getWikiId(username);
+      $cookies.put('htlogin', wiki_id + "#" + email + "#" + username + "#" session_id, params);
     }
 
-    function clearSessionId(){
-      $cookies.remove('htsessionid');
+    function clearSessionId() {
+      $cookies.remove('htlogin');
     }
 
     function isLoggedIn() {
@@ -84,7 +90,10 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
       HttpService.post('auth/login', null, {username: username, password: password, remember_me: remember_me})
         .success(function(data, status) {
           if(status === 200 && data.session_id != null) {
-            setSessionId(data.session_id, data.expiration);
+            setSessionId(data.session_id,
+                data.username,
+                data.email,
+                data.expiration);
             permissions = data.permissions;
             $rootScope.user = true;
             deferred.resolve();
