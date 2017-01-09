@@ -1,26 +1,24 @@
 <section class="post">
-  <h1 translate>NEWS.POSTS.ACTIONS.CREATE</h1>
+  <h1 translate="NEWS.POSTS.ACTIONS.CREATE">...</h1>
   <div data-ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
   <form class="form" data-ng-submit="create()">
     <div class="form-group">
-      <label translate>NEWS.POSTS.TITLE</label>
+      <label translate="NEWS.POSTS.TITLE">...</label>
       <input type="text" class="form-control" name="title" data-ng-model="newsCreate.title" required />
     </div>
     <div class="form-group">
-      <label translate>NEW.POSTS.TAGS</label>
+      <label translate="NEW.POSTS.TAGS">...</label>
       <input type="text" class="form-control" name="tags" data-ng-model="newsCreate.tags" />
     </div>
     <div class="form-group">
-      <label translate>NEWS.POSTS.IMAGE</label>
+      <label translate="NEWS.POSTS.IMAGE">...</label>
       <input type="text" class="form-control" name="media" data-ng-model="newsCreate.media" />
     </div>
     <div class="form-group">
-      <label for="textareaContent" translate>NEWS.POSTS.BODY</label>
+      <label for="textareaContent" translate="NEWS.POSTS.BODY">...</label>
       <textarea class="form-control" rows="18" data-ng-model="newsCreate.body"></textarea>
     </div>
     <button type="submit" class="btn btn-success" data-ng-disabled="disabled"
-                                                  translate>
-      SUBMIT
-    </button>
+                                                  translate="SUBMIT">...</button>
   </form>
 </section>

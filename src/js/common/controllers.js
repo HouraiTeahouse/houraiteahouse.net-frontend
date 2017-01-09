@@ -30,7 +30,6 @@ appControllers.controller('LanguageCtrl', ['$rootScope', '$scope', '$state', 'La
     $scope.languages = LanguageService.getSupportedLanguages();
 
     $rootScope.$on('$translateChangeEnd', function(evt) {
-      console.log("translated");
       $scope.updateLanguage(LanguageService.getLanguage());
     });
 

@@ -34,7 +34,7 @@
     <div id="topnav">
       <nav class="navbar" role="navigation" data-ng-controller="HeaderCtrl">
         <div class="navbar-header">
-          <a class="navbar-brand" data-ui-sref="home">Hourai Teahouse</a>
+          <a class="navbar-brand" data-ui-sref="home" translate="WEBSITE">...</a>
           <button type="button" class="navbar-toggle" data-ng-click="toggleNav()">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -45,27 +45,27 @@
         <div id="navbar" class="collapse navbar-collapse" data-uib-collapse="navCollapsed">
           <ul class="nav navbar-nav">
             <li data-ng-class="{active: $state.includes('news')}">
-              <a data-ui-sref="news.list" translate>NEWS</a>
+              <a data-ui-sref="news.list" translate="NEWS">...</a>
             </li>
             <li data-ng-class="{active: $state.includes('projects')}">
-              <a data-ui-sref="projects.list" translate>PROJECTS</a>
+              <a data-ui-sref="projects.list" translate="PROJECTS">...</a>
             </li>
             <li data-ng-show="canManagePermissions" data-ng-class="{active: $state.includes('admin.permissions')}">
-              <a data-ui-sref="admin" translate>PERMISSIONS</a>
+              <a data-ui-sref="admin" translate="PERMISSIONS">...</a>
             </li>
             <li data-ng-class="{active: $state.includes('about')}">
-              <a data-ui-sref="about" translate>ABOUT</a>
+              <a data-ui-sref="about" translate="ABOUT">...</a>
             </li>
             <li data-ng-class="{active: $state.includes('wiki')}">
-              <a href="/wiki" target="_self" translate>WIKI</a>
+              <a href="/wiki" target="_self" translate="WIKI">...</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" data-ng-controller="LoginNavCtrl">
             <li data-ng-show="!isLoggedIn">
-              <a data-ui-sref="login" translate>AUTH.LOGIN</a>
+              <a data-ui-sref="login" translate="AUTH.LOGIN">...</a>
             </li>
             <li data-ng-show="isLoggedIn">
-              <a data-ui-sref="logout" translate>AUTH.LOGOUT</a>
+              <a data-ui-sref="logout" translate="AUTH.LOGOUT">...</a>
             </li>
           </ul>
         </div>
@@ -95,7 +95,7 @@
         </div>
       </div>
       <div class="pull-right text-muted">
-        <span>&copy; Hourai Teahouse 2016</span>
+        <span>&copy; Hourai Teahouse 2015-2017</span>
       </div>
     </div>
   </body>

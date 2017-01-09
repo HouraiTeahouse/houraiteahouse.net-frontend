@@ -1,4 +1,5 @@
 {
+  "WEBSITE": "Hourai Teahouse",
   "AUTH": {
     "LOGIN": "Login",
     "LOGOUT": "Logout",
@@ -53,6 +54,7 @@
       "CHARACTERS": "Characters",
       "MARISA": "Marisa Kirisame",
       "REIMU": "Reimu Hakurei",
+      "WRIGGLE": "Wriggle Nightbug",
       "YOUMU": "Youmu Konpaku",
       "SAKUYA": "Sakuya Izayoi",
       "YUUKA": "Yuuka Kazami",
@@ -63,7 +65,7 @@
   "ABOUT": "About",
   "CONSTRUCTION": "Under Construction",
   "WIKI": "Wiki",
-  "LANGUAGE": "Langauge",
+  "LANGUAGE": "Language",
   "SUBMIT": "Submit",
   "YES": "Yes",
   "NO": "NO",
