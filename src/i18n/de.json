@@ -1,61 +1,61 @@
 {
   "WEBSITE": "Hourai Teahouse",
   "AUTH": {
-    "LOGIN": "Login",
-    "LOGOUT": "Logout",
-    "USERNAME": "Username",
-    "PASSWORD": "Password",
-    "REGISTER": "Register",
-    "PASSWORD_REENTRY": "Reenter Password",
-    "EMAIL": "Email",
-    "REMEMBER_ME": "Remember me",
-    "REGISTER_LINK": "No account? Register here!",
+    "LOGIN": "Anmelden",
+    "LOGOUT": "Abmelden",
+    "USERNAME": "Benutzername",
+    "PASSWORD": "Passwort",
+    "REGISTER": "Registrieren",
+    "PASSWORD_REENTRY": "Passwort wiederholen",
+    "EMAIL": "E-Mail",
+    "REMEMBER_ME": "Merken",
+    "REGISTER_LINK": "Kein Account? Hier registrieren!",
     "PERMISSIONS": {
-      "PERMISSIONS": "Permissions",
-      "MANAGE": "Manage user permissions",
-      "LOADED": "{{username}} has the following permissions:",
-      "GET": "Get User Permissions",
-      "UPDATE": "Update User Permissions"
+      "PERMISSIONS": "Berechtigungen",
+      "MANAGE": "Nutzerberechtigungen bearbeiten",
+      "LOADED": "{{username}} hat die folgenden Berechtigungen:",
+      "GET": "Bekomme Nutzerberechtigungen",
+      "UPDATE": "Aktualisiere Nutzerberechtigungen"
     }
   },
   "NEWS": {
-    "NEWS": "News",
-    "POSTED_BY": "Posted by {{post.author}} on {{post.created | date:'MMM d, y'}}",
-    "LAST_EDITED": "Last edited {{post.lastEdit | date:'MMM d, y'}}",
-    "READ_MORE": "Read more",
-    "FAILED": "Failed to load posts",
-    "CREATE": "Create Post",
+    "NEWS": "Neuigkeiten",
+    "POSTED_BY": "Gepostet von {{post.author}} am {{post.created | date:'MMM d, y'}}",
+    "LAST_EDITED": "Zuletzt bearbeitet am {{post.lastEdit | date:'MMM d, y'}}",
+    "READ_MORE": "Weiterlesen",
+    "FAILED": "Posts konnten nicht geladen werden",
+    "CREATE": "Post erstellen",
     "POSTS": {
-      "IMAGE": "Image Link (Optional)",
-      "BODY": "Post Body",
-      "TITLE": "Title",
-      "TAGS": "Tags (comma-separated)",
+      "IMAGE": "Bild-Link (Optional)",
+      "BODY": "Textkörper",
+      "TITLE": "Titel",
+      "TAGS": "Tags (Kommagetrennt)",
       "ACTIONS": {
-        "AVAILABLE": "Available Post Actions",
-        "EDIT": "Edit Post",
-        "TRANSLATE": "Translate Post",
-        "CREATE": "Create New News Post"
+        "AVAILABLE": "Verfügbare Postoptionen",
+        "EDIT": "Post bearbeiten",
+        "TRANSLATE": "Post übersetzen",
+        "CREATE": "Neuigkeitenpost erstellen"
       }
     },
     "COMMENTS": {
-      "COMMENTS": "Comments",
-      "ACTIONS": "Comment Actions",
-      "ADD": "Add comment",
+      "COMMENTS": "Kommentare",
+      "ACTIONS": "Kommentaroptionen",
+      "ADD": "Kommentieren",
       "DELETE": {
-        "DELETE": "Delete",
-        "CONFIRMATION": "Are you sure?"
+        "DELETE": "Löschen",
+        "CONFIRMATION": "Bist du sicher?"
       }
     }
   },
   "PROJECTS": {
-    "PROJECTS": "Projects",
-    "IN_DEVELOPMENT": "In Development",
-    "COMPLETED": "Completed",
-    "NO_COMPLETED_MESSAGE": "There are no completed projects as of now.",
-    "NO_COMPLETED_CALL_TO_ACTION": "Help Us Out!",
+    "PROJECTS": "Projekte",
+    "IN_DEVELOPMENT": "In der Entwicklung",
+    "COMPLETED": "Abgeschlossen",
+    "NO_COMPLETED_MESSAGE": "Es gibt noch keine abgeschlossenen Projekte.",
+    "NO_COMPLETED_CALL_TO_ACTION": "Hilf mit!",
     "DOWNLOADS": "Downloads",
     "CHARACTERS": {
-      "CHARACTERS": "Characters",
+      "CHARACTERS": "Charaktere",
       "MARISA": "Marisa Kirisame",
       "REIMU": "Reimu Hakurei",
       "WRIGGLE": "Wriggle Nightbug",
@@ -66,13 +66,13 @@
       "MURASA": "Minamitsu Murasa"
     }
   },
-  "ABOUT": "About",
-  "CONSTRUCTION": "Under Construction",
+  "ABOUT": "Über uns",
+  "CONSTRUCTION": "Unter Bearbeitung",
   "WIKI": "Wiki",
-  "LANGUAGE": "Language",
-  "SUBMIT": "Submit",
-  "YES": "Yes",
-  "NO": "NO",
+  "LANGUAGE": "Sprache",
+  "SUBMIT": "Einreichen",
+  "YES": "Ja",
+  "NO": "Nein",
   "OK": "OK",
-  "CANCEL": "Cancel"
+  "CANCEL": "Abbrechen"
 }
