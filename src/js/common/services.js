@@ -26,6 +26,10 @@ appServices.factory('LanguageService', ['$translate',
       {
         "code": "ja",
         "name": "日本語"
+      },
+      {
+        "code": "sr",
+        "name": "Srpski"
       }
     ];
 
