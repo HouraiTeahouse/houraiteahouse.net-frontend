@@ -80,7 +80,7 @@
     <div class="clearfix">
       <div class="pull-left text-muted" data-ng-controller="LanguageCtrl">
         <div uib-dropdown class="dropup">
-          <span>{{"LANGUAGE"|translate}}: </span>
+          <span><span translate="LANGUAGE"></span>:</span>
           <div uib-dropdown-toggle class="language-selector">
             <span ng-bind="currentLanguage">...</span>
             <span class="caret"></span>
@@ -95,7 +95,7 @@
         </div>
       </div>
       <div class="pull-right text-muted">
-        <span>&copy; Hourai Teahouse 2015-2017</span>
+        <span>&copy; <span translate="WEBSITE">...</span> 2015-2017</span>
       </div>
     </div>
   </body>
