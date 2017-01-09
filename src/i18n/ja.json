@@ -49,6 +49,10 @@
   },
   "PROJECTS": {
     "PROJECTS": "Projects",
+    "IN_DEVELOPMENT": "In Development",
+    "COMPLETED": "Completed",
+    "NO_COMPLETED_MESSAGE": "There are no completed projects as of now.",
+    "NO_COMPLETED_CALL_TO_ACTION": "Help Us Out!",
     "DOWNLOADS": "Downloads",
     "CHARACTERS": {
       "CHARACTERS": "Characters",
