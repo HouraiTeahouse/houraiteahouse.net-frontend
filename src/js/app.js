@@ -2,8 +2,14 @@ import angular from 'angular';
 import angularCookies from 'angular-cookies';
 import angularUiRouter from 'angular-ui-router';
 import angularUiBootstrap from 'angular-ui-bootstrap';
+
 import 'angulartics';
 import angularticsGA from 'angulartics-google-analytics';
+
+import 'angular-translate';
+import 'angular-translate-loader-static-files';
+import 'angular-translate-storage-cookie';
+import 'angular-translate-storage-local';
 
 import './appControllersModule.js';
 import './appServicesModule.js';
@@ -25,6 +31,7 @@ var app = angular.module('houraiteahouse', [
     angularCookies,
     'angulartics',
     angularticsGA,
+    'pascalprecht.translate',
     'appControllers',
     'appDirectives',
     'appServices'
@@ -37,15 +44,28 @@ var options = {
 };
 
 // Main app configuration
-app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider',
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', '$translateProvider',
   function($stateProvider,
       $urlRouterProvider,
       $locationProvider,
-      $httpProvider) {
+      $httpProvider,
+      $translateProvider) {
 
     // Remove unnecessary and ugly '#' characters in URL
     // for browsers that support HTML5 mode.
     $locationProvider.html5Mode(true);
+
+    // Load language information only when needed
+    // Cache the language information so that it isn't repeatedly fetched
+    $translateProvider.useStaticFilesLoader({
+        prefix: '/i18n/',
+        suffix: '.json'
+      });
+
+    $translateProvider.useLocalStorage();
+    $translateProvider.determinePreferredLanguage();
+    $translateProvider.fallbackLanguage('en');
+    $translateProvider.useSanitizeValueStrategy('escape');
 
     $urlRouterProvider.otherwise('/404');
 
