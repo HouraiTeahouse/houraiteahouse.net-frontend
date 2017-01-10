@@ -67,8 +67,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     $translateProvider.fallbackLanguage('en');
     $translateProvider.useSanitizeValueStrategy('escape');
 
-    $urlRouterProvider.otherwise('/404');
-
     // State configuration
     $stateProvider
       .state('home', {
@@ -214,10 +212,15 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         requireLogin: false
       })
       .state('404', {
-        url: '/404',
         templateUrl: 'partials/404.html',
         requireLogin:false
       })
+
+      $urlRouterProvider.otherwise(function($injector, $location) {
+        var state = $injector.get('$state');
+        state.go('404');
+        return $location.path();
+      });
 
       // Prevent unauthorized requests to restricted pages & trigger login
       $httpProvider.interceptors.push(['$timeout', '$q', '$injector',
