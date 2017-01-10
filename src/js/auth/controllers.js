@@ -9,16 +9,17 @@ appControllers.controller('LoginNavCtrl', ['$scope', 'AuthService',
 }]);
 
 
-appControllers.controller('LoginCtrl', ['$scope', '$state', 'AuthService', '$routeParams',
-  function($scope, $state, AuthService, $routeParams) {
+appControllers.controller('LoginCtrl', ['$scope', '$state', 'AuthService', '$location',
+  function($scope, $state, AuthService, $location) {
     $scope.login = function() {
       $scope.error = false;
       $scope.disabled = true;
 
       AuthService.login($scope.loginForm.username, $scope.loginForm.password, $scope.loginForm.remember_me)
         .then(function() {
-          if($routeParams.redirect_uri !== '') {
-            $state.go($routeParams.redirect_uri)
+          var redirect = $location.search()['redirect_uri'];
+          if(redirect !== '') {
+            $state.go(redirect);
           } else {
             $state.go('home');
           }

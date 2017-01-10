@@ -6,7 +6,10 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
     var permissions = null; // We cache this for performance.  The backend will still do a final check that can override this.
 
     function getSessionId() {
-      return $cookies.get('htlogin').split("#")[3];
+      let cookie = $cookies.get('htlogin');
+      if (typeof cookie != 'undefined') {
+        return cookie.split("#")[3];
+      }
     }
 
     function getWikiId(username) {
