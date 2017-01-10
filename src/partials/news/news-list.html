@@ -1,12 +1,12 @@
 <section class="post">
   <div class="admin-actions" data-ng-show="allowPostManagement">
-    <button data-ng-click="createPost()" class="btn btn-primary">Create Post</button>
+    <button data-ng-click="createPost()" class="btn btn-primary" translate="NEWS.CREATE">...</button>
   </div>
-  <div class="text-center" ng-if="showError">Failed to load posts.</div>
+  <div class="text-center" ng-if="showError" translate="NEWS.FAILED">...</div>
   <div data-ng-repeat="post in posts" ng-if="!showError">
     <header class="post-header">
       <h2 class="post-title">{{post.title}}</h2>
-      <div class="post-meta">Posted by {{post.author}} on {{post.created | date:'medium'}}</div>
+      <div class="post-meta" translate="NEWS.POSTED_BY">...</div>
       <div class="post-meta">
         <ul class="list-inline">
           <li data-ng-repeat="tag in post.tags">
@@ -19,7 +19,7 @@
       <p data-ng-bind-html="post.content">
         {{post.content}}
       </p>
-      <a data-ui-sref="news.post({id: post.post_id})" class="btn btn-primary">Read More</a>
+      <a data-ui-sref="news.post({id: post.post_id})" class="btn btn-primary" translate="POST.READ_MORE">...</a>
     </div>
   </div>
 </section>
