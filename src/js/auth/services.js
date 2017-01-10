@@ -19,8 +19,8 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
       if(expiration != null) {
         params['expires'] = new Date(expiration);
       }
-      let wiki_id = getWikiId(username);
-      $cookies.put('htlogin', wiki_id + "#" + email + "#" + username + "#" session_id, params);
+      let wikiId= getWikiId(username);
+      $cookies.put('htlogin', wikiId+ "#" + email + "#" + username + "#" + sessionId, params);
     }
 
     function clearSessionId() {
@@ -90,7 +90,7 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
       HttpService.post('auth/login', null, {username: username, password: password, remember_me: remember_me})
         .success(function(data, status) {
           if(status === 200 && data.session_id != null) {
-            setSessionId(data.session_id,
+            setCookie(data.session_id,
                 data.username,
                 data.email,
                 data.expiration);

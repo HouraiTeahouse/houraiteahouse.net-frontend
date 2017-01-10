@@ -339,6 +339,8 @@ app.run(['$rootScope', '$state', 'AuthService', 'ngMeta',
           if (toState.name == 'logout') {
             AuthService.logout();
             $state.go('login');
+          } else if (toState.name == 'login') {
+            $location.search('redirect_uri', fromState.name);
           }
         });
     });
