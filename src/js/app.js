@@ -89,6 +89,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     ngMetaProvider.setDefaultTitleSuffix('Doujin Development');
 
     // State configuration
+    $stateProvider.decorator('data', ngMetaProvider.mergeNestedStateData);
     $stateProvider
       .state('home', {
         url: '/',
@@ -106,7 +107,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
       .state('about.team', {
         url: '/team',
         templateUrl: 'partials/under_construction.html',
-        requireLogin: false
+        requireLogin: false,
+        meta: {
+          'titleSuffix': 'The Team'
+        }
       })
       .state('wiki', {
         url: '/wiki',
@@ -149,13 +153,19 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         url: '/permissions',
         templateUrl: 'partials/auth/permissions.html',
         controller: 'PermissionCtrl',
-        requireLogin:false
+        requireLogin:false,
+        meta: {
+          'titleSuffix': 'Permissions Dashboard'
+        }
       })
       .state('news', {
         abstract: true,
         url: '/news',
         template: '<ui-view/>',
-        requireLogin: false
+        requireLogin: false,
+        meta {
+          'titleSuffix': 'News'
+        }
       })
       .state('news.list', {
         url: '',
