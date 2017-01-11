@@ -6,34 +6,36 @@ appServices.factory('LanguageService', ['$translate',
     // Yes, this needs to be kept in sync manually versus the backend.
     // However, this way we do not need to request the supported language list from the backend.
     // As for why it's in this format, it's ngRepeat friendly
-    var languages = [
-      {
+    var languages = [{
         "code": "en",
         "name": "English"
-      },
-      {
+      }, {
         "code": "es",
         "name": "Español"
-      },
-      {
+      }, {
         "code": "fr",
         "name": "Français"
-      },
-      {
+      }, {
         "code": "de",
         "name": "Deutsch"
-      },
-      {
+      }, {
         "code": "ja",
         "name": "日本語"
-      },
-      {
+      }, {
         "code": "pl",
         "name": "Polski"
-      },
-      {
+      }, {
+        "code": "pt",
+        "name": "Português"
+      }, {
         "code": "sr",
         "name": "Srpski"
+      }, {
+        "code": "zh-hans",
+        "name": "简体中文"
+      }, {
+        "code": "zh-hant",
+        "name": "繁體中文"
       }
     ];
 
