@@ -13,8 +13,9 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
     }
 
     function getWikiId(username) {
-      //TODO(james7132): Implement
-      return username;
+      return username.replace(/(\w)(\w*)[^\w]*/g, function(g0,g1,g2){
+        return g1.toUpperCase() + g2.toLowerCase();
+      })
     }
 
     function setCookie(sessionId, username, email, expiration) {
@@ -221,6 +222,7 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
       isLoggedIn: isLoggedIn,
       allowAccess: allowAccess,
       getUserStatus: getUserStatus,
+      getWikiId: getWikiId,
       login: login,
       logout: logout,
       register: register,
