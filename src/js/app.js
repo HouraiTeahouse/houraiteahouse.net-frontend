@@ -100,24 +100,30 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         url: '/about',
         templateUrl: 'partials/under_construction.html',
         requireLogin: false,
-        meta: {
-          'titleSuffix': 'About Us'
+        data: {
+          'meta': {
+            'titleSuffix': 'About Us'
+          }
         }
       })
       .state('about.team', {
         url: '/team',
         templateUrl: 'partials/under_construction.html',
         requireLogin: false,
-        meta: {
-          'titleSuffix': 'The Team'
+        data: {
+          'meta': {
+            'titleSuffix': 'The Team'
+          }
         }
       })
       .state('wiki', {
         url: '/wiki',
         templateUrl: 'partials/under_construction.html',
         requireLogin: false,
-        meta: {
-          'titleSuffix': 'Wiki'
+        data: {
+          'meta': {
+            'titleSuffix': 'Wiki'
+          }
         }
       })
       .state('login', {
@@ -125,8 +131,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         templateUrl: 'partials/auth/login.html',
         controller: 'LoginCtrl',
         requireLogin: false,
-        meta: {
-          'titleSuffix': 'Login'
+        data: {
+          'meta': {
+            'titleSuffix': 'Login'
+          }
         }
       })
       .state('logout', {
@@ -138,8 +146,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         templateUrl: 'partials/auth/register.html',
         controller: 'RegisterCtrl',
         requireLogin: false,
-        meta: {
-          'titleSuffix': 'Register'
+        data: {
+          'meta': {
+            'titleSuffix': 'Register'
+          }
         }
       })
       .state('admin', {
@@ -154,8 +164,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         templateUrl: 'partials/auth/permissions.html',
         controller: 'PermissionCtrl',
         requireLogin:false,
-        meta: {
-          'titleSuffix': 'Permissions Dashboard'
+        data: {
+          'meta': {
+            'titleSuffix': 'Permissions Dashboard'
+          }
         }
       })
       .state('news', {
@@ -163,8 +175,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         url: '/news',
         template: '<ui-view/>',
         requireLogin: false,
-        meta {
-          'titleSuffix': 'News'
+        data: {
+          'meta': {
+            'titleSuffix': 'News'
+          }
         }
       })
       .state('news.list', {
@@ -191,8 +205,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         controller: 'NewsCreateCtrl',
         requireLogin: true,
         permission: 'news',
-        meta: {
-          'titleSuffix': 'Create Post'
+        data: {
+          'meta': {
+            'titleSuffix': 'Create Post'
+          }
         }
       })
       .state('news.translate', {
@@ -201,8 +217,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         controller: 'NewsTranslateCtrl',
         requireLogin: true,
         permission: 'translate',
-        meta: {
-          'titleSuffix': 'Translate Post'
+        data: {
+          'meta': {
+            'titleSuffix': 'Translate Post'
+          }
         }
       })
       .state('projects', {
@@ -215,8 +233,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         templateUrl: 'partials/projects/projects-list.html',
         controller: 'ProjectsListCtrl',
         requireLogin: false,
-        meta: {
-          'titleSuffix': 'Projects'
+        data: {
+          'meta': {
+            'titleSuffix': 'Projects'
+          }
         }
       })
       .state('project', {
@@ -266,8 +286,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
       .state('404', {
         templateUrl: 'partials/404.html',
         requireLogin:false,
-        meta: {
-          'title': "Not Found"
+        data: {
+          'meta': {
+            'title': "Not Found"
+          }
         }
       })
 
