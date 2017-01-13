@@ -322,9 +322,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     }
 ]);
 
-app.run(['$rootScope', '$state', 'AuthService', 'ngMeta',
-  function ($rootScope, $state, AuthService, ngMeta) {
+app.run(['$rootScope', '$state', 'AuthService', 'ngMeta', '$location',
+  function ($rootScope, $state, AuthService, ngMeta, $location) {
     ngMeta.init();
+    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+      if(toState.name == 'login' && fromState.name !== '') {
+        $location.search('redirect_uri', fromState.name);
+      }
+    });
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
       AuthService.getUserStatus()
         .then(function() {
