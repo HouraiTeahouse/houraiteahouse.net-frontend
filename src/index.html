@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html data-ng-app="houraiteahouse" data-ng-strict-di="true">
   <head>
 
     <meta charset="utf-8">
@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Hourai Teahouse</title>
+    <title ng-bind="ngMeta.title">Hourai Teahouse</title>
 
     <base href="/">
 
@@ -36,7 +36,7 @@
     <script src="main.js" defer></script>
   </head>
 
-  <body data-ng-app="houraiteahouse" data-ng-strict-di="true">
+  <body>
 
     <!-- Navigation -->
     <div id="topnav">
