@@ -15,4 +15,5 @@ deploy:
   script: curl -i -X POST https://houraiteahouse.net:$PORT/deploy/houraiteahouse.net-frontend/$TRAVIS_BRANCH?token=$TOKEN
   skip_cleanup: true
   on:
-    branch: continuous-deployment
+    branch: develop
+    branch: master
