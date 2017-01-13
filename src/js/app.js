@@ -37,11 +37,23 @@ var app = angular.module('houraiteahouse', [
     'appServices'
 ])
 
-var options = {
-  "api":{
-    "base_url": "http://localhost:5000"
+
+var options = (function() {
+  var base_url;
+  if(window.location.hostname.includes('localhost')) {
+    // Local testing backend
+    base_url = "http://localhost:5000";
+  } else {
+    // Produciton backend
+    base_url = "https://houraiteahouse.net:92";
   }
-};
+  console.log(base_url);
+  return {
+    "api":{
+      "base_url": base_url
+    }
+  };
+})();
 
 // Main app configuration
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', '$translateProvider',
