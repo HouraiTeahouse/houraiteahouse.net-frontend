@@ -110,7 +110,7 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
         .error(function(data) {
           permissions = null;
           $rootScope.user = false;
-          deferred.reject();
+          deferred.reject(data);
         });
 
       return deferred.promise;
