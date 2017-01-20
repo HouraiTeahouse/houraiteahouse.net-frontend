@@ -55,6 +55,13 @@ if (!TEST_MODE) {
 if (DEVELOPMENT_MODE) {
     WEBPACK_CONFIG.output.sourceMapFilename = '[file].map';
     WEBPACK_CONFIG.output.devtoolModuleFilenameTemplate = '[resource-path]';
+    WEBPACK_CONFIG.module.preLoaders.push({
+        test: /\.js$/,
+        loader: 'preprocess-loader',
+        query: { DEVELOPMENT_MODE, DEVELOPMENT_URL: 'http://localhost:5000' },
+        include: new RegExp(ENTRY_DIR),
+        exclude: /node_modules/
+    });
     WEBPACK_CONFIG.plugins.push(
         new webpack.optimize.CommonsChunkPlugin({
             name: 'polyfills',
@@ -66,6 +73,13 @@ if (DEVELOPMENT_MODE) {
 }
 
 if (PRODUCTION_MODE) {
+    WEBPACK_CONFIG.module.preLoaders.push({
+        test: /\.js$/,
+        loader: 'preprocess-loader',
+        query: { PRODUCTION_MODE, PRODUCTION_URL: 'https://houraiteahouse.net:92' },
+        include: new RegExp(ENTRY_DIR),
+        exclude: /node_modules/
+    });
     WEBPACK_CONFIG.plugins.push(
         new webpack.optimize.CommonsChunkPlugin({
             name: 'polyfills',

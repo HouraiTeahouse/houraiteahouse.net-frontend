@@ -43,14 +43,21 @@ var app = angular.module('houraiteahouse', [
 
 var options = (function() {
   var base_url;
-  if(window.location.hostname.includes('localhost')) {
-    // Local testing backend
-    base_url = "http://localhost:5000";
-  } else {
-    // Produciton backend
-    base_url = "https://houraiteahouse.net:92";
+
+  // @ifdef DEVELOPMENT_MODE
+  // Local testing backend
+  base_url = "/* @echo DEVELOPMENT_URL */";
+  // @endif
+
+  // @ifdef PRODUCTION_MODE
+  // Production backend
+  base_url = "/* @echo PRODUCTION_URL */";
+  // @endif
+
+  if (!base_url) {
+    throw new Error('API url is not configured!!!');
   }
-  console.log(base_url);
+
   return {
     "api":{
       "base_url": base_url
