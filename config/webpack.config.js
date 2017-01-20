@@ -3,6 +3,12 @@ const PRODUCTION_MODE = (process.env.NODE_ENV === 'production');
 const TEST_MODE = (process.env.NODE_ENV === 'test');
 const DEVELOPMENT_MODE = (!PRODUCTION_MODE && !TEST_MODE);
 
+// These should be full URL's, containing the protocol, hostname, and port
+// number. In particular, the frontend will do a check to ensure that
+// the protocol is specified.
+const PRODUCTION_API_URL = 'https://houraiteahouse.net:92';
+const DEVELOPMENT_API_URL = 'http://localhost:5000';
+
 // Imports
 let path = require('path');
 let webpack = require('webpack');
@@ -31,6 +37,13 @@ const WEBPACK_CONFIG = {
 
 // Customize Webpack Config
 if (TEST_MODE) {
+    WEBPACK_CONFIG.module.preLoaders.push({
+        test: /\.js$/,
+        loader: 'preprocess-loader',
+        query: { TEST_MODE },
+        include: new RegExp(ENTRY_DIR),
+        exclude: /node_modules/
+    });
     WEBPACK_CONFIG.devtool = 'inline-source-map';
 }
 
@@ -58,7 +71,7 @@ if (DEVELOPMENT_MODE) {
     WEBPACK_CONFIG.module.preLoaders.push({
         test: /\.js$/,
         loader: 'preprocess-loader',
-        query: { DEVELOPMENT_MODE, DEVELOPMENT_URL: 'http://localhost:5000' },
+        query: { DEVELOPMENT_MODE, DEVELOPMENT_API_URL },
         include: new RegExp(ENTRY_DIR),
         exclude: /node_modules/
     });
@@ -76,7 +89,7 @@ if (PRODUCTION_MODE) {
     WEBPACK_CONFIG.module.preLoaders.push({
         test: /\.js$/,
         loader: 'preprocess-loader',
-        query: { PRODUCTION_MODE, PRODUCTION_URL: 'https://houraiteahouse.net:92' },
+        query: { PRODUCTION_MODE, PRODUCTION_API_URL },
         include: new RegExp(ENTRY_DIR),
         exclude: /node_modules/
     });

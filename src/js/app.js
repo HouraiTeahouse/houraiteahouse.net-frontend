@@ -46,14 +46,22 @@ var options = (function() {
 
   // @ifdef DEVELOPMENT_MODE
   // Local testing backend
-  base_url = "/* @echo DEVELOPMENT_URL */";
+  base_url = "/* @echo DEVELOPMENT_API_URL */";
   // @endif
 
   // @ifdef PRODUCTION_MODE
   // Production backend
-  base_url = "/* @echo PRODUCTION_URL */";
+  base_url = "/* @echo PRODUCTION_API_URL */";
   // @endif
 
+  // @ifdef TEST_MODE
+  // Unit testing mock api path
+  base_url = '/api';
+  // @endif
+
+  // @ifndef TEST_MODE
+  // Do some last minute checking to ensure that the URL
+  // was preprocessed correctly, and that it is valid
   if (!base_url) {
     throw new Error('API URL is not defined!!!');
   }
@@ -61,6 +69,7 @@ var options = (function() {
   if (!base_url.match(/^(?:http|https):\/\/.+$/)) {
     throw new Error('API URL is not valid!');
   }
+  // @endif
 
   return {
     "api":{
