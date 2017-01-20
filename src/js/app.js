@@ -55,7 +55,11 @@ var options = (function() {
   // @endif
 
   if (!base_url) {
-    throw new Error('API url is not configured!!!');
+    throw new Error('API URL is not defined!!!');
+  }
+
+  if (!base_url.match(/^(?:http|https):\/\/.+$/)) {
+    throw new Error('API URL is not valid!');
   }
 
   return {
