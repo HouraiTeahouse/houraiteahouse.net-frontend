@@ -7,14 +7,14 @@ appControllers.controller('NewsListCtrl', ['$scope', '$state', '$stateParams', '
 
     if($stateParams.tag == null) {
       HttpService.get('news/list').then(function(data) {
-        $scope.posts = data;
+        $scope.posts = data.data;
       })
       .catch(function() {
         $scope.showError = true;
       });
     } else {
       HttpService.get('news/tag/get', $stateParams.tag).then(function(data) {
-        $scope.posts = data;
+        $scope.posts = data.data;
       });
     }
     

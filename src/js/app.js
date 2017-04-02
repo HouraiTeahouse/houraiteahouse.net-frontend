@@ -11,6 +11,8 @@ import 'angular-translate-loader-static-files';
 import 'angular-translate-storage-cookie';
 import 'angular-translate-storage-local';
 
+import 'ng-meta';
+
 import './appControllersModule.js';
 import './appServicesModule.js';
 import './appDirectivesModule.js';
@@ -31,25 +33,40 @@ var app = angular.module('houraiteahouse', [
     angularCookies,
     'angulartics',
     angularticsGA,
+    'ngMeta',
     'pascalprecht.translate',
     'appControllers',
     'appDirectives',
     'appServices'
 ])
 
-var options = {
-  "api":{
-    "base_url": "http://localhost:5000"
+
+var options = (function() {
+  var base_url;
+  if(window.location.hostname.includes('localhost')) {
+    // Local testing backend
+    base_url = "http://localhost:5000";
+  } else {
+    // Produciton backend
+    base_url = "https://houraiteahouse.net:92";
   }
-};
+  console.log(base_url);
+  return {
+    "api":{
+      "base_url": base_url
+    }
+  };
+})();
 
 // Main app configuration
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', '$translateProvider',
+    'ngMetaProvider',
   function($stateProvider,
       $urlRouterProvider,
       $locationProvider,
       $httpProvider,
-      $translateProvider) {
+      $translateProvider,
+      ngMetaProvider) {
 
     // Remove unnecessary and ugly '#' characters in URL
     // for browsers that support HTML5 mode.
@@ -67,7 +84,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     $translateProvider.fallbackLanguage('en');
     $translateProvider.useSanitizeValueStrategy('escape');
 
+    ngMetaProvider.setDefaultTitle('Hourai Teahouse | ');
+    ngMetaProvider.useTitleSuffix(true);
+    ngMetaProvider.setDefaultTitleSuffix('Doujin Development');
+
     // State configuration
+    $stateProvider.decorator('data', ngMetaProvider.mergeNestedStateData);
     $stateProvider
       .state('home', {
         url: '/',
@@ -77,23 +99,43 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
       .state('about', {
         url: '/about',
         templateUrl: 'partials/under_construction.html',
-        requireLogin: false
+        requireLogin: false,
+        data: {
+          'meta': {
+            'titleSuffix': 'About Us'
+          }
+        }
       })
       .state('about.team', {
         url: '/team',
         templateUrl: 'partials/under_construction.html',
-        requireLogin: false
+        requireLogin: false,
+        data: {
+          'meta': {
+            'titleSuffix': 'The Team'
+          }
+        }
       })
       .state('wiki', {
         url: '/wiki',
         templateUrl: 'partials/under_construction.html',
-        requireLogin: false
+        requireLogin: false,
+        data: {
+          'meta': {
+            'titleSuffix': 'Wiki'
+          }
+        }
       })
       .state('login', {
         url: '/login',
         templateUrl: 'partials/auth/login.html',
         controller: 'LoginCtrl',
-        requireLogin: false
+        requireLogin: false,
+        data: {
+          'meta': {
+            'titleSuffix': 'Login'
+          }
+        }
       })
       .state('logout', {
         url: '/logout',
@@ -103,7 +145,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         url: '/register',
         templateUrl: 'partials/auth/register.html',
         controller: 'RegisterCtrl',
-        requireLogin: false
+        requireLogin: false,
+        data: {
+          'meta': {
+            'titleSuffix': 'Register'
+          }
+        }
       })
       .state('admin', {
         abstract: true,
@@ -116,13 +163,23 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         url: '/permissions',
         templateUrl: 'partials/auth/permissions.html',
         controller: 'PermissionCtrl',
-        requireLogin:false
+        requireLogin:false,
+        data: {
+          'meta': {
+            'titleSuffix': 'Permissions Dashboard'
+          }
+        }
       })
       .state('news', {
         abstract: true,
         url: '/news',
         template: '<ui-view/>',
-        requireLogin: false
+        requireLogin: false,
+        data: {
+          'meta': {
+            'titleSuffix': 'News'
+          }
+        }
       })
       .state('news.list', {
         url: '',
@@ -147,14 +204,24 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         templateUrl: 'partials/news/news-create.html',
         controller: 'NewsCreateCtrl',
         requireLogin: true,
-        permission: 'news'
+        permission: 'news',
+        data: {
+          'meta': {
+            'titleSuffix': 'Create Post'
+          }
+        }
       })
       .state('news.translate', {
         url: '/translate/:id',
         templateUrl: 'partials/news/news-translate.html',
         controller: 'NewsTranslateCtrl',
         requireLogin: true,
-        permission: 'translate'
+        permission: 'translate',
+        data: {
+          'meta': {
+            'titleSuffix': 'Translate Post'
+          }
+        }
       })
       .state('projects', {
         abstract: true,
@@ -165,7 +232,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         url: '',
         templateUrl: 'partials/projects/projects-list.html',
         controller: 'ProjectsListCtrl',
-        requireLogin: false
+        requireLogin: false,
+        data: {
+          'meta': {
+            'titleSuffix': 'Projects'
+          }
+        }
       })
       .state('project', {
         abstract: true,
@@ -213,7 +285,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
       })
       .state('404', {
         templateUrl: 'partials/404.html',
-        requireLogin:false
+        requireLogin:false,
+        data: {
+          'meta': {
+            'title': "Not Found"
+          }
+        }
       })
 
       $urlRouterProvider.otherwise(function($injector, $location) {
@@ -245,8 +322,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     }
 ]);
 
-app.run(['$rootScope', '$state', 'AuthService',
-  function ($rootScope, $state, AuthService) {
+app.run(['$rootScope', '$state', 'AuthService', 'ngMeta', '$location',
+  function ($rootScope, $state, AuthService, ngMeta, $location) {
+    ngMeta.init();
+    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+      if(toState.name == 'login' && fromState.name !== '') {
+        $location.search('redirect_uri', fromState.name);
+      }
+    });
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
       AuthService.getUserStatus()
         .then(function() {
