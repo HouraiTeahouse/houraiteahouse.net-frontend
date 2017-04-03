@@ -7,6 +7,9 @@ appServices.factory('LanguageService', ['$translate',
     // However, this way we do not need to request the supported language list from the backend.
     // As for why it's in this format, it's ngRepeat friendly
     var languages = [{
+        "code": "de",
+        "name": "Deutsch"
+      }, {
         "code": "en",
         "name": "English"
       }, {
@@ -16,11 +19,11 @@ appServices.factory('LanguageService', ['$translate',
         "code": "fr",
         "name": "Français"
       }, {
-        "code": "de",
-        "name": "Deutsch"
-      }, {
         "code": "hr",
         "name": "Hrvatski"
+      }, {
+        "code": "it",
+        "name": "Italiano"
       }, {
         "code": "ja",
         "name": "日本語"

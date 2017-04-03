@@ -1,0 +1,78 @@
+{
+  "WEBSITE": "Hourai Teahouse",
+  "AUTH": {
+    "LOGIN": "Accedi",
+    "LOGOUT": "Esci",
+    "USERNAME": "Nome utente",
+    "PASSWORD": "Password",
+    "REGISTER": "Iscriviti",
+    "PASSWORD_REENTRY": "Reinserire la password",
+    "EMAIL": "Email",
+    "REMEMBER_ME": "Ricordami",
+    "REGISTER_LINK": "Non hai un account? Iscriviti qui!",
+    "PERMISSIONS": {
+      "PERMISSIONS": "Autorizzazioni",
+      "MANAGE": "Gestisci autorizzazioni utente",
+      "LOADED": "{{username}} ha le seguenti autorizzazioni:",
+      "GET": "Acquisisci Autorizzazioni Utente",
+      "UPDATE": "Aggiorna Autorizzazioni Utente"
+    }
+  },
+  "NEWS": {
+    "NEWS": "Novità",
+    "POSTED_BY": "Pubblicato da {{post.author}} il {{post.created | date:'d MMM, y'}}",
+    "LAST_EDITED": "Ultima modifica {{post.lastEdit | date:'d MMM, y'}}",
+    "READ_MORE": "Leggi tutto",
+    "FAILED": "Impossibile caricare i post",
+    "CREATE": "Crea Post",
+    "POSTS": {
+      "IMAGE": "Link Immagine (Opzionale)",
+      "BODY": "Corpo",
+      "TITLE": "Titolo",
+      "TAGS": "Tag (separati da virgola)",
+      "ACTIONS": {
+        "AVAILABLE": "Azioni Post Disponibili",
+        "EDIT": "Modifica Post",
+        "TRANSLATE": "Traduci Post",
+        "CREATE": "Crea Nuovo Post Novità"
+      }
+    },
+    "COMMENTS": {
+      "COMMENTS": "Commenti",
+      "ACTIONS": "Azioni Commento",
+      "ADD": "Aggiungi commento",
+      "DELETE": {
+        "DELETE": "Elimina",
+        "CONFIRMATION": "Sicuro?"
+      }
+    }
+  },
+  "PROJECTS": {
+    "PROJECTS": "Progetti",
+    "IN_DEVELOPMENT": "In via di sviluppo",
+    "COMPLETED": "Completato",
+    "NO_COMPLETED_MESSAGE": "Al momento non ci sono progetti completati",
+    "NO_COMPLETED_CALL_TO_ACTION": "Dacci Una Mano!",
+    "DOWNLOADS": "Download",
+    "CHARACTERS": {
+      "CHARACTERS": "Personaggi",
+      "MARISA": "Marisa Kirisame",
+      "REIMU": "Reimu Hakurei",
+      "WRIGGLE": "Wriggle Nightbug",
+      "YOUMU": "Youmu Konpaku",
+      "SAKUYA": "Sakuya Izayoi",
+      "YUUKA": "Yuuka Kazami",
+      "YUUGI": "Yuugi Hoshiguma",
+      "MURASA": "Minamitsu Murasa"
+    }
+  },
+  "ABOUT": "Informazioni",
+  "CONSTRUCTION": "In Costruzioni",
+  "WIKI": "La Wiki",
+  "LANGUAGE": "Lingua",
+  "SUBMIT": "Invio",
+  "YES": "Si",
+  "NO": "NO",
+  "OK": "OK",
+  "CANCEL": "Annulla"
+}
