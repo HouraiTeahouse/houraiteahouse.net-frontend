@@ -94,6 +94,7 @@
     "postcss-cssnext": "~2.8.x",
     "postcss-import": "~8.1.x",
     "postcss-reporter": "~1.4.x",
+    "preprocess-loader": "~0.2.x",
     "stylelint": "~7.5.x",
     "stylelint-config-standard": "~14.0.x",
     "webpack": "~1.13.x"
