@@ -6,19 +6,29 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
     var permissions = null; // We cache this for performance.  The backend will still do a final check that can override this.
 
     function getSessionId() {
-      return $cookies.get('htsessionid');
+      let cookie = $cookies.get('htlogin');
+      if (typeof cookie != 'undefined') {
+        return cookie.split("#")[3];
+      }
     }
 
-    function setSessionId(sessionId, expiration) {
+    function getWikiId(username) {
+      return username.replace(/(\w)(\w*)[^\w]*/g, function(g0,g1,g2){
+        return g1.toUpperCase() + g2.toLowerCase();
+      })
+    }
+
+    function setCookie(sessionId, username, email, expiration) {
       let params = {};
-      if(expiration != null){
+      if(expiration != null) {
         params['expires'] = new Date(expiration);
       }
-      $cookies.put('htsessionid', sessionId, params);
+      let wikiId= getWikiId(username);
+      $cookies.put('htlogin', wikiId+ "#" + email + "#" + username + "#" + sessionId, params);
     }
 
-    function clearSessionId(){
-      $cookies.remove('htsessionid');
+    function clearSessionId() {
+      $cookies.remove('htlogin');
     }
 
     function isLoggedIn() {
@@ -84,7 +94,10 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
       HttpService.post('auth/login', null, {username: username, password: password, remember_me: remember_me})
         .success(function(data, status) {
           if(status === 200 && data.session_id != null) {
-            setSessionId(data.session_id, data.expiration);
+            setCookie(data.session_id,
+                data.username,
+                data.email,
+                data.expiration);
             permissions = data.permissions;
             $rootScope.user = true;
             deferred.resolve();
@@ -97,7 +110,7 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
         .error(function(data) {
           permissions = null;
           $rootScope.user = false;
-          deferred.reject();
+          deferred.reject(data);
         });
 
       return deferred.promise;
@@ -209,6 +222,7 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
       isLoggedIn: isLoggedIn,
       allowAccess: allowAccess,
       getUserStatus: getUserStatus,
+      getWikiId: getWikiId,
       login: login,
       logout: logout,
       register: register,

@@ -1,78 +1,78 @@
 {
   "WEBSITE": "Hourai Teahouse",
   "AUTH": {
-    "LOGIN": "Login",
-    "LOGOUT": "Logout",
-    "USERNAME": "Username",
-    "PASSWORD": "Password",
-    "REGISTER": "Register",
-    "PASSWORD_REENTRY": "Reenter Password",
+    "LOGIN": "ログイン",
+    "LOGOUT": "ログアウト",
+    "USERNAME": "ユーザー名",
+    "PASSWORD": "パスワード",
+    "REGISTER": "ユーザー登録",
+    "PASSWORD_REENTRY": "パスワード（確認）",
     "EMAIL": "Email",
-    "REMEMBER_ME": "Remember me",
-    "REGISTER_LINK": "No account? Register here!",
+    "REMEMBER_ME": "パスワードを保存する",
+    "REGISTER_LINK": "新規登録はこちら",
     "PERMISSIONS": {
-      "PERMISSIONS": "Permissions",
-      "MANAGE": "Manage user permissions",
-      "LOADED": "{{username}} has the following permissions:",
-      "GET": "Get User Permissions",
-      "UPDATE": "Update User Permissions"
+      "PERMISSIONS": "権限",
+      "MANAGE": "権限管理",
+      "LOADED": "{{username}} はこの以下の権限を持っている:",
+      "GET": "ユーザー権限抽出",
+      "UPDATE": "ユーザー権限更新"
     }
   },
   "NEWS": {
-    "NEWS": "News",
-    "POSTED_BY": "Posted by {{post.author}} on {{post.created | date:'MMM d, y'}}",
-    "LAST_EDITED": "Last edited {{post.lastEdit | date:'MMM d, y'}}",
-    "READ_MORE": "Read more",
-    "FAILED": "Failed to load posts",
-    "CREATE": "Create Post",
+    "NEWS": "お知らせ",
+    "POSTED_BY": "投稿者 {{post.author}} {{post.created | date:'yyyy/MM/dd'}}",
+    "LAST_EDITED": "最終更新日 {{post.lastEdit | date:'yyyy/MM/dd'}}",
+    "READ_MORE": "続きを読む",
+    "FAILED": "読み込めできません",
+    "CREATE": "新規投稿",
     "POSTS": {
-      "IMAGE": "Image Link (Optional)",
-      "BODY": "Post Body",
-      "TITLE": "Title",
-      "TAGS": "Tags (comma-separated)",
+      "IMAGE": "画像のリンク先（必要なし）",
+      "BODY": "内容",
+      "TITLE": "タイトル",
+      "TAGS": "タッグ (カンマで分割)",
       "ACTIONS": {
-        "AVAILABLE": "Available Post Actions",
-        "EDIT": "Edit Post",
-        "TRANSLATE": "Translate Post",
-        "CREATE": "Create New News Post"
+        "AVAILABLE": "使用可能な編集機能",
+        "EDIT": "編集",
+        "TRANSLATE": "翻訳",
+        "CREATE": "新規投稿"
       }
     },
     "COMMENTS": {
-      "COMMENTS": "Comments",
-      "ACTIONS": "Comment Actions",
-      "ADD": "Add comment",
+      "COMMENTS": "コメント",
+      "ACTIONS": "コメント用機能",
+      "ADD": "コメント追加",
       "DELETE": {
-        "DELETE": "Delete",
-        "CONFIRMATION": "Are you sure?"
+        "DELETE": "削除",
+        "CONFIRMATION": "本当に削除するんですか？"
       }
     }
   },
   "PROJECTS": {
-    "PROJECTS": "Projects",
-    "IN_DEVELOPMENT": "In Development",
-    "COMPLETED": "Completed",
-    "NO_COMPLETED_MESSAGE": "There are no completed projects as of now.",
-    "NO_COMPLETED_CALL_TO_ACTION": "Help Us Out!",
-    "DOWNLOADS": "Downloads",
+    "PROJECTS": "作品一覧",
+    "IN_DEVELOPMENT": "開発中の作品",
+    "COMPLETED": "過去作",
+    "NO_COMPLETED_MESSAGE": "まだありません。",
+    "NO_COMPLETED_CALL_TO_ACTION": "協力したい方はこちら",
+    "DOWNLOADS": "ダウンロード先",
     "CHARACTERS": {
-      "CHARACTERS": "Characters",
-      "MARISA": "Marisa Kirisame",
-      "REIMU": "Reimu Hakurei",
-      "WRIGGLE": "Wriggle Nightbug",
-      "YOUMU": "Youmu Konpaku",
-      "SAKUYA": "Sakuya Izayoi",
-      "YUUKA": "Yuuka Kazami",
-      "YUUGI": "Yuugi Hoshiguma",
-      "MURASA": "Minamitsu Murasa"
+      "CHARACTERS": "登場キャラ",
+      "MARISA": "霧雨 魔理沙",
+      "REIMU": "博麗 霊夢",
+      "WRIGGLE": "リグル・ナイトバグ",
+      "YOUMU": "魂魄 妖夢",
+      "SAKUYA": "十六夜 咲夜",
+      "YUUKA": "風見 幽香",
+      "YUUGI": "星熊 勇儀",
+      "MURASA": "村紗 水蜜"
     }
   },
-  "ABOUT": "About",
-  "CONSTRUCTION": "Under Construction",
+  "ABOUT": "サークルについて",
+  "CONSTRUCTION": "工事中",
   "WIKI": "Wiki",
-  "LANGUAGE": "Language",
-  "SUBMIT": "Submit",
-  "YES": "Yes",
-  "NO": "NO",
+  "LANGUAGE": "言語",
+  "SUBMIT": "提出",
+  "YES": "はい",
+  "NO": "いいえ",
   "OK": "OK",
-  "CANCEL": "Cancel"
+  "CANCEL": "キャンセル"
 }
