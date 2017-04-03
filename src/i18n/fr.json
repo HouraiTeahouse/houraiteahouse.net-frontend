@@ -6,9 +6,7 @@
     "USERNAME": "Pseudonyme",
     "PASSWORD": "Mot de passe",
     "REGISTER": "S'enregistrer",
-    "PASSWORD_REENTRY": "Entrer le mot de passe à nouveau",
-    "EMAIL": "Email",
-    "REMEMBER_ME": "Se souvenir de moi",
+    "PASSWORD_REENTRY": "Entrer le mot de passe à nouveau", "EMAIL": "Email", "REMEMBER_ME": "Se souvenir de moi",
     "REGISTER_LINK": "Pas de compte? Enregistrez-vous ici!",
     "PERMISSIONS": {
       "PERMISSIONS": "Permissions",
@@ -48,21 +46,12 @@
     }
   },
   "PROJECTS": {
-<<<<<<< Updated upstream
-    "PROJECTS": "Projects",
-    "IN_DEVELOPMENT": "In Development",
-    "COMPLETED": "Completed",
-    "NO_COMPLETED_MESSAGE": "There are no completed projects as of now.",
-    "NO_COMPLETED_CALL_TO_ACTION": "Help Us Out!",
-    "DOWNLOADS": "Downloads",
-=======
     "PROJECTS": "Projets",
     "IN_DEVELOPMENT": "En dévelopemment",
     "COMPLETED": "Complété",
     "NO_COMPLETED_MESSAGE": "Il n'y a pas encore de projets complétés.",
     "NO_COMPLETED_CALL_TO_ACTION": "Aidez-nous !",
     "DOWNLOADS": "Téléchargements",
->>>>>>> Stashed changes
     "CHARACTERS": {
       "CHARACTERS": "Personnages",
       "MARISA": "Marisa Kirisame",
