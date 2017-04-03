@@ -43,14 +43,34 @@ var app = angular.module('houraiteahouse', [
 
 var options = (function() {
   var base_url;
-  if(window.location.hostname.includes('localhost')) {
-    // Local testing backend
-    base_url = "http://localhost:5000";
-  } else {
-    // Produciton backend
-    base_url = "https://houraiteahouse.net:92";
+
+  // @ifdef DEVELOPMENT_MODE
+  // Local testing backend
+  base_url = "/* @echo DEVELOPMENT_API_URL */";
+  // @endif
+
+  // @ifdef PRODUCTION_MODE
+  // Production backend
+  base_url = "/* @echo PRODUCTION_API_URL */";
+  // @endif
+
+  // @ifdef TEST_MODE
+  // Unit testing mock api path
+  base_url = '/api';
+  // @endif
+
+  // @ifndef TEST_MODE
+  // Do some last minute checking to ensure that the URL
+  // was preprocessed correctly, and that it is valid
+  if (!base_url) {
+    throw new Error('API URL is not defined!!!');
   }
-  console.log(base_url);
+
+  if (!base_url.match(/^(?:http|https):\/\/.+$/)) {
+    throw new Error('API URL is not valid!');
+  }
+  // @endif
+
   return {
     "api":{
       "base_url": base_url
