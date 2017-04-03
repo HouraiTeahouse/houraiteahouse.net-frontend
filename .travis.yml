@@ -10,3 +10,9 @@ script:
   - npm run build-all-development
   - npm run build-all-production
   - npm run test-ci
+deploy:
+  provider: script
+  script: curl -i -X POST https://houraiteahouse.net:$PORT/deploy/houraiteahouse.net-frontend/$TRAVIS_BRANCH?token=$TOKEN
+  skip_cleanup: true
+  on:
+    branch: develop
