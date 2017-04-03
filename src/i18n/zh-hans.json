@@ -1,0 +1,78 @@
+{
+  "WEBSITE": "蓬莱茶屋",
+  "AUTH": {
+    "LOGIN": "登入",
+    "LOGOUT": "登出",
+    "USERNAME": "用户名",
+    "PASSWORD": "密码",
+    "REGISTER": "注册",
+    "PASSWORD_REENTRY": "请重新输入密码",
+    "EMAIL": "子信箱",
+    "REMEMBER_ME": "寄住帐号",
+    "REGISTER_LINK": "没有帐号？按这里注册！",
+    "PERMISSIONS": {
+      "PERMISSIONS": "权限",
+      "MANAGE": "管理用户权限",
+      "LOADED": "{{username}} 拥有这些权限：",
+      "GET": "获取用户权限",
+      "UPDATE": "更新用户权限"
+    }
+  },
+  "NEWS": {
+    "NEWS": "新闻",
+    "POSTED_BY": "在{{post.created | date:'MMM d, y'}}由{{post.author}}发表",
+    "LAST_EDITED": "最后编辑：{{post.lastEdit | date:'MMM d, y'}}",
+    "READ_MORE": "阅读更多",
+    "FAILED": "无法加载文章",
+    "CREATE": "创造文章",
+    "POSTS": {
+      "IMAGE": "图像链接（可选）",
+      "BODY": "文章内容",
+      "TITLE": "主题",
+      "TAGS": "标签（逗号分隔）",
+      "ACTIONS": {
+        "AVAILABLE": "可用的文章行动",
+        "EDIT": "编辑文章",
+        "TRANSLATE": "翻译文章",
+        "CREATE": "创造新闻文章"
+      }
+    },
+    "COMMENTS": {
+      "COMMENTS": "评论",
+      "ACTIONS": "发表行动",
+      "ADD": "回覆文章",
+      "DELETE": {
+        "DELETE": "删除",
+        "CONFIRMATION": "确定吗？"
+      }
+    }
+  },
+  "PROJECTS": {
+    "PROJECTS": "计画",
+    "IN_DEVELOPMENT": "开发中",
+    "COMPLETED": "完成",
+    "NO_COMPLETED_MESSAGE": "目前没有完成的计画",
+    "NO_COMPLETED_CALL_TO_ACTION": "帮助我们！",
+    "DOWNLOADS": "下载",
+    "CHARACTERS": {
+      "CHARACTERS": "人物",
+      "MARISA": "雾雨魔理沙",
+      "REIMU": "博丽霊梦",
+      "WRIGGLE": "莉格露 奈特巴格",
+      "YOUMU": "魂魄妖梦",
+      "SAKUYA": "十六夜咲夜",
+      "YUUKA": "风见幽香",
+      "YUUGI": "星熊勇仪",
+      "MURASA": "村纱水蜜"
+    }
+  },
+  "ABOUT": "相关资讯",
+  "CONSTRUCTION": "开发中",
+  "WIKI": "百科",
+  "LANGUAGE": "语言",
+  "SUBMIT": "确认",
+  "YES": "是",
+  "NO": "不",
+  "OK": "OK",
+  "CANCEL": "取消"
+}

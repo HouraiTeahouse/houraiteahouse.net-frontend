@@ -1,61 +1,70 @@
 {
   "WEBSITE": "Hourai Teahouse",
   "AUTH": {
-    "LOGIN": "Login",
-    "LOGOUT": "Logout",
-    "USERNAME": "Username",
-    "PASSWORD": "Password",
-    "REGISTER": "Register",
-    "PASSWORD_REENTRY": "Reenter Password",
+    "LOGIN": "Se connecter",
+    "LOGOUT": "Se déconnecter",
+    "USERNAME": "Pseudonyme",
+    "PASSWORD": "Mot de passe",
+    "REGISTER": "S'enregistrer",
+    "PASSWORD_REENTRY": "Entrer le mot de passe à nouveau",
     "EMAIL": "Email",
-    "REMEMBER_ME": "Remember me",
-    "REGISTER_LINK": "No account? Register here!",
+    "REMEMBER_ME": "Se souvenir de moi",
+    "REGISTER_LINK": "Pas de compte? Enregistrez-vous ici!",
     "PERMISSIONS": {
       "PERMISSIONS": "Permissions",
-      "MANAGE": "Manage user permissions",
-      "LOADED": "{{username}} has the following permissions:",
-      "GET": "Get User Permissions",
-      "UPDATE": "Update User Permissions"
+      "MANAGE": "Gérer les permissions des utilisateurs",
+      "LOADED": "{{username}} a les permissions suivantes:",
+      "GET": "Obtenir les permissions utilisateur",
+      "UPDATE": "Mettre à jour les permissions utilisateur"
     }
   },
   "NEWS": {
-    "NEWS": "News",
-    "POSTED_BY": "Posted by {{post.author}} on {{post.created | date:'MMM d, y'}}",
-    "LAST_EDITED": "Last edited {{post.lastEdit | date:'MMM d, y'}}",
-    "READ_MORE": "Read more",
-    "FAILED": "Failed to load posts",
-    "CREATE": "Create Post",
+    "NEWS": "Nouveautés",
+    "POSTED_BY": "Posté par {{post.author}} le {{post.created | date:'MMM d, y'}}",
+    "LAST_EDITED": "Dernière édition {{post.lastEdit | date:'MMM d, y'}}",
+    "READ_MORE": "En lire plus",
+    "FAILED": "Echec de la lecture des posts",
+    "CREATE": "Créer un post",
     "POSTS": {
-      "IMAGE": "Image Link (Optional)",
-      "BODY": "Post Body",
-      "TITLE": "Title",
-      "TAGS": "Tags (comma-separated)",
+      "IMAGE": "Lien d'image (optionnel)",
+      "BODY": "Poster le contenu",
+      "TITLE": "Titre",
+      "TAGS": "Tags (séparés par une virgule)",
       "ACTIONS": {
-        "AVAILABLE": "Available Post Actions",
-        "EDIT": "Edit Post",
-        "TRANSLATE": "Translate Post",
-        "CREATE": "Create New News Post"
+        "AVAILABLE": "Actions de post disponibles",
+        "EDIT": "Editer le post",
+        "TRANSLATE": "Traduire le post",
+        "CREATE": "Créer un post de news"
       }
     },
     "COMMENTS": {
-      "COMMENTS": "Comments",
-      "ACTIONS": "Comment Actions",
-      "ADD": "Add comment",
+      "COMMENTS": "Commentaires",
+      "ACTIONS": "Actions de commentaire",
+      "ADD": "Ajouter un commentaire",
       "DELETE": {
-        "DELETE": "Delete",
-        "CONFIRMATION": "Are you sure?"
+        "DELETE": "Supprimer",
+        "CONFIRMATION": "Etes-vous sûr?"
       }
     }
   },
   "PROJECTS": {
+<<<<<<< Updated upstream
     "PROJECTS": "Projects",
     "IN_DEVELOPMENT": "In Development",
     "COMPLETED": "Completed",
     "NO_COMPLETED_MESSAGE": "There are no completed projects as of now.",
     "NO_COMPLETED_CALL_TO_ACTION": "Help Us Out!",
     "DOWNLOADS": "Downloads",
+=======
+    "PROJECTS": "Projets",
+    "IN_DEVELOPMENT": "En dévelopemment",
+    "COMPLETED": "Complété",
+    "NO_COMPLETED_MESSAGE": "Il n'y a pas encore de projets complétés.",
+    "NO_COMPLETED_CALL_TO_ACTION": "Aidez-nous !",
+    "DOWNLOADS": "Téléchargements",
+>>>>>>> Stashed changes
     "CHARACTERS": {
-      "CHARACTERS": "Characters",
+      "CHARACTERS": "Personnages",
       "MARISA": "Marisa Kirisame",
       "REIMU": "Reimu Hakurei",
       "WRIGGLE": "Wriggle Nightbug",
@@ -66,13 +75,13 @@
       "MURASA": "Minamitsu Murasa"
     }
   },
-  "ABOUT": "About",
-  "CONSTRUCTION": "Under Construction",
+  "ABOUT": "A propos",
+  "CONSTRUCTION": "En construction",
   "WIKI": "Wiki",
-  "LANGUAGE": "Language",
-  "SUBMIT": "Submit",
-  "YES": "Yes",
-  "NO": "NO",
+  "LANGUAGE": "Langue",
+  "SUBMIT": "Soumettre",
+  "YES": "Oui",
+  "NO": "NON",
   "OK": "OK",
-  "CANCEL": "Cancel"
+  "CANCEL": "Annuler"
 }
