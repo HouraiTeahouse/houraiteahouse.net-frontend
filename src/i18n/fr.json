@@ -6,7 +6,9 @@
     "USERNAME": "Pseudonyme",
     "PASSWORD": "Mot de passe",
     "REGISTER": "S'enregistrer",
-    "PASSWORD_REENTRY": "Entrer le mot de passe à nouveau", "EMAIL": "Email", "REMEMBER_ME": "Se souvenir de moi",
+    "PASSWORD_REENTRY": "Entrer le mot de passe à nouveau",
+    "EMAIL": "Email",
+    "REMEMBER_ME": "Se souvenir de moi",
     "REGISTER_LINK": "Pas de compte? Enregistrez-vous ici!",
     "PERMISSIONS": {
       "PERMISSIONS": "Permissions",
