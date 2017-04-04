@@ -1,0 +1,78 @@
+{
+  "WEBSITE": "Hourai Teahouse",
+  "AUTH": {
+    "LOGIN": "Inloggen",
+    "LOGOUT": "Uitloggen",
+    "USERNAME": "Gebruikersnaam",
+    "PASSWORD": "Wachtwoord",
+    "REGISTER": "Registreren",
+    "PASSWORD_REENTRY": "Wachtwoord opnieuw invoeren",
+    "EMAIL": "E-mail",
+    "REMEMBER_ME": "Mij onthouden",
+    "REGISTER_LINK": "Nog geen account? Registreer je hier!",
+    "PERMISSIONS": {
+      "PERMISSIONS": "Machtigingen",
+      "MANAGE": "Gebruikersmachtigingen beheren",
+      "LOADED": "{{username}} heeft deze machtigingen:",
+      "GET": "Gebruikersmachtigingen ophalen",
+      "UPDATE": "Gebruikersmachtigingen bijwerken"
+    }
+  },
+  "NEWS": {
+    "NEWS": "Nieuws",
+    "POSTED_BY": "Gepost door {{post.author}} op {{post.created | date:'dd-MM-yyyy'}}",
+    "LAST_EDITED": "Laatst gewijzigd op {{post.lastEdit | date:'dd-MM-yyyy'}}",
+    "READ_MORE": "Meer lezen",
+    "FAILED": "Laden van posts mislukt",
+    "CREATE": "Post aanmaken",
+    "POSTS": {
+      "IMAGE": "Link naar afbeelding (Optioneel)",
+      "BODY": "Berichttekst",
+      "TITLE": "Titel",
+      "TAGS": "Tags (gescheiden door komma's)",
+      "ACTIONS": {
+        "AVAILABLE": "Beschikbare post-acties",
+        "EDIT": "Post wijzigen",
+        "TRANSLATE": "Post vertalen",
+        "CREATE": "Nieuwe nieuwspost aanmaken"
+      }
+    },
+    "COMMENTS": {
+      "COMMENTS": "Reacties",
+      "ACTIONS": "Reactie-acties",
+      "ADD": "Reactie schrijven",
+      "DELETE": {
+        "DELETE": "Verwijderen",
+        "CONFIRMATION": "Ben je zeker?"
+      }
+    }
+  },
+  "PROJECTS": {
+    "PROJECTS": "Projecten",
+    "IN_DEVELOPMENT": "In ontwikkeling",
+    "COMPLETED": "Voltooid",
+    "NO_COMPLETED_MESSAGE": "Er zijn op dit moment geen voltooide projecten.",
+    "NO_COMPLETED_CALL_TO_ACTION": "Help ons een handje!",
+    "DOWNLOADS": "Downloads",
+    "CHARACTERS": {
+      "CHARACTERS": "Personages",
+      "MARISA": "Marisa Kirisame",
+      "REIMU": "Reimu Hakurei",
+      "WRIGGLE": "Wriggle Nightbug",
+      "YOUMU": "Youmu Konpaku",
+      "SAKUYA": "Sakuya Izayoi",
+      "YUUKA": "Yuuka Kazami",
+      "YUUGI": "Yuugi Hoshiguma",
+      "MURASA": "Minamitsu Murasa"
+    }
+  },
+  "ABOUT": "Over ons",
+  "CONSTRUCTION": "Wordt bijgewerkt",
+  "WIKI": "Wiki",
+  "LANGUAGE": "Taal",
+  "SUBMIT": "Verzenden",
+  "YES": "Ja",
+  "NO": "Nee",
+  "OK": "Ok",
+  "CANCEL": "Annuleren"
+}

@@ -48,10 +48,10 @@
     }
   },
   "PROJECTS": {
-    "PROJECTS": "企画",
-    "IN_DEVELOPMENT": "開発中",
-    "COMPLETED": "完成した",
-    "NO_COMPLETED_MESSAGE": "開発完了した計画はまだありません。",
+    "PROJECTS": "作品一覧",
+    "IN_DEVELOPMENT": "開発中の作品",
+    "COMPLETED": "過去作",
+    "NO_COMPLETED_MESSAGE": "まだありません。",
     "NO_COMPLETED_CALL_TO_ACTION": "協力したい方はこちら",
     "DOWNLOADS": "ダウンロード先",
     "CHARACTERS": {

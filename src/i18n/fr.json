@@ -48,21 +48,12 @@
     }
   },
   "PROJECTS": {
-<<<<<<< Updated upstream
-    "PROJECTS": "Projects",
-    "IN_DEVELOPMENT": "In Development",
-    "COMPLETED": "Completed",
-    "NO_COMPLETED_MESSAGE": "There are no completed projects as of now.",
-    "NO_COMPLETED_CALL_TO_ACTION": "Help Us Out!",
-    "DOWNLOADS": "Downloads",
-=======
     "PROJECTS": "Projets",
     "IN_DEVELOPMENT": "En dévelopemment",
     "COMPLETED": "Complété",
     "NO_COMPLETED_MESSAGE": "Il n'y a pas encore de projets complétés.",
     "NO_COMPLETED_CALL_TO_ACTION": "Aidez-nous !",
     "DOWNLOADS": "Téléchargements",
->>>>>>> Stashed changes
     "CHARACTERS": {
       "CHARACTERS": "Personnages",
       "MARISA": "Marisa Kirisame",
