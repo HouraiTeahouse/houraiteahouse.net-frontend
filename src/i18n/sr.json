@@ -1,0 +1,78 @@
+{
+  "WEBSITE": "Hourai Teahouse",
+  "AUTH": {
+    "LOGIN": "Prijavi se",
+    "LOGOUT": "Odjavi se",
+    "USERNAME": "Korisničko ime",
+    "PASSWORD": "Lozinka",
+    "REGISTER": "Registruj se",
+    "PASSWORD_REENTRY": "Ponovo unesi lozinku",
+    "EMAIL": "Email",
+    "REMEMBER_ME": "Zapamti me",
+    "REGISTER_LINK": "Nemate nalog? Registrujte se!",
+    "PERMISSIONS": {
+      "PERMISSIONS": "Dozvole",
+      "MANAGE": "Izmeni dozvole",
+      "LOADED": "{{username}} je dozvoljeno da:",
+      "GET": "Dobij korisničke dozvole",
+      "UPDATE": "Ažuriraj korisničke dozvole"
+    }
+  },
+  "NEWS": {
+    "NEWS": "Vesti",
+    "POSTED_BY": "Postavio {{post.author}} datuma {{post.created | date:'MMM d, y'}}",
+    "LAST_EDITED": "Poslednje izmenjeno{{post.lastEdit | date:'MMM d, y'}}",
+    "READ_MORE": "Saznaj više",
+    "FAILED": "Greška u učitavanju postova",
+    "CREATE": "Napravi post",
+    "POSTS": {
+      "IMAGE": "Link sa slikom (neobavezno)",
+      "BODY": "Post Body",
+      "TITLE": "Naslov",
+      "TAGS": "Ključne reči (odvojene zapetom)",
+      "ACTIONS": {
+        "AVAILABLE": "Dostupne akcije za postove",
+        "EDIT": "Izmeni post",
+        "TRANSLATE": "Prevedi Post",
+        "CREATE": "Napravi novu vest"
+      }
+    },
+    "COMMENTS": {
+      "COMMENTS": "Komentari",
+      "ACTIONS": "Akcije za komentarisanje",
+      "ADD": "Dodaj komentar",
+      "DELETE": {
+        "DELETE": "Obriši",
+        "CONFIRMATION": "Da li ste sigurni?"
+      }
+    }
+  },
+  "PROJECTS": {
+    "PROJECTS": "Projekti",
+    "IN_DEVELOPMENT": "Još u razvitku",
+    "COMPLETED": "Završeni",
+    "NO_COMPLETED_MESSAGE": "Trenutno nema završenih projekta.",
+    "NO_COMPLETED_CALL_TO_ACTION": "Pomozite nam!",
+    "DOWNLOADS": "Preuzimanja",
+    "CHARACTERS": {
+      "CHARACTERS": "Likovi",
+      "MARISA": "Marisa Kirisame",
+      "REIMU": "Reimu Hakurei",
+      "WRIGGLE": "Wriggle Nightbug",
+      "YOUMU": "Youmu Konpaku",
+      "SAKUYA": "Sakuya Izayoi",
+      "YUUKA": "Yuuka Kazami",
+      "YUUGI": "Yuugi Hoshiguma",
+      "MURASA": "Minamitsu Murasa"
+    }
+  },
+  "ABOUT": "O nama",
+  "CONSTRUCTION": "Još u konstrukciji",
+  "WIKI": "Wiki",
+  "LANGUAGE": "Jezik",
+  "SUBMIT": "Pošalji",
+  "YES": "Da",
+  "NO": "Ne",
+  "OK": "U redu",
+  "CANCEL": "Otkaži"
+}
