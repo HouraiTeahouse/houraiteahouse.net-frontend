@@ -1,0 +1,78 @@
+{
+  "WEBSITE": "Hourai Teahouse",
+  "AUTH": {
+    "LOGIN": "Войти",
+    "LOGOUT": "Выйти",
+    "USERNAME": "Пользователь",
+    "PASSWORD": "Пароль",
+    "REGISTER": "Регистрация",
+    "PASSWORD_REENTRY": "Поатор пароля",
+    "EMAIL": "Email",
+    "REMEMBER_ME": "Запомнить меня",
+    "REGISTER_LINK": "Нет аккаунта? Зарегистрироваться можно здесь",
+    "PERMISSIONS": {
+      "PERMISSIONS": "Права",
+      "MANAGE": "Управление правами",
+      "LOADED": "У {{username}} есть следующие права:",
+      "GET": "Получить права пользователя",
+      "UPDATE": "Обновить права"
+    }
+  },
+  "NEWS": {
+    "NEWS": "Новости",
+    "POSTED_BY": "Опубликовано {{post.author}} {{post.created | date:'dd.MM.yyyy'}}",
+    "LAST_EDITED": "Редактировалось {{post.lastEdit | date:'MMM d, y'}}",
+    "READ_MORE": "Больше",
+    "FAILED": "Не удалось загрузить новости",
+    "CREATE": "Создать пост",
+    "POSTS": {
+      "IMAGE": "Ссылка на изображение (необязятельно)",
+      "BODY": "Тело поста",
+      "TITLE": "Заголовок",
+      "TAGS": "Теги (через запятую)",
+      "ACTIONS": {
+        "AVAILABLE": "Доступные действия для поста",
+        "EDIT": "Редактировать пост",
+        "TRANSLATE": "Перевести пост",
+        "CREATE": "Создать новый пост"
+      }
+    },
+    "COMMENTS": {
+      "COMMENTS": "Комментарии",
+      "ACTIONS": "Действия для комментариев",
+      "ADD": "Добавить комментарий",
+      "DELETE": {
+        "DELETE": "Удалить",
+        "CONFIRMATION": "Вы уверены?"
+      }
+    }
+  },
+  "PROJECTS": {
+    "PROJECTS": "Проекты",
+    "IN_DEVELOPMENT": "Разарбатываются",
+    "COMPLETED": "Закончены",
+    "NO_COMPLETED_MESSAGE": "Законченных пректов пока нет",
+    "NO_COMPLETED_CALL_TO_ACTION": "Помогите нам!",
+    "DOWNLOADS": "Загрузки",
+    "CHARACTERS": {
+      "CHARACTERS": "Персонажи",
+      "MARISA": "Мариса Кирисаме",
+      "REIMU": "Рейму Хакурей",
+      "WRIGGLE": "Риггл Найтбаг",
+      "YOUMU": "Ёму Компаку",
+      "SAKUYA": "Сакуя Идзаёй",
+      "YUUKA": "Юка Кадзами",
+      "YUUGI": "Юги Хосигума",
+      "MURASA": "Минимицу Мураса"
+    }
+  },
+  "ABOUT": "О нас",
+  "CONSTRUCTION": "В разработке",
+  "WIKI": "Вики",
+  "LANGUAGE": "Язык",
+  "SUBMIT": "Отправить",
+  "YES": "Да",
+  "NO": "Нет",
+  "OK": "ОК",
+  "CANCEL": "Отмена"
+}
