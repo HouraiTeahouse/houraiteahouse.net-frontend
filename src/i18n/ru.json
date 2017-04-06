@@ -49,7 +49,7 @@
   },
   "PROJECTS": {
     "PROJECTS": "Проекты",
-    "IN_DEVELOPMENT": "Разарбатываются",
+    "IN_DEVELOPMENT": "Разрабатываются",
     "COMPLETED": "Закончены",
     "NO_COMPLETED_MESSAGE": "Законченных пректов пока нет",
     "NO_COMPLETED_CALL_TO_ACTION": "Помогите нам!",
