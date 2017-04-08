@@ -68,7 +68,7 @@ a:hover {
 }
 
 .navbar-header > a {
-  color: #E0D050;
+  color: #DDFFFF;
 }
 
 .navbar-header > button.navbar-toggle > span.icon-bar {
@@ -80,7 +80,7 @@ a:hover {
 }
 
 .navbar-nav > li > a {
-  color: #DDDD55;
+  color: #DDFFFF;
 }
 
 .navbar-nav > li > a:hover {
