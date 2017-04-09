@@ -12,7 +12,7 @@ script:
   - npm run test-ci
 deploy:
   provider: script
-  script: curl -i -X POST https://houraiteahouse.net:$PORT/deploy/houraiteahouse.net-frontend/$TRAVIS_BRANCH?token=$TOKEN
+  script: curl -i -X POST $DEPLOY_BASE_URL/$TRAVIS_BRANCH?token=$TOKEN
   skip_cleanup: true
   on:
     branch: develop
