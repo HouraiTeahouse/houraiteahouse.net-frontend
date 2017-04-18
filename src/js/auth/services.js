@@ -1,7 +1,7 @@
 import appServices from '../appServicesModule.js';
 
-appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 'HttpService',
-  function ($rootScope, $q, $timeout, $cookies, HttpService) {
+appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 'HttpService', '$location',
+  function ($rootScope, $q, $timeout, $cookies, HttpService, $location) {
 
     var permissions = null; // We cache this for performance.  The backend will still do a final check that can override this.
 
@@ -22,6 +22,23 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
       let params = {};
       if(expiration != null) {
         params['expires'] = new Date(expiration);
+
+        let host = $location.host().split('.');
+        let dom1 = "";
+        if (typeof (host[host.length - 2]) != 'undefined') dom1 = host[host.length - 2] + '.';
+        let domain = dom1 + host[host.length - 1];
+
+        //In RFC 2109, a domain without a leading dot meant that it could not be
+        //used on subdomains, and only a leading dot (.mydomain.com) would allow
+        //it to be used across subdomains.
+        //
+        //However, modern browsers respect the newer specification RFC 6265, and
+        //will ignore any leading dot, meaning you can use the cookie on
+        //subdomains as well as the top-level domain.
+        //
+        //This is required for the SSO to work with other related sites like the
+        //wiki. For full compatibility, we are using the leading dot.
+        params['domain'] = ((domain === 'localhost') ? "" : ".") + domain;
       }
       let wikiId= getWikiId(username);
       $cookies.put('htlogin', wikiId+ "#" + email + "#" + username + "#" + sessionId, params);
