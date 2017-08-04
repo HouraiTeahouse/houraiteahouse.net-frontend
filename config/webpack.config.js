@@ -6,7 +6,7 @@ const DEVELOPMENT_MODE = (!PRODUCTION_MODE && !TEST_MODE);
 // These should be full URL's, containing the protocol, hostname, and port
 // number. In particular, the frontend will do a check to ensure that
 // the protocol is specified.
-const PRODUCTION_API_URL = 'https://houraiteahouse.net:92';
+const PRODUCTION_API_URL = 'https://api.houraiteahouse.net';
 const DEVELOPMENT_API_URL = 'http://localhost:5000';
 
 // Imports
