@@ -56,12 +56,10 @@ hr {
 }
 
 .feature {
-  margin-top: 15px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  box-shadow: 1px 1px 21px -4px rgba(0, 0, 0, 0.75);
+  display: flex;
+  width: 100%;
   position: relative;
-  height: 500px;
+  height: 550px;
   background-size: cover;
 }
 

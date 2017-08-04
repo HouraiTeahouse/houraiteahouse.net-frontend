@@ -1,10 +1,10 @@
 <div class="feature"
     ng-if="::project"
-    style="background-image: {{ ::'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), ' + 'url(' + project.bannerImg + ')' }};">
-    <div class="feature-info">
-        <h1>{{ ::project.name }}</h1>
-        <p>{{ ::project.description }}</p>
-    </div>
+    style="background-image: {{ 'url(' + project.bannerImg + ')' }};">
+    <!--<div class="feature-info">-->
+        <!--<h1>{{ ::project.name }}</h1>-->
+        <!--<p>{{ ::project.description }}</p>-->
+    <!--</div>-->
 </div>
 <div class="feature-tabs">
     <ul class="nav nav-tabs nav-justified">
