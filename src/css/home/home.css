@@ -42,7 +42,7 @@
     }
 
     & .social-media-icon {
-        width: 32px;
+        /* width: 32px; removed for now until we can resize the youtube logo to be square */
         height: 32px;
         margin: 0 8px;
     }
