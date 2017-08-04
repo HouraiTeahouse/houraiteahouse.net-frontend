@@ -33,7 +33,11 @@
     }
 
     & .hourai-social-media {
-        padding: 2rem 0 0 0;
+        padding: 1rem 0 0 0;
+    }
+
+    & .discord-banner {
+        height: 96px;
     }
 
     & .social-icon-attribution {
