@@ -51,20 +51,20 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse" data-uib-collapse="navCollapsed">
           <ul class="nav navbar-nav">
-            <li data-ng-class="{active: $state.includes('projects')}">
-              <a href="/project/fantasy-crescendo/about" >Fantasy Crescendo</a>
+            <li data-ng-class="{active: $state.includes('about')}">
+              <a data-ui-sref="about" translate="ABOUT">...</a>
             </li>
             <li data-ng-class="{active: $state.includes('news')}">
               <a data-ui-sref="news.list" translate="NEWS">...</a>
             </li>
-            <li data-ng-show="canManagePermissions" data-ng-class="{active: $state.includes('admin.permissions')}">
-              <a data-ui-sref="admin" translate="PERMISSIONS">...</a>
-            </li>
-            <li data-ng-class="{active: $state.includes('about')}">
-              <a data-ui-sref="about" translate="ABOUT">...</a>
+            <li data-ng-class="{active: $state.includes('projects')}">
+              <a href="/project/fantasy-crescendo/about" >Fantasy Crescendo</a>
             </li>
             <li data-ng-class="{active: $state.includes('wiki')}">
               <a href="https://wiki.houraiteahouse.net/" target="_self" translate="WIKI">...</a>
+            </li>
+            <li data-ng-show="canManagePermissions" data-ng-class="{active: $state.includes('admin.permissions')}">
+              <a data-ui-sref="admin" translate="PERMISSIONS">...</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" data-ng-controller="LoginNavCtrl">
