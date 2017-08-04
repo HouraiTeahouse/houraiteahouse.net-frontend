@@ -103,3 +103,13 @@ hr {
 .card.character-card h3 {
   margin: 1em;
 }
+
+.card.download-card div {
+  box-shadow: 0 0 10px -1px rgba(0, 0, 0, 0.25);
+  margin-top: 1.5em;
+}
+
+.card.download-card img {
+  margin: auto;
+  max-height: 200px;
+}
