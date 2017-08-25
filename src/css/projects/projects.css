@@ -59,7 +59,6 @@ hr {
   display: flex;
   width: 100%;
   position: relative;
-  height: 600px;
   background-size: cover;
 }
 
@@ -69,6 +68,11 @@ hr {
   width: 100%;
   text-align: center;
   color: white;
+}
+
+.feature > img {
+  height: 100%;
+  width: 100%;
 }
 
 .nav-tabs {
