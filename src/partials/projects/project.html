@@ -1,6 +1,6 @@
 <div class="feature"
-    ng-if="::project"
-    style="background-image: {{ 'url(' + project.bannerImg + ')' }};">
+    ng-if="::project">
+  <img ng-src="/{{ project.bannerImg }}" \>
     <!--<div class="feature-info">-->
         <!--<h1>{{ ::project.name }}</h1>-->
         <!--<p>{{ ::project.description }}</p>-->
