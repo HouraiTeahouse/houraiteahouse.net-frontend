@@ -1,0 +1,78 @@
+{
+  "WEBSITE": "Hourai Teahouse",
+  "AUTH": {
+    "LOGIN": "Se connecter",
+    "LOGOUT": "Se déconnecter",
+    "USERNAME": "Pseudonyme",
+    "PASSWORD": "Mot de passe",
+    "REGISTER": "S'enregistrer",
+    "PASSWORD_REENTRY": "Entrer le mot de passe à nouveau",
+    "EMAIL": "Email",
+    "REMEMBER_ME": "Se souvenir de moi",
+    "REGISTER_LINK": "Pas de compte? Enregistrez-vous ici!",
+    "PERMISSIONS": {
+      "PERMISSIONS": "Permissions",
+      "MANAGE": "Gérer les permissions des utilisateurs",
+      "LOADED": "{{username}} a les permissions suivantes:",
+      "GET": "Obtenir les permissions utilisateur",
+      "UPDATE": "Mettre à jour les permissions utilisateur"
+    }
+  },
+  "NEWS": {
+    "NEWS": "Nouveautés",
+    "POSTED_BY": "Posté par {{post.author}} le {{post.created | date:'MMM d, y'}}",
+    "LAST_EDITED": "Dernière édition {{post.lastEdit | date:'MMM d, y'}}",
+    "READ_MORE": "En lire plus",
+    "FAILED": "Echec de la lecture des posts",
+    "CREATE": "Créer un post",
+    "POSTS": {
+      "IMAGE": "Lien d'image (optionnel)",
+      "BODY": "Poster le contenu",
+      "TITLE": "Titre",
+      "TAGS": "Tags (séparés par une virgule)",
+      "ACTIONS": {
+        "AVAILABLE": "Actions de post disponibles",
+        "EDIT": "Editer le post",
+        "TRANSLATE": "Traduire le post",
+        "CREATE": "Créer un post de news"
+      }
+    },
+    "COMMENTS": {
+      "COMMENTS": "Commentaires",
+      "ACTIONS": "Actions de commentaire",
+      "ADD": "Ajouter un commentaire",
+      "DELETE": {
+        "DELETE": "Supprimer",
+        "CONFIRMATION": "Etes-vous sûr?"
+      }
+    }
+  },
+  "PROJECTS": {
+    "PROJECTS": "Projets",
+    "IN_DEVELOPMENT": "En dévelopemment",
+    "COMPLETED": "Complété",
+    "NO_COMPLETED_MESSAGE": "Il n'y a pas encore de projets complétés.",
+    "NO_COMPLETED_CALL_TO_ACTION": "Aidez-nous !",
+    "DOWNLOADS": "Téléchargements",
+    "CHARACTERS": {
+      "CHARACTERS": "Personnages",
+      "MARISA": "Marisa Kirisame",
+      "REIMU": "Reimu Hakurei",
+      "WRIGGLE": "Wriggle Nightbug",
+      "YOUMU": "Youmu Konpaku",
+      "SAKUYA": "Sakuya Izayoi",
+      "YUUKA": "Yuuka Kazami",
+      "YUUGI": "Yuugi Hoshiguma",
+      "MURASA": "Minamitsu Murasa"
+    }
+  },
+  "ABOUT": "A propos",
+  "CONSTRUCTION": "En construction",
+  "WIKI": "Wiki",
+  "LANGUAGE": "Langue",
+  "SUBMIT": "Soumettre",
+  "YES": "Oui",
+  "NO": "NON",
+  "OK": "OK",
+  "CANCEL": "Annuler"
+}

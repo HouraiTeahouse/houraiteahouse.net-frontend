@@ -1,0 +1,78 @@
+{
+  "WEBSITE": "Hourai Teahouse",
+  "AUTH": {
+    "LOGIN": "ログイン",
+    "LOGOUT": "ログアウト",
+    "USERNAME": "ユーザー名",
+    "PASSWORD": "パスワード",
+    "REGISTER": "ユーザー登録",
+    "PASSWORD_REENTRY": "パスワード（確認）",
+    "EMAIL": "Email",
+    "REMEMBER_ME": "パスワードを保存する",
+    "REGISTER_LINK": "新規登録はこちら",
+    "PERMISSIONS": {
+      "PERMISSIONS": "権限",
+      "MANAGE": "権限管理",
+      "LOADED": "{{username}} はこの以下の権限を持っている:",
+      "GET": "ユーザー権限抽出",
+      "UPDATE": "ユーザー権限更新"
+    }
+  },
+  "NEWS": {
+    "NEWS": "お知らせ",
+    "POSTED_BY": "投稿者 {{post.author}} {{post.created | date:'yyyy/MM/dd'}}",
+    "LAST_EDITED": "最終更新日 {{post.lastEdit | date:'yyyy/MM/dd'}}",
+    "READ_MORE": "続きを読む",
+    "FAILED": "読み込めできません",
+    "CREATE": "新規投稿",
+    "POSTS": {
+      "IMAGE": "画像のリンク先（必要なし）",
+      "BODY": "内容",
+      "TITLE": "タイトル",
+      "TAGS": "タッグ (カンマで分割)",
+      "ACTIONS": {
+        "AVAILABLE": "使用可能な編集機能",
+        "EDIT": "編集",
+        "TRANSLATE": "翻訳",
+        "CREATE": "新規投稿"
+      }
+    },
+    "COMMENTS": {
+      "COMMENTS": "コメント",
+      "ACTIONS": "コメント用機能",
+      "ADD": "コメント追加",
+      "DELETE": {
+        "DELETE": "削除",
+        "CONFIRMATION": "本当に削除するんですか？"
+      }
+    }
+  },
+  "PROJECTS": {
+    "PROJECTS": "作品一覧",
+    "IN_DEVELOPMENT": "開発中の作品",
+    "COMPLETED": "過去作",
+    "NO_COMPLETED_MESSAGE": "まだありません。",
+    "NO_COMPLETED_CALL_TO_ACTION": "協力したい方はこちら",
+    "DOWNLOADS": "ダウンロード先",
+    "CHARACTERS": {
+      "CHARACTERS": "登場キャラ",
+      "MARISA": "霧雨 魔理沙",
+      "REIMU": "博麗 霊夢",
+      "WRIGGLE": "リグル・ナイトバグ",
+      "YOUMU": "魂魄 妖夢",
+      "SAKUYA": "十六夜 咲夜",
+      "YUUKA": "風見 幽香",
+      "YUUGI": "星熊 勇儀",
+      "MURASA": "村紗 水蜜"
+    }
+  },
+  "ABOUT": "サークルについて",
+  "CONSTRUCTION": "工事中",
+  "WIKI": "Wiki",
+  "LANGUAGE": "言語",
+  "SUBMIT": "提出",
+  "YES": "はい",
+  "NO": "いいえ",
+  "OK": "OK",
+  "CANCEL": "キャンセル"
+}

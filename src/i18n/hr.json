@@ -1,0 +1,78 @@
+{
+  "WEBSITE": "Hourai Teahouse",
+  "AUTH": {
+    "LOGIN": "Prijava",
+    "LOGOUT": "Odjava",
+    "USERNAME": "Korisničko ime",
+    "PASSWORD": "Lozinka",
+    "REGISTER": "Registracija",
+    "PASSWORD_REENTRY": "Ponovno unesite Lozinku",
+    "EMAIL": "Email",
+    "REMEMBER_ME": "Zapamti me",
+    "REGISTER_LINK": "Nemate račun? Registrirajte se ovdje!",
+    "PERMISSIONS": {
+      "PERMISSIONS": "Dozvole",
+      "MANAGE": "Upravljanje korisničkim dozvolama",
+      "LOADED": "{{username}} ima sljedeće dozvole:",
+      "GET": "Dobi korisničke dozvole",
+      "UPDATE": "Ažuriraj korisničke dozvole"
+    }
+  },
+  "NEWS": {
+    "NEWS": "Novosti",
+    "POSTED_BY": "Objavio {{post.author}} {{post.created | date:'dd, MM, yyyy'}}",
+    "LAST_EDITED": "Zadnje uređeno {{post.lastEdit | date:'dd, MM, yyyy'}}",
+    "READ_MORE": "Pročitaj više",
+    "FAILED": "Objava neuspješno učitana",
+    "CREATE": "Napravi Objavu",
+    "POSTS": {
+      "IMAGE": "Link Slike (Neobavezno)",
+      "BODY": "Tijelo Objave",
+      "TITLE": "Naslov",
+      "TAGS": "Oznake (odvojene zarezom)",
+      "ACTIONS": {
+        "AVAILABLE": "Dostupne Mogućnosti Objave",
+        "EDIT": "Uredi Objavu",
+        "TRANSLATE": "Prevedi Objavu",
+        "CREATE": "Načini Novu Objavu Vijesti"
+      }
+    },
+    "COMMENTS": {
+      "COMMENTS": "Komentari",
+      "ACTIONS": "Mogućnosti Komentara",
+      "ADD": "Dodaj Komentar",
+      "DELETE": {
+        "DELETE": "Izbriši",
+        "CONFIRMATION": "Jeste li sigurni?"
+      }
+    }
+  },
+  "PROJECTS": {
+    "PROJECTS": "Projekti",
+    "IN_DEVELOPMENT": "U Razvoju",
+    "COMPLETED": "Dovršeno",
+    "NO_COMPLETED_MESSAGE": "Nema dovršenih projekata za sad.",
+    "NO_COMPLETED_CALL_TO_ACTION": "Pomognite nam!",
+    "DOWNLOADS": "Preuzimanja",
+    "CHARACTERS": {
+      "CHARACTERS": "Likovi",
+      "MARISA": "Marisa Kirisame",
+      "REIMU": "Reimu Hakurei",
+      "WRIGGLE": "Wriggle Nightbug",
+      "YOUMU": "Youmu Konpaku",
+      "SAKUYA": "Sakuya Izayoi",
+      "YUUKA": "Yuuka Kazami",
+      "YUUGI": "Yuugi Hoshiguma",
+      "MURASA": "Minamitsu Murasa"
+    }
+  },
+  "ABOUT": "O projektu",
+  "CONSTRUCTION": "Radovi u Tijeku",
+  "WIKI": "Wiki",
+  "LANGUAGE": "Jezik",
+  "SUBMIT": "Potvrdi",
+  "YES": "Da",
+  "NO": "NE",
+  "OK": "OK",
+  "CANCEL": "Poništi"
+}

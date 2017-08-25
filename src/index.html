@@ -1,0 +1,109 @@
+<!doctype html>
+<html data-ng-app="houraiteahouse" data-ng-strict-di="true">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="application-name" content="Hourai Teahouse">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title ng-bind="ngMeta.title">Hourai Teahouse</title>
+
+    <base href="/">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="main.css" rel="stylesheet">
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-82900227-4', 'auto');
+    </script>
+
+    <script src="polyfills.js" defer></script>
+    <script src="main.js" defer></script>
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <div id="topnav">
+      <nav class="navbar" role="navigation" data-ng-controller="HeaderCtrl">
+        <div class="navbar-header">
+          <a class="navbar-brand" data-ui-sref="home" translate="WEBSITE">...</a>
+          <button type="button" class="navbar-toggle" data-ng-click="toggleNav()">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse" data-uib-collapse="navCollapsed">
+          <ul class="nav navbar-nav">
+            <li data-ng-class="{active: $state.includes('about')}">
+              <a data-ui-sref="about" translate="ABOUT">...</a>
+            </li>
+            <li data-ng-class="{active: $state.includes('news')}">
+              <a data-ui-sref="news.list" translate="NEWS">...</a>
+            </li>
+            <li data-ng-class="{active: $state.includes('projects')}">
+              <a href="/project/fantasy-crescendo/about" >Fantasy Crescendo</a>
+            </li>
+            <li data-ng-class="{active: $state.includes('wiki')}">
+              <a href="https://wiki.houraiteahouse.net/" target="_self" translate="WIKI">...</a>
+            </li>
+            <li data-ng-show="canManagePermissions" data-ng-class="{active: $state.includes('admin.permissions')}">
+              <a data-ui-sref="admin" translate="PERMISSIONS">...</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right" data-ng-controller="LoginNavCtrl">
+            <li data-ng-show="!isLoggedIn">
+              <a data-ui-sref="login" translate="AUTH.LOGIN">...</a>
+            </li>
+            <li data-ng-show="isLoggedIn">
+              <a data-ui-sref="logout" translate="AUTH.LOGOUT">...</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div data-ui-view></div>
+
+  <div id="footer">
+    <div class="clearfix">
+      <div class="pull-left text-muted" data-ng-controller="LanguageCtrl">
+        <div uib-dropdown class="dropup">
+          <span><span translate="LANGUAGE"></span>:</span>
+          <div uib-dropdown-toggle class="language-selector">
+            <span ng-bind="currentLanguage">...</span>
+            <span class="caret"></span>
+          </div>
+          <ul class="dropdown-menu" uib-dropdown-menu>
+            <li data-ng-repeat="language in languages | filter : { name: '!' + currentLanguage }">
+              <a data-ng-click="changeLanguage(language)">
+                {{language.name}}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="pull-right text-muted">
+        <span>&copy; <span translate="WEBSITE">...</span> 2015-2017</span>
+      </div>
+    </div>
+  </body>
+</html>

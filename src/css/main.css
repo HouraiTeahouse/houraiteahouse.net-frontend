@@ -1,0 +1,168 @@
+@import 'home/home.css';
+@import 'news/news.css';
+@import 'projects/projects.css';
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+html body {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 50px; /* Don't overlap the footer */
+  font-family: Helvetica;
+  background: #F2F2F2;
+  font-size: 1.3em;
+}
+
+a,
+a:focus,
+a:hover {
+  color: #235A9F;
+  outline: none;
+  text-decoration: none;
+}
+
+#topnav {
+  height: 50px;
+}
+
+.navbar {
+  z-index: 1; /* Overlap the main content */
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+}
+
+.navbar,
+.navbar-nav > li > a:visited {
+  background-color: #883080;
+  border-color: #883080;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.navbar-nav > .active {
+  background-color: #995099;
+  border-color: #883080;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.navbar-nav > .active > a,
+.navbar-nav > .active > a:visited {
+  background-color: #995099;
+  border-color: #883080;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.navbar-nav > li > a:active {
+  background-color: #995099;
+  border-color: #883080;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.navbar-header > a {
+  color: #DDFFFF;
+}
+
+.navbar-header > button.navbar-toggle > span.icon-bar {
+  background-color: #E0D050;
+}
+
+.navbar-header > a:hover {
+  color: #FFEE66;
+}
+
+.navbar-nav > li > a {
+  color: #DDFFFF;
+}
+
+.navbar-nav > li > a:hover {
+  background-color: #995099;
+}
+
+.content {
+  padding-left: 10%;
+  padding-right: 10%;
+  overflow: visible;
+}
+
+#footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+  padding: 5px 10px;
+  line-height: 40px;
+  background-color: #553355;
+  border-top: 0.5rem solid #5f385f;
+}
+
+#footer .language-selector {
+  display: inline;
+  border-bottom: 1px solid white;
+  cursor: pointer;
+}
+
+#footer ul.dropdown-menu {
+  left: -10px; /** Move back to compensate for left padding of footer */
+  background-color: #664466;
+}
+
+#footer ul.dropdown-menu li a {
+  color: white;
+}
+
+#footer ul.dropdown-menu li a:hover {
+  background-color: #886688;
+}
+
+#footer .text-muted {
+  color: #EEEEEE;
+}
+
+.btn-primary {
+  background-color: #772070;
+  color: #EEEEEE;
+  border-color: #661060;
+}
+
+.btn-primary:hover {
+  background-color: #662060;
+  color: #FFFFFF;
+  border-color: #551050;
+}
+
+label {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+  padding-bottom: 15px;
+}
+
+input {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin: 0;
+  vertical-align: bottom;
+  position: relative;
+  top: -3px;
+  *overflow: hidden;
+}
+
+.admin-actions {
+  background: #EEEEEE;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px #999999;
+  padding: 1em;
+  margin: 1em auto;
+}

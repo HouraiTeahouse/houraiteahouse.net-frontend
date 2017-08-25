@@ -1,0 +1,100 @@
+<section class="post">
+  <header class="post-header">
+    <div class="admin-actions" data-ng-show="allowPostManagement">
+      <b translate="NEWS.POSTS.ACTIONS.AVAILABLE">...</b>
+      <button data-ng-click="editPost()" class="btn btn-warning"
+                                         data-ng-show="isAuthor && !editing"
+                                         translate="NEWS.POSTS.ACTIONS.EDIT">...</button>
+      <button data-ng-click="cancelEdit()" class="btn btn-warning"
+                                           data-ng-show="isAuthor && editing"
+                                           translate="CANCEL">...</button>
+      <a data-ui-sref="news.translate({id: post.post_id})" class="btn
+        btn-default" data-ng-show="canTranslate"
+        translate="NEWS.POSTS.ACTIONS.TRANSLATE">...</a>
+      <p data-ng-show="!isAuthor">None (unless we add deletion)</p>
+    </div>
+  </header>
+  <form class="form" name="postEditForm" id="postEditForm" data-ng-show="editing" data-ng-submit="postEditForm.$valid && submitEdit()">
+    <div class="form-group">
+      <label translate="NEWS.POSTS.TITlE">...</label>
+      <input type="text" class="form-control" name="title" data-ng-model="post.title" required />
+    </div>
+    <div class="form-group">
+      <label translate="NEWS.POSTS.IMAGE">...</label>
+      <input type="text" class="form-control" name="media" data-ng-model="post.media" />
+    </div>
+    <div class="form-group">
+      <label for="textareaContent" translate="NEWS.POSTS.BODY">...</label>
+      <textarea class="form-control" rows="18" data-ng-model="postText"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success" data-ng-disabled="disabled"
+                                                  translate="SUBMIT">...</button>
+  </form>
+  <div data-ng-show="!editing">
+    <h2 class="post-title">{{post.title}}</h2>
+    <div class="post-meta">
+      <ul class="list-inline">
+        <li data-ng-repeat="tag in post.tags">
+          <a class="label label-success" data-ui-sref="news.tags({tag: tag})">{{tag}}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="post-meta"  translate="NEWS.POSTED_BY">...</div>
+    <div data-ng-show="isEdited" translate="NEWS.LAST_EDITED">...</div>
+    <hr />
+    <div class="post-content">
+      <div class="media-wrap" data-ng-show="hasMedia">
+        <div class="media">
+          <img data-ng-src="{{post.media}}" />
+        </div>
+      </div>
+      <div data-ng-bind-html="postHtml">
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="post-comments" data-ng-show="!editing">
+    <h4 translate="NEWS.COMMENTS">...</h4>
+    <div class="news-comment" data-ng-repeat="com in post.comments" data-ng-controller="NewsCommentCtrl" data-ng-init="com=com">
+      <form name="commentEditForm" id="commentEditForm" data-ng-submit="commentEditForm.$valid && submitEdit()" data-ng-show="editing">
+        <div data-ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+        <div>
+          <textarea data-ng-model="commentText" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary"
+                              data-ng-disabled="disabled" translate="SUBMIT">...</button>
+      </form>
+      <div data-ng-show="!editing">
+        <p>
+          <div data-ng-bind-html="commentHtml">
+          </div>
+        </p>
+      </div>
+      <br />
+      <cite>- {{author}}</cite>
+      <div class="admin-actions" data-ng-show="canManage">
+        <b translate="NEWS.COMMENTS.ACTIONS">...</b>
+        <button data-ng-click="startDelete()" class="btn btn-danger"
+                                              data-ng-show="!deleting"
+                                              translate="NEWS.COMMENTS.DELETE">...</button>
+        <span data-ng-show="deleting">
+          <span translate="NEWS.COMMENTS.DELETE.CONFIRMATION">...</span>
+          <button data-ng-click="deleteComment()" class="btn btn-danger"
+                                                  translate="YES">...</button>
+          <button data-ng-click="deleting=false" class="btn btn-warning"
+                                                 translate="NO">...</button>
+        </span>
+      </div>
+      <div class="commentSeparator">-</div>
+    </div>
+  </div>
+  <form name="commentForm" id="commentForm" data-ng-submit="commentForm.$valid && addComment()" data-ng-show="!editing">
+    <h4 translate="NEWS.COMMENTS.ADD">...</h4>
+    <div data-ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+    <div>
+      <textarea data-ng-model="comment.body" name="body" id="body" cols="30" rows="10" placeholder="Comment" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" data-ng-disabled="disabled"
+                                                  translate="SUBMIT">...</button>
+  </form>
+</section>

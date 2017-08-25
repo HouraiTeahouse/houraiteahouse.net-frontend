@@ -1,0 +1,48 @@
+<div class="content">
+    <div class="jumbotron">
+        <h1 class="heading" translate="PROJECTS">...</h1>
+    </div>
+
+    <div class="project-section">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2><span translate="PROJECTS.IN_DEVELOPMENT">...</span> ({{ ::incompleteProjects.length }})</h2>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <project-card
+                class="col-xs-12 col-sm-6 col-md-4"
+                ng-repeat="project in ::incompleteProjects track by project.code"
+                project="project"
+                ui-sref="project.detail.about({ code: project.code })">
+            </project-card>
+            <div class="col-xs-12" ng-if="::!incompleteProjects.length">
+                <p class="card text-center">There are no projects in development as of now. <a href="">Help us out!.</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="project-section">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2><span translate="PROJECTS.COMPLETED">...</span> ({{ ::completedProjects.length }})</h2>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <project-card
+                class="col-xs-12 col-sm-6 col-md-4"
+                ng-repeat="project in ::completedProjects track by project.code"
+                project="project"
+                ui-sref="project.detail.about({ code: project.code })">
+            </project-card>
+            <div class="col-xs-12" ng-if="::!completedProjects.length">
+                <p class="card text-center">
+                    <span translate="PROJECTS.NO_COMPLETED_MESSAGE">...</span>
+                    <a href="" translate="PROJECTS.NO_COMPLETED_CALL_TO_ACTION">...</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

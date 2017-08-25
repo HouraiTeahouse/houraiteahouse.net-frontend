@@ -1,0 +1,7 @@
+/*
+ * Import all external CSS once in this file. You should
+ * still import external CSS in the individual files that they are needed,
+ * but by importing them here as well, they can be bundled
+ * separate from the main application if desired in the future.
+ */
+@import 'bootstrap';

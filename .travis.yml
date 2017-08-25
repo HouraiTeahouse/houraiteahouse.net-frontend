@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "node"
+cache:
+  directories:
+    - node_modules
+install:
+  - npm install
+script:
+  - npm run build-all-development
+  - npm run build-all-production
+  - npm run test-ci
+deploy:
+  - provider: script
+    script: curl -i -X POST $DEPLOY_BASE_URL/$TRAVIS_BRANCH?token=$TOKEN
+    skip_cleanup: true
+    on:
+      branch: develop
+  - provider: script
+    script: curl -i -X POST $DEPLOY_BASE_URL/$TRAVIS_BRANCH?token=$TOKEN
+    skip_cleanup: true
+    on:
+      branch: master
