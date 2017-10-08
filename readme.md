@@ -22,14 +22,24 @@ Development
 Setup
 ---
 
-1. Install NodeJS (6.x LTS) (For Linux users, go [here](https://nodejs.org/en/download/package-manager/).
-2. Run `npm install` in this directory.
+0. Install NodeJS (6.x LTS) (For Linux users, go [here](https://nodejs.org/en/download/package-manager/).
+0. Run `npm install` in this directory.
 
 Commands
 ---
 
 * Build: `npm run build-all-development` or `npm run build-all-production`.
 * Test: `npm test`
+
+To properly serve the files locally, you must have a static file server capable
+of working with single page applications. For this, we suggest using
+[spa-serve](https://www.npmjs.com/package/spa-serve): simply install via `npm
+install -g spa-serve`, and execute `spa-serve` in the built `dist` directory
+after running the given build commands.
+
+NOTE: Running `npm run build-all-production` will direct all API calls to the
+production backend at `api.houraiteahouse.net`. For testing locally, use the
+development version instead.
 
 Major TODOs and Milestones:
 ===
