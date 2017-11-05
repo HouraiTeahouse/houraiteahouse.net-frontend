@@ -5,8 +5,8 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
 
     var permissions = null; // We cache this for performance.  The backend will still do a final check that can override this.
 
-    function getSessionId() {
-      let cookie = $cookies.get('htlogin');
+    function getAccessToken() {
+      let cookie = $cookies.get('access_token');
       if (typeof cookie != 'undefined') {
         return cookie.split("#")[3];
       }
@@ -18,7 +18,7 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
       })
     }
 
-    function setCookie(sessionId, username, email, expiration) {
+    function setCookie(accessToken, username, email, expiration) {
       let params = {};
       if(expiration != null) {
         params['expires'] = new Date(expiration);
@@ -41,10 +41,10 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
         params['domain'] = ((domain === 'localhost') ? "" : ".") + domain;
       }
       let wikiId= getWikiId(username);
-      $cookies.put('htlogin', wikiId+ "#" + email + "#" + username + "#" + sessionId, params);
+      $cookies.put('htlogin', wikiId+ "#" + email + "#" + username + "#" + accessToken, params);
     }
 
-    function clearSessionId() {
+    function clearAccessToken() {
       $cookies.remove('htlogin');
     }
 
@@ -72,8 +72,8 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
     function getUserStatus() {
       var deferred = $q.defer();
 
-      var sessionId = getSessionId();
-      if(sessionId == null) {
+      var accessToken = getAccessToken();
+      if(accessToken == null) {
         $rootScope.user = false;
         permissions = null;
         deferred.resolve();
@@ -81,7 +81,7 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
         if($rootScope.user) {
           deferred.resolve();
         } else {
-          httpGetWithAuth('auth/status')
+          httpGetWithAuth('user/status')
             .success(function(data) {
               if(data.status) {
                 $rootScope.user = true;
@@ -90,7 +90,7 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
               } else {
                 permissions = null;
                 $rootScope.user = false;
-                clearSessionId(); // If the cookie is present, it's invalid. Drop it.
+                clearAccessToken(); // If the cookie is present, it's invalid. Drop it.
                 deferred.resolve();
               }
             })
@@ -108,13 +108,15 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
     function login(username, password, remember_me) {
       var deferred = $q.defer();
 
-      HttpService.post('auth/login', null, {username: username, password: password, remember_me: remember_me})
+      HttpService.post('auth', null, {username: username, password: password})
         .success(function(data, status) {
-          if(status === 200 && data.session_id != null) {
-            setCookie(data.session_id,
-                data.username,
+          if(status === 200 && data.access_token != null) {
+            var expiration = new Date();
+            expiration.setDate(expiration.getTime() + 24*60*60*1000);
+            setCookie(data.access_token,
+                username,
                 data.email,
-                data.expiration);
+                expiration);
             permissions = data.permissions;
             $rootScope.user = true;
             deferred.resolve();
@@ -134,29 +136,15 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
     }
 
     function logout() {
-      var deferred = $q.defer();
-
-      httpPostWithAuth('auth/logout')
-        .success(function(data) {
-          $rootScope.user = false;
-          permissions = null;
-          clearSessionId(); // No point in keeping the cookie - it will just trigger false status checks from now on.
-          deferred.resolve();
-        })
-        .error(function(data) {
-          $rootScope.user = false; // Always assume unauth!
-          permissions = null;
-          clearSessionId(); // We don't know where it failed
-          deferred.reject();
-        });
-
-      return deferred.promise;
+      $rootScope.user = false;
+      permissions = null;
+      clearAccessToken();
     }
 
     function register(username, email, password) {
       var deferred = $q.defer();
 
-      HttpService.post('auth/register', null, {username: username, email: email, password: password})
+      HttpService.post('user', null, {username: username, email: email, password: password})
         .success(function(data, status) {
           if(status === 200) {
             deferred.resolve();
@@ -176,7 +164,7 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
     function getPermissions(username) {
       var deferred = $q.defer();
 
-      httpGetWithAuth('auth/permissions', username)
+      httpGetWithAuth('user/permissions', username)
         .success(function(data, status) {
           if(status === 200) {
             deferred.resolve(data);
@@ -194,7 +182,7 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
     function setPermissions(username, permissions) {
       var deferred = $q.defer();
 
-      httpPostWithAuth('auth/permissions', username, {permissions: permissions})
+      httpPostWithAuth('user/permissions', username, {permissions: permissions})
         .success(function(data, status) {
           if(status === 200) {
             deferred.resolve();
@@ -215,7 +203,7 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
       if (params == null) {
         params = {};
       }
-      params['session_id'] = getSessionId();
+      params['access_token'] = getAccessToken();
       return HttpService.get(path, id, params, language);
     }
 
@@ -223,7 +211,7 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
       if (params == null) {
         params = {};
       }
-      params['session_id'] = getSessionId();
+      params['access_token'] = getAccessToken();
       return HttpService.put(path, id, params, language);
     }
 
@@ -231,7 +219,7 @@ appServices.factory('AuthService', ['$rootScope', '$q', '$timeout', '$cookies', 
       if (params == null) {
         params = {};
       }
-      params['session_id'] = getSessionId();
+      params['access_token'] = getAccessToken();
       return HttpService.post(path, id, params, language);
     }
 

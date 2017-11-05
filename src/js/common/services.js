@@ -95,7 +95,11 @@ appServices.factory('HttpService', ['$http', 'LanguageService',
       return call(options.api.base_url + '/' + path + '/' + id, params)
     }
 
-    function injectLanguage(params, language) {
+    function injectLanguage(path, params, language) {
+      if(path.includes('auth')) {
+        // JWT expects us to not include this
+        return params;
+      }
       if(params == null) {
         params = {};
       }
@@ -109,17 +113,17 @@ appServices.factory('HttpService', ['$http', 'LanguageService',
 
     return {
       get: function(path, id, params, language) {
-        params = injectLanguage(params, language);
+        params = injectLanguage(path, params, language);
         return httpInvoke($http.get, path, id, {params: params});
       },
 
       post: function(path, id, params, language) {
-        params = injectLanguage(params, language);
+        params = injectLanguage(path, params, language);
         return httpInvoke($http.post, path, id, params);
       },
 
       put: function(path, id, params, language) {
-        params = injectLanguage(params, language);
+        params = injectLanguage(path, params, language);
         return httpInvoke($http.put, path, id, params);
       }
     }
